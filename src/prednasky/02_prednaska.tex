@@ -2,7 +2,7 @@
 \vspace{5mm}
 \large
 
-\begin{definition}
+\begin{definition}[Latinský obdélník]
 	Latinský obdélník je matice $L \in X^{k \times n}$. Taková, že prvky se neopakuji ani ve sloupcích ani v řádcích.
 	Kde $X$ je n-prvková množina. Typický $\{ 1, ..., n \} := [n]$.
 
@@ -44,14 +44,14 @@
 	Pak dle věty každý obdélník lze doplnit na čtverec.
 \end{proof}
 
-\begin{definition}
+\begin{definition}[Kolmost LČ]
 	Latinský čtverce jsou kolmé $L \perp L^{\prime}$ právě když
 	\[ \forall x,y \in [n]^2 \exists ! (i,j) \in [n]^2: L_{i,j} = x \land L_{i,j}^{\prime} = y \]
 
 	Taky lze definovat ortogonalitu nad různými množiny.
 \end{definition}
 
-\begin{notation}
+\begin{notation}[NOLČ(n)]
 	$NOLČ(n)$ značíme největší počet navzájem ortogonálních Latinských čtverců řádu $n$.
 \end{notation}
 
@@ -126,7 +126,7 @@ Kdy máme extremální řešení?
 	\end{itemize}
 \end{proof}
 
-\begin{definition}
+\begin{definition}[Ortogonální tabulka]
 	Ortogonální tabulka řádu $n$, hloubky $d$ je matice
 	\[ M \in \{ 1, ..., n \}^{d \times n^2} \]
 	$d$ řádků, $n$ sloupců.
@@ -191,10 +191,10 @@ Kdy máme extremální řešení?
 	\[ NOLČ(n) \geq \min_{i = 1}^k \{ p_i^{r_i} - 1 \}  \]
 \end{theorem}
 \begin{proof}
-	Nechť $s = \min_{i = 1}^k \{ p_i^{r_i} - 1 \}$.
+	Nechť \[ s = \min_{i = 1}^k \{ p_i^{r_i} - 1 \} \]
 	Z věty \cref{nolc_lower0}
 	\[ NOLČ(p_i^{r_i}) \geq p_i^{r_i} - 1 \]
-	Pak protože $s = min \Rightarrow p_i^{r_i} - 1 \geq s$
+	Pak protože $s = \min \Rightarrow p_i^{r_i} - 1 \geq s$.\\
 	Což spolu s větou \cref{nolc_oa} dává:
 	\[ \exists OA(p_i^{r_i}, s + 2) \]
 	Aplikujeme \cref{oa_tenz} induktivně, pak
@@ -202,18 +202,18 @@ Kdy máme extremální řešení?
 \end{proof}
 
 \begin{consequence}\label{nolc_lower_1}
-	\[ \forall n \in \N, n > 2 \land n \neg \equiv 2 \mod 4: NOLČ(n) \geq 2 \]
+	\[ \forall n \in \N, n > 2 \land n \not\equiv 2 \mod 4: NOLČ(n) \geq 2 \]
 \end{consequence}
 \begin{proof}
 	Rozložíme $n$ na mocniny prvočísel. Pak pokud v rozkladu je 2, tak má exponent aspoň 2.
-	Protože jinak je $n \neg \equiv 2 \mod 4$, což jsme vyloučili předpokladem.
+	Protože jinak je $n \not\equiv 2 \mod 4$, což jsme vyloučili předpokladem.
 	Pro ostatní prvočísla $p_i^{r_i} - 1 \geq 2$.
 	Dohromady $s \geq 2$.
 \end{proof}
 
-%todo Historicka vsuvka, 1:07
+%todo Historicka vsuvka, 2 predn 1:07
 
-\begin{lemma}
+\begin{lemma}[OA 3m + 1]\label{3m_plus1}
 	\[ \exists OA(m, 4) \Rightarrow \exists OA(3m + 1, 4) \]
 \end{lemma}
 \begin{proof}
@@ -275,8 +275,7 @@ Kdy máme extremální řešení?
 \end{theorem}
 \begin{proof}
 	Pokud vezmeme $m = 4k + 3$ pak dle \cref{nolc_lower_1}
-	%todo how to place text over Rightarrow?
-	\[ \exists OA(4k + 3, 4) \Rightarrow^{lemma} \exists OA(3(4k + 3) + 1, 4) = OA(12k + 10, 4) \iff NOLČ(12k + 10) \geq 2 \]
+	\[ \exists OA(4k + 3, 4) \stackrel{\cref{3m_plus1}}{\Rightarrow} \exists OA(3(4k + 3) + 1, 4) = OA(12k + 10, 4) \iff NOLČ(12k + 10) \geq 2 \]
 \end{proof}
 
 \begin{note}
