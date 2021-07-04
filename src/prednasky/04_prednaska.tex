@@ -1,0 +1,175 @@
+% 4 predn
+
+\begin{lemma}[Lineární formy]\label{lin_form}
+	Nechť $A \in \{ 0, 1\}^{v \times b}$ je matice incidence a $r = \frac{\lambda (v - 1)}{k - 1}$, pak uvažme lineární formy
+	\[ \forall j \in [b]: L_b(x_1, \ldots, x_v) = \sum^v a_{ij} x_i \]
+	Potom
+	\[ \sum^b L^2_j(x_1, \ldots, x_v) = (r - \lambda) \sum^v x^2_i + \lambda\left(\sum^v x_i \right)^2 \]
+\end{lemma}
+\begin{proof}
+	Budiž $x = (x_1, \ldots, x_v)$ řádkový vektor proměnných.
+	Označme $L_j = L_j(x_1, \ldots, x_v)$, pak
+	\[ xA = (L_1, \ldots, L_b) \]
+	Dal
+	\[ (xA)^T = A^Tx^T =
+	\begin{pmatrix}
+	L_1\\
+	L_2\\
+	\ldots\\
+	L_b
+	\end{pmatrix}
+	\]
+	Rovnici $AA^T = (r - \lambda) E + \lambda J$ vynásobíme $x$ zleva a $x^T$ zprava:
+	\[ xAA^Tx^T = x((r - \lambda) E + \lambda J)x^T \]
+	Kde levá strana je $(L_1, \ldots, L_b) \cdot (L_1, \ldots, L_b)^T = \sum L_j^2$.
+	Pravá strana
+	\[ x((r - \lambda) E + \lambda J)x^T = x (r - \lambda) x^T + \lambda x J x^T \]
+	Roznásobíme
+	\[ (r - \lambda) x x^T + \lambda x J x^T = (r - \lambda) \sum x_i^2 + \lambda (\sum x_i) (x_1 + \ldots + x_v) = (r - \lambda) \sum x_i^2 + \lambda\left(\sum^v x_i \right)^2 \]
+\end{proof}
+
+\begin{theorem}[Bruck-Ryser-Chowla]\label{brc}
+	Nechť $(v, k, \lambda)$-SBIBD, položme $n = k - \lambda$, pak platí:
+	\begin{enumerate}
+		\item $v$ je sudé a $n = m^2 \in \N$.
+		\item $v$ je liché a Diofantická rovnice
+			\[ z^2 = nx^2 + (-1)^{\frac{v - 1}{2}} \lambda y^2\]
+			má netriviální řešení v celých číslech.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	1.\\
+	Dle \cref{bibd_equiv}:
+	\[ AA^T = \lambda J + (r - \lambda)E \]
+	Spočítáme determinant dle vzorečku multilineární formy:
+	\[ det AA^T = (det A)^2 = (r - \lambda)^v + v \lambda (r - \lambda)^{v - 1} = (r - \lambda)^{v - 1}(r - \lambda + v \lambda) = (r - \lambda)^{v - 1}(r + \lambda (v - 1)) \]
+	Dosadíme $k(k - 1) = \lambda (v - 1)$:
+	\[ = (k - \lambda)^{v - 1}(k + k^2 - k) = (k - \lambda)^{v - 1} k^2 \]
+	$\forall$ prvočísla $p | n = (k - \lambda)$ je v $det^2, k^2$ sudá mocnina $p$.
+	Takže v $n^{v - 1}$ taky sudá mocnina, jelikož $v$ sudé $\Rightarrow$ v $n$ je sudá mocnina.
+	Neboli $n$ je mocnina přirozeného čísla.
+
+	2.\\
+	Nejprve použijeme Lagrangeovou větu o 4$\square$:
+	\[ n = b_1^2 + b_2^2 + b_3^2 + b_4^2, b_i \in \Z \]
+	Vezmeme matici
+	\[ B =
+		\begin{pmatrix}
+			b_1 & -b_2 & -b_3 & -b_4\\
+			b_2 & b_1 & -b_4 & b_3\\
+			b_3 & b_4 & b_1 & -b_2\\
+			b_4 & -b_3 & b_2 & b_1
+		\end{pmatrix}
+	\]
+	Využijeme kvaterniony a konkretně normu
+	\[ N(x) = x_1^2 + x_2^2 + x_3^2 + x_4^2, N(ab) = N(a) \cdot N(b) \]
+	která je multilineární formou.
+	Pak zobrazení $y = Bx$ je $\Q^4 \to Q^4$ tak že po aplikace normy platí:
+	\[ y_1^2 + y_2^2 + y_3^2 + y_4^2 = (b_1^2 + b_2^2 + b_3^2 + b_4^2)(x_1^2 + x_2^2 + x_3^2 + x_4^2) = n (x_1^2 + x_2^2 + x_3^2 + x_4^2) \]
+	Nahlédneme $B$ je regulární.
+	Jinak sporem je singulární, pak $Bx = 0$ má netriviální řešení, z toho
+	\[ N(x) = n \cdot \sum x_i = 0 \Rightarrow \sum x_i = 0 \iff \forall i: x_i = 0 \]
+	Což je spor.
+
+	Rozebereme 2 případy:
+	2a) $v \equiv 1 \mod 4$\\
+	Nechť máme proměnné $x_1, \ldots, x_v \in \Q$.
+	Aplikujeme zobrazení určené matici $B$ po 4cich, pak
+	\[ \sum y^2 = n (\sum x^2) \]
+	Rovnice z \cref{lin_form} po transformaci je
+	\[ \sum L_j^2 = \sum_i^{v - 1} y_i + n x_v^2 + \lambda(\sum x_i)^2 \]
+	Označme $w = \sum x_i$, taky nahlížejme na $L_j$ jako na lineární formy v proměnných $y_1, \ldots, y_v$.
+	Dosadíme do $L_j$ výrazy získané pomoci $x = \overline{B}y$.
+	Taky ale $y_v = x_v$.
+	\[ \sum L_j^2 = \sum_i^{v - 1} y_i + n y_v^2 + \lambda w^2 \]
+	Zvolme lineární formy tak, aby $L_j^2 = y_j^2$ (proces specializace):
+	\[ L_1 = \sum c_j y_j = y_1 \Rightarrow \sum^{v - 1} c_j y_j = (1 - c_1) y_1 \]
+	Pak zvolme
+	\[ y_1 = \twopartdef{\frac{\sum^{v - 1} c_j y_j}{1 - c_1}}{c_1 \ne 1}{\frac{\sum^{v - 1} c_j y_j}{-2}}{c_1 = 1, L_1 = -y_1} \]
+	Pokračujeme induktivně, zbývá:
+	\[ L_v^2 = ny_v^2 + \lambda w^2 \]
+	Kde $L_v, y_v, w$ jsou lineární formy v $y_v$.
+	Proto
+	\[ L_v = \frac{p}{q} y_v, w = \frac{r}{s} y_v \Rightarrow \frac{p^2}{q^2}y_v^2 = n y_v^2 + \lambda \frac{r^2}{s^2} y_v^2 \]
+	Dosadíme $y_v = 1$:
+	\[ p^2 s^2 = n q^2 s^2 + \lambda r^2 q^2 \]
+	Položme $z = ps, x = qs \ne 0, y = rs$.
+	Rovnice obecnějšího tvaru dostaneme protože $v \equiv 1 \mod 4 \Rightarrow v - 1$ je dělitelné 2.
+
+	2b) $v \equiv 3 \mod4$.
+	Uvažme rovnici z \cref{lin_form}, doplníme poslední 4ce proměnnou $x_{v + 1}$:
+	\[ \sum L_j^2 = \sum_i^{v + 1} y_i - n x_{v + 1}^2 + \lambda w^2 \]
+	Znovu překlopíme na lineární formy v $y_i$ a po specializaci:
+	\[ 0 = y_{v + 1}^2 - n x_{v + 1}^2 + \lambda w^2, x_{v + 1}^2 = \frac{p}{q} y_{v + 1}^2, w = \frac{r}{s}y_{v + 1}^2 \]
+	Dostaneme
+	\[ y_{v + 1}^2 = n - \frac{p^2}{q^2} - \lambda \frac{r^2}{s^2}y_{v + 1}^2 \]
+	Dosadíme $y_{v + 1} = 1$:
+	\[ (qs)^2 = n (ps)^2 - \lambda(rq)^2 \]
+	Znovu dostáváme rovnici
+	\[ z^2 = nx^2 - \lambda y^2 \]
+
+\end{proof}
+
+\begin{consequence}[$\not\exists$ KPR(6)]
+\end{consequence}
+\begin{proof}
+	Kdyby existovala KPR(6), tak by existoval i $(43, 7, 1)$-SBIBD.
+	Pak ale dle \cref{brc} rovnice má netriviální řešení
+	\[ z^2 = 6 x^2 + (-1)^{21} y^2 \Rightarrow z^2 + y^2 = 6 x^2 \]
+	Pokud existovalo netriviální řešení, tak po zrušení společných dělitelů dostaneme řešení $(x, y, z) = 1$ nesoudělná.
+	Vezmeme nemenší takové a upravíme $\mod 3$.
+	Kvadratické residua jsou $0, 1$.
+	Na pravé straně zbytek je vždy $0$, aby i na levé byl $0$ tak $y, z$ jsou zároveň dělitelné 3mi.
+	\[ 9z^2 + 9y^2 = 6x^2 \Rightarrow 3z^2 + 3y^2 = 2x^2 \Rightarrow 3 | x \]
+	Spor s $(x, y, z) = 1$.
+\end{proof}
+
+\begin{theorem}[Teorie čísel (BD)]\label{num_th}
+	$\forall n: n = a^2 + b^2 \iff$ prvočíslo $p = 4k + 3$ vystupuje v rozvoji s sudou mocninou.
+\end{theorem}
+\begin{proof}
+	"$\Rightarrow$" již bylo ukazano na příkladě rovnice $z^2 + y^2 = n x^2$ pro $x = 1$.
+
+	"$\Leftarrow$".
+	\paragraph{Pozorování 1} Pokud $n = n_1 + n_2 \land n_1 = x_1^2 + y_1^2 \land n_2 = x_2^2 + y_2^2$ tak:
+	\[ n = (x_1^2 + y_1^2)(x_2^2 + y_2^2) = x_1^2x_2^2 + x_1^2y_2^2 + y_1^2 x_2^2 + y_1^2 y_2^2 = (x_1x_2 + y_1y_2)^2 + (x_1y_2 - y_1x_2)^2 \]
+
+	\paragraph{Pozorování 2} Z $n = \prod p_i^a$ vytkneme prvočísla $p \equiv 3 \mod4$ do $n_2$:
+	\[ n = \prod p_i^a = n_1^2 \cdot (2) \cdot n_2 \]
+	Pak $n_1^2 = n_1^2 + 0^2$ a $2 = 1^2 + 1^2$.
+	Neboli úloha je redukovaná na $\forall p$ prvočíslo $p = 4k + 1 = a^2 + b^2$.
+
+	\paragraph{Pozorování 3} Pro $p = 4k + 1$ v tělese $\Z_p$ je $(-1) \equiv l^2, l \in \Z_p$.
+	Dal aplikujeme Diofantickou aproximaci
+	\[ \forall e \in R, \forall n \exists \frac{h}{k} \in \Q, 0 < k \leq n: |e - \frac{h}{k}| \leq \frac{1}{k (n + 1)} \]
+	pro $e = \frac{l}{p}, n = \lceil \sqrt{p} \rceil $.
+	Pak
+	\[ n + 1 > \sqrt{p} \Rightarrow \frac{1}{n + 1} < \frac{1}{\sqrt{p}} \]
+	Dle aproximaci
+	\[ \exists \frac{h}{k}, k \leq \sqrt{p}: \left|\frac{l}{p} - \frac{h}{k}\right| \leq \frac{1}{k (n + 1)} < \frac{1}{k \sqrt{p}} \]
+	Zvolme $c = lk - ph$.
+	Pak
+	\[ |lk - ph| < \sqrt{p} \Rightarrow c^2 < p \& c \equiv lk \mod p \]
+	Dal
+	\[ 0 < k^2 + c^2 \equiv k^2 + l^2 k^2 = k^2 (1 + l^2) \equiv 0 \mod p \Rightarrow k^2 + c^2 < 2p \Rightarrow k^2 + c^2 = p \]
+\end{proof}
+
+\begin{theorem}[$\exists$ KPR $\square$]
+	$\exists$ KRP(n) $\land n \equiv 1 \lor 2 \mod 4 \Rightarrow \exists a, b \in \Z: n = a^2 + b^2$.
+\end{theorem}
+\begin{proof}
+	Z \cref{kpr_bibd} KPR(m) existuje právě tehdy když existuje $(m^2 + m + 1, m + 1, 1)$-SBIBD.
+	Z \cref{brc} rovnice má netriviální řešení:
+	\[ z^2 = nx^2 + (-1)^{\frac{v - 1}{2}} \lambda y^2\]
+	Z druhého předpokladu dostaneme
+	\[ z^2 + y^2 = n x^2 \]
+	Podíváme se na prvočísla $p \equiv 3 \mod4: p | n \iff n = p^c \cdot n_1, (p, l) = 1$.
+	Z teorie čísel $p \equiv 3 \mod4 \Rightarrow -1$ je kvadratický nezbytek $\mod p$.
+	Jelikož kvadratické $\square$-zbytek $\cdot (-1) = \square$-nezbytek, tak
+	\[ p | z, p| y \Rightarrow z = p z_1, y = p y_1 \Rightarrow p^2 z_1^2 + p^2 y_1^2 = n_1 x^2 \]
+	Po upravě
+	\[ z_1^2 + y_2^1 = \frac{n}{p^2} x^2 \]
+	Postupným dělením prvočíslem $p$ dostaneme
+	\[ p^{\lceil \frac{c}{2} \rceil} | z, p^{\lceil \frac{c}{2} \rceil} | y \Rightarrow p^{\lceil \frac{c}{2} \rceil} | n \Rightarrow c = 0 \mod 2 \]
+	použijeme \cref{num_th} $\Rightarrow n = a^2 + b^2$.
+\end{proof}
