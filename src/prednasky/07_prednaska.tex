@@ -1,0 +1,110 @@
+\section{\texorpdfstring{Latinské čtverce podruhe}{Latinské čtverce podruhe}}
+% 8 predn
+
+\begin{theorem}[Alespoň dva ortogonální latinské čtverce]
+    Je-li $n>6$, pak NOLČ$(n)\geq 2$.
+\end{theorem}
+\begin{definition}[Trochu méně pravidelné blokové schéma]
+    $(V,\B)$ je $(v,k_1,\ldots,k_m,\lambda)$-BIBD, jestliže
+    \begin{itemize}
+        \item $|V| = v$
+        \item $\forall B\in\mathcal{B}\exists i \in[k]: |B|=k$
+        \item $\forall x\neq y\in V: |\{B\in\mathcal{B}: \{x,y\}\in B\}|=\lambda$
+    \end{itemize}
+
+    Dále jako $\mathcal{B}_i$ značíme bloky velikosti $k_i$, $b_i=|\mathcal{B_i}|, b=|\B|$.
+\end{definition}
+\begin{note}[O $b$ a $b_i$ méně pravidelných schémat]
+    \begin{itemize}
+        \item $\sum_{i=1}^mb_i=b$
+        \item $\lambda v(v-1)=\sum_{i=1}^m b_ik_i(k_i-1)$
+    \end{itemize}
+\end{note}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{definition}[Průhledná množina]
+    Buď $(V,\B), \mathcal{A}\subseteq \B$.
+    Pak $\mathcal{A}$ je průhledná množina bloku, pokud obsahuje jen disjunktní množiny.
+\end{definition}
+\begin{definition}[BIBD se středníkem]~\\
+    $(V,\mathcal{B})$ definujeme jako $(v,k_1,\ldots,k_r;k_{r+1},k_m,\lambda)$-BIBD, je-li $(v,k_1,\ldots,k_r,k_{r+1},k_m,\lambda)$-BIBD a $\mathcal{B}_1\cup\ldots\cup\mathcal{B}_r$ je průhledná množina.
+\end{definition}
+\begin{theorem}[Dolní odhad na NOLČ]~\\
+    Existuje-li $(v,k_1,\ldots,k_r;k_{r+1},k_m,\lambda)$-BIBD, pak NOLČ($v$)$\geq\min\{$NOLČ($k_1$),$\ldots$,NOLČ($k_r$),NOLČ($k_{r+1}$)$-1,\ldots,$NOLČ($k_m$)$-1\}$
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{theorem}[$(v,k,1)$-BIBD a NOLČ]
+    Existuje-li $(v,k,1)$-BIBD, pak
+    \begin{itemize}
+        \item[a)] NOLČ($v-1$)$\geq\min($NOLČ$(k-1),$NOLČ$(k)-1)$
+        \item[b)] Pro $2\leq x\leq k$, pak NOLČ$(v-x)\geq\min\{$NOLČ$(k-x),$NOLČ$(k)-1,$NOLČ$(k-1)-1\}$
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{theorem}[$(v,k,1)$-BIBD a NOLČ($v-3$)]
+    Existuje-li $(v,k,1$)-BIBD, pak NOLČ($v-3$)$\geq\min\{$NOLČ($k-2$),NOLČ($k-1)-1$,NOLČ($k$)$-1\}$.
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{definition}[Řešitelný systém]
+    Systém $(V,\mathcal{B})$ je řešitelný, pokud $\mathcal{B}=\mathcal{B}1\sqcup\ldots\sqcup\mathcal{B}_r$ takový, že
+    \begin{enumerate}
+        \item $\forall i: \mathcal{B}_i$ je průhledná
+        \item $\bigcup\mathcal{B}_i=B$
+    \end{enumerate}
+
+    Pak $\mathcal{B}_i$ nazveme třídy řešitelnosti.
+\end{definition}
+\begin{theorem}[Řešitelnost a odhady na NOLČ]
+    Pokud existuje řešitelný $(v,k,1)$-BIBD a r třídami řešitelnosti, pak
+    \begin{enumerate}
+        \item NOLČ($v+1$)$\geq\min\{$NOLČ($k$)$-1$, NOLČ($k+1$)$-1\}$
+        \item pro $2\leq x\leq r-2:$ NOLČ($v+x$)$\geq\min\{$NOLČ($x$),NOLČ($k$)$-1$, NOLČ($k+1$)$-1\}$
+        \item NOLČ($v+r-1$)$\geq\min\{$NOLČ($r-1$),NOLČ($k$), NOLČ($k+1$)$-1\}$
+        \item NOLČ($v+r$)$\geq\min\{$NOLČ($r$), NOLČ($k+1$)$-1\}$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{definition}[Skupinově rozložitelný systém]
+    Množinový systém $(V,\mathcal{B})$ se nazývá skupinově rozložitelný (group divisible), pokud $\exists V_1,\ldots, V_n: V_i\subseteq V, V_i\cap V_j=\emptyset$.
+    \begin{itemize}
+        \item[a)] $\forall x,y\in V_i: \exists \lambda_1$ bloků sdílejících $x,y$
+        \item[b)] pro $i\neq j$: $\forall x\in V_i, \forall y\in V_j: \exists\lambda_2$ bloků sdílejících $x,y$.
+    \end{itemize}
+    Pokud všechny bloky mají velikost $k$, $|V_i|=m$, pak značíme systém jako $GD(v,k,m,\lambda_1,\lambda_2)$.
+\end{definition}
+\begin{theorem}[NOLČ a existence GD]
+    Pokud pro $m,k$ platí NOLČ($m$)$\geq k-1$, pak $\exists GD(km,k,m,0,1)$.
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{theorem}[Řešitelný GD a NOLČ]
+    Existuje-li $GD(v,k,m,0,1)$ řešitelný s $r$ třídami řešitelnosti, pak pro každé $1\leq x\leq r-1$ NOLČ($v+x$)$\geq\min\{$NOLČ($m$), NOLČ($x$), NOLČ($k$)-1, NOLČ($k+1$)$-1\}$.
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{consequence}[O násobení NOLČ]
+    Je-li NOLČ($m$)$\geq k-1$, pak pro každé $1\leq x\leq m-1$ platí NOLČ($km+x$)$\geq\min\{$NOLČ($m$), NOLČ($x$), NOLČ($k$)$-1$, NOLČ($k+1$)$-1\}$.
+\end{consequence}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{lemma}[Dolni odhad pro NOLČ]
+    Pokd NOLČ($4t+2$)$\geq 2$ pro každé $2\leq t\leq 181$, pak NOLČ($4t+2$)$\geq 2$ pro každé $t\geq 2$.
+\end{lemma}
+\begin{theorem}[NOLČ je aspoň 2]
+    $\forall v>6:$ NOLČ($v$)$\geq 2$.
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}

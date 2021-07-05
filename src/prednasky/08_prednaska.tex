@@ -1,0 +1,205 @@
+\section{\texorpdfstring{Konečné projektivní prostory}{Konečné projektivní prostory}}
+% 9 predn
+
+\begin{definition}[Konečný projektivní prostor, kolinearita]
+    $(P,\mathcal{L})$ takový, že $P$ je konečná množina bodů a $\mathcal{L}$ je množinový systém (přímek) na $P$, je konečný projektivní prostor, splňuje-li axiomy A1, A2, A3.
+
+    Dále body $x\neq y\neq z\neq x$ takové, že $x,y,z\in l\in\mathcal{L}$, nazveme kolineární.
+
+    \begin{itemize}
+        \item[(A1)] $\forall x\neq y\in P\exists! l\in \mathcal{L}: x,y\in l$
+        \item[(A2)] $\forall l\in\mathcal{L}: |l|\geq 3$
+        \item[(A3)]  $\forall a,b,c: a\neq b\neq c\neq a, a,b,c$ nekolineární: $\forall x\in ac, y\in bc\exists z\in ab$ takový, že $x,y,z$ jsou kolineární.
+    \end{itemize}
+\end{definition}
+\begin{definition}[Podprostor]
+    Je-li $(P,\mathcal{L})$ konečná geometrie, pak $U\subseteq P$ je podprostor, jestliže $\forall x\neq y\in U: xy\subseteq U$.
+\end{definition}
+\begin{note}[Podprostor a KPP]
+    Je-li $U\subseteq P$ podprostor, pak $(U,\mathcal{L}|_U)$ je konečný projektivní prostor.
+\end{note}
+\begin{lemma}[Průnik podprostorů je podprostor]
+    Pro $U,V\subseteq \mathcal{L}$ je podprostor, pak $U\cap V$ je podprostor.
+\end{lemma}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{definition}[Obal]
+    Buď $A\subseteq P, (P,\mathcal{L})$: pak $\langle A\rangle$ je nejmenší podprostor, který obsahuje $A$.
+\end{definition}
+\begin{note}[Obal skrze průniky]
+    $\langle A\rangle = \bigcap_{U \text{ podprostor} P, A\subseteq U} U$
+
+    $\forall U$ podprostor $P$, pokud $A\subseteq U$, pak $\langle A\rangle\subseteq U$.
+\end{note}
+\begin{lemma}[O přidání prvku do podprostoru]
+    Buď $S\subseteq P$ podprostor $(P,\mathcal{L}), a\not\in S$.
+    Potom $\langle S\cup\{a\}\rangle=\bigcup_{x\in S}ax$.
+\end{lemma}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{lemma}[Sjednocení podprostorů]
+    Buďte $S,T\subseteq P$ podprostory $(P,\mathcal{L})$.
+    Potom $\langle S\cup T\rangle=\bigcup_{s\in S, t\in T, s\neq t}st$.
+\end{lemma}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{definition}[Projektivně nezávislá množina]
+    Množina $A\subseteq P$ v $(P,\mathcal{L})$ je projektivně nezávislá, jestliže $\forall a\in A: \langle A\setminus \{a\}\rangle\neq\langle A\rangle$.
+\end{definition}
+\begin{lemma}[Přidání prvku do projektivně nezávislé množiny]
+    Je-li $A$ projektivně nezávislá a $b\not\in\langle A\rangle$, pak $A\cup\{b\}$ je projektivně nezávislá.
+\end{lemma}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{note}[Projektivní nezávislost a generované podprostory]
+    $A_1,A_2\subseteq P: \langle A_1\rangle=\langle A_2\rangle\Rightarrow \forall x: A_1\cup\{x\}$ je projektivně nezávislá, právě když $A_2\cup\{x\}$ je projektivně nezávislá.
+\end{note}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{theorem}[O výměně]
+    Buďte $A,B$ projektivně nezávislé množiny v $(P,\mathcal{L})$, $|A|\leq |B|$.
+    Pak existuje $b\in B$ taková, že $A\cup\{b\}$ je projektivně nezávislá.
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{definition}[Projektivní báze]
+    Projektivní báze je do inkluze maximální projektivně nezávislá množina.
+\end{definition}
+\begin{consequence}[Projektivně nezávislá množina a báze]
+    Každou projektivně nezávislou množinu lze doplnit na bázi a všechny projektivní báze mají stejnou mohutnost.
+\end{consequence}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{definition}[Dimenze]
+    $\dim_P S=|B|-1$, kde $B$ je projektivní báze $S$.
+\end{definition}
+\begin{note}[O dimenzi]
+    \begin{itemize}
+        \item $\dim_P(\{a\},\emptyset)=0$
+        \item $\dim_P(\emptyset, \emptyset)=-1$
+        \item $\dim_P(\text{přímka})=2-1=1$.
+        \item $\dim_P(\text{KPR})=2$
+    \end{itemize}
+
+    Důsledkem je, že všechny přímky v KPP mají stejnou mohutnost.
+\end{note}
+\begin{theorem}[Singerova konstrukce]
+    Existuje-li $(P,\mathcal{L})$ KPP řádu $q$ dimenze $n$, pak existuje cyklický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-BIBD.
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{theorem}[O dimenzi průniku a spojení]
+    Buďte $U,V$ podprostory $(P,\mathcal{L})$.
+    Pak $\dim_P(U\cap V) + \dim_P(U\lor V) = \dim P(U)+\dim_P(V)$.
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{theorem}[Modularita]
+    Nechť $A,B,C$ jsou podprostory v $(P,\mathcal{L})$ taková, že $B\subseteq A$.
+    Pak $A\cap(B\lor C) = B\lor(A\cap C)$.
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{consequence}[Průnikem dvou rovin v prostoru je přímka]
+    Buď $P,\pi,\sigma: \dim_P P=3, \dim_P\pi = \dim_P\sigma=2, \pi\neq\sigma\Rightarrow \pi\cap\sigma$ je přímka -- $\dim_P(\pi\cap\sigma)=1$.
+\end{consequence}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{theorem}[Roviny si jsou podobné]
+    Buď $(P,\mathcal{L})$, s $\pi,\sigma$ rovinami v $P$.
+    Pak $\pi\cong\sigma$.
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{theorem}[Nadroviny KPP tvoří BIBD]
+    Buď $(P,\mathcal{L})$ konečný projektivní prostor řádu $q$ a dimenze $n$.
+    Pak jeho nadroviny tvoří symetrický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-BIBD.
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{theorem}[KPP dimenze alespoň 3 mají Desargovskou vlastnost]
+    Konečné projektivní prostory dimenze alespoň 3 mají Desargovskou vlastnosti.
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{definition}[Automorfismus]
+    Bijekce $\alpha: (V,\mathcal{B})\rightarrow (V,\mathcal{B})$ taková, že $\forall B\in \mathcal{B} \alpha[B]\in\mathcal{B}$ je automorfismus.
+\end{definition}
+\begin{note}[Inverz automorfismu je automorfismus]
+    Pro konečné prostory platí, že pro $\alpha$ automorfismus je $\alpha^{-1}$ automorfismus.
+\end{note}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{definition}[Kolineace]
+    Kolineace je zobrazení $\alpha: V\cup \mathcal{B}\rightarrow V\cup \mathcal{B}$ takové, že $\alpha\upharpoonright V$ je bijekce na $V$, $\alpha\upharpoonright \mathcal{B}$ je bijekce na $\mathcal{B}$ a $\forall x\in V, \forall B\in\mathcal{B}: x\in B\Leftrightarrow \alpha(x)\in\alpha(B)$.
+\end{definition}
+\begin{theorem}[Automorfismy a kolineace]
+    Nechť pro $(V,\mathcal{B})$ každé dva různé prvky patří do jednoho bloku a všechny bloky mají mohutnost alespoň 2.
+    Nechť $\alpha: V\rightarrow V$ je permutace, $\overline{\alpha}: V\cup B\rightarrow V\cup 2^V$ takové, že $\overline{\alpha}(x)=\alpha(x)$ a $\overline{\alpha}(B)=\alpha[B]$.
+    Pak následující jsou ekvivalentní:
+    \begin{enumerate}
+        \item $\alpha$ je automorfismus
+        \item $\overline{\alpha}$ je kolineace
+        \item $\alpha$ zachovává kolinearitu
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{note}[Kolineace a obrazy přímek]
+    Je-li $\alpha$ kolineace prostoru, pak $\forall x\neq y\in P: \alpha(xy)=\alpha(x)\alpha(y)$.
+\end{note}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{definition}[Fixace]
+    $A\subseteq P$: $\alpha$ fixuje všechny body $A$, jestliže $\forall x\in A: \alpha(x)=x$
+
+    $l\in\mathcal{L}: \alpha$ fixuje $l$, jestliže $\alpha[l]=l$.
+\end{definition}
+\begin{lemma}[Kolineace fixující nadrovinu]
+    Buď $\alpha$ kolineace fixující všechny body nadroviny $H\subseteq P$.
+    Pak existuje $C\in P$ tak, že $\alpha$ fixuje  všechny přímky procházející bodem $C$.
+\end{lemma}
+\begin{lemma}[Rozšíření kolineace]
+    Mějme $q_0\in\mathcal{L}\rightarrow (P',\mathcal{L}'), P' = P\setminus q_0$ množinový systém.
+    Pak každou kolineaci $\alpha$ množinového systému $(P',\mathcal{L}')$ je možno rozšířit na kolineaci $\alpha^*$ prostoru $(P, \mathcal{L})$ právě jedním způsobem, a tato kolineace fixuje $q_0$.
+\end{lemma}
+\begin{definition}[Centrální kolineace]
+    Centrální kolineace $(P,\mathcal{L})$ je kolineace, pro niž existuje nadrovina $H$ (nazývaná osa kolineace), jejíž všechny body jsou fixované kolineací $\alpha$, a bod $C\in P$ (nazývaný střed kolineace) takový, že všechny přímky jím procházející jsou zobrazením $\alpha$ fixované.
+
+    (Pozor, může nastat $C\in H$ i $C\not\in H$.)
+\end{definition}
+\begin{lemma}[Centrální kolineace jsou grupa]
+    Centrální kolineace s osou $H$a středem $C$tvoří grupu vzhledem ke skládání, jednotkou je identita.
+\end{lemma}
+\begin{lemma}[Vlastnosti centrální kolineace]
+    Buď $\alpha$ centrální kolineace s osou $H$ a středem $C$. Potom
+    \begin{enumerate}
+        \item $P\not\in H\cup\{C\}\Rightarrow \forall x: \alpha(x)$ jednoznačně určuje $\alpha_(P): \alpha(x)=CX\cap F\alpha(P)$, kde $F=PX\cap H$
+        \item Není-li $\alpha$ identická kolineace, pak každý bod mimo $H\cup \{C\}$ není fixovaný
+        \item Centrální kolineace $\alpha$ je jednoznačně určena kteroukoliv dvojicí $P\neq\alpha(P)$.
+    \end{enumerate}
+\end{lemma}
+\begin{consequence}[Jednoznanost středu i osy kolineace]
+    Je-li $\alpha$ neidentická kolineace, pak její osa i střed jsou jednoznačně určené.
+\end{consequence}
+\begin{theorem}[Baerova]
+    Buď $H$ nadrovina v Desargovském prostoru $(\mathcal{P},\mathcal{L})$ a buďte $P,P', C$ tři různé kolineární body takové, že $P,P\not\in H$.
+    Pak existuje právě jedna centrální kolineace $\alpha$ taková, že $H$ je osa, $C$ je střed a $\alpha(P)=P'$.
+\end{theorem}
