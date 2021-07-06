@@ -1,7 +1,7 @@
 \section{\texorpdfstring{Konečné projektivní prostory}{Konečné projektivní prostory}}
 % 9 predn
 
-\begin{definition}[Konečný projektivní prostor, kolinearita]
+\begin{definition}[Konečný projektivní prostor, kolinearita]\label{kpp:kpp}
     $(P,\LP)$ takový, že $P$ je konečná množina bodů a $\LP$ je množinový systém (přímek) na $P$, je konečný projektivní prostor, splňuje-li axiomy A1, A2, A3.
 
     Dále body $x\neq y\neq z\neq x$ takové, že $x,y,z\in l\in\LP$, nazveme kolineární.
@@ -239,11 +239,46 @@
 \end{note}
 
 % 10 predn
+\begin{example}
+	Nechť $q = p^r$ taky $n \leq 3 \in \N$.
+	Uvažme $GF(q)^{n + 1}$, pak body jsou lineární obaly jednotlivých vektorů:
+	\[ P = \{ \langle u \rangle |\ u \in GF(q)^{n + 1} \setminus \{ 0 \} \} \]
+	Přímky budou všechny podprostory dimenze 2:
+	\[ \LP = \{ \langle u, v \rangle |\ u,v LN \in GF(q)^{n + 1} \} \]
+	Označme přímky určené vektory $u, v := l_{u, v}$.
+
+	Ověříme axiomy \cref{kpp:kpp}:
+	\begin{enumerate}
+		\item $|l_{u, v}|$.
+			Lineární kombinace dvou vektorů je tvaru $\alpha u + \beta v$.
+			Kde $\alpha, \beta \in GF(q)$, neboli $q$ možnosti zvolit každý.
+			Musíme ale zahodit kombinaci která dává 0 vektor.
+			Vždy ale $q - 1$ násobku stejného vektoru je dle definice stejný bod.
+			\[ \# = \frac{q^2 - 1}{q - 1} = q + 1 \]
+			Toto $q$ bude řad prostoru.
+		\item z konstrukce $\forall u, v LN \exists!$ přímka $l: \langle u \rangle, \langle v \rangle \in l$.
+		\item Nechť $u, v, w$ jsou LN vektory.
+			Vezmeme $a, b$ ležící na přímce $vu, uw$:
+			\[ a = \alpha u + \beta v, b = \gamma u + \delta w \]
+			Chceme $xa + yb = rv + sw$.
+			\begin{gather*}
+				x(\alpha u + \beta v) + y(\gamma u + \delta w) = rv + sw \\
+				x \alpha + y \gamma = 0 \\
+				x \beta = r \\
+				y \delta = s
+			\end{gather*}
+			Soustava má řešení.
+	\end{enumerate}
+\end{example}
 
 \begin{theorem}[Singerova konstrukce]
     Existuje-li $(P,\LP)$ KPP řádu $q$ dimenze $n$, pak existuje cyklický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-BIBD.
 \end{theorem}
 \begin{proof}
+	$V = P$, $\B = $ nadroviny v $(P, \LP) = $ podprostory $\dim = n - 1$.
+	Které vzniknou tak, že ve vektorovém prostoru vezmeme podprostor $\dim = n$.
+	\[ |V| = |P| = \frac{q^{n + 1}}{q - 1} = q^n + q^{n - 1} + \ldots + 1 \]
+	Velikost nadroviny $H \subseteq P: |H| = \frac{q^n - 1}{1 - 1} = q^{n - 1} + q^{n - 2} + \ldots + 1$.
     TODO
 \end{proof}
 \begin{theorem}[O dimenzi průniku a spojení]
