@@ -2,72 +2,207 @@
 % 9 predn
 
 \begin{definition}[Konečný projektivní prostor, kolinearita]
-    $(P,\mathcal{L})$ takový, že $P$ je konečná množina bodů a $\mathcal{L}$ je množinový systém (přímek) na $P$, je konečný projektivní prostor, splňuje-li axiomy A1, A2, A3.
+    $(P,\LP)$ takový, že $P$ je konečná množina bodů a $\LP$ je množinový systém (přímek) na $P$, je konečný projektivní prostor, splňuje-li axiomy A1, A2, A3.
 
-    Dále body $x\neq y\neq z\neq x$ takové, že $x,y,z\in l\in\mathcal{L}$, nazveme kolineární.
+    Dále body $x\neq y\neq z\neq x$ takové, že $x,y,z\in l\in\LP$, nazveme kolineární.
 
     \begin{itemize}
-        \item[(A1)] $\forall x\neq y\in P\exists! l\in \mathcal{L}: x,y\in l$
-        \item[(A2)] $\forall l\in\mathcal{L}: |l|\geq 3$
-        \item[(A3)]  $\forall a,b,c: a\neq b\neq c\neq a, a,b,c$ nekolineární: $\forall x\in ac, y\in bc\exists z\in ab$ takový, že $x,y,z$ jsou kolineární.
+        \item[(A1)] $\forall x\neq y\in P\exists! l\in \LP: x,y\in l$
+		Takové přímce říkáme $xy$.
+        \item[(A2)] netrivialita: $\forall l \in \LP: |l| \geq 3$
+	\item[(A3)]  $\forall a,b,c: a\neq b\neq c\neq a, \& a,b,c$ nekolineární: $\forall x\in ac, y\in bc\exists z\in ab$ takový, že $x,y,z$ jsou kolineární.
+
+	\includegraphics[scale=0.5]{g_0.eps}
     \end{itemize}
 \end{definition}
-\begin{definition}[Podprostor]
-    Je-li $(P,\mathcal{L})$ konečná geometrie, pak $U\subseteq P$ je podprostor, jestliže $\forall x\neq y\in U: xy\subseteq U$.
-\end{definition}
-\begin{note}[Podprostor a KPP]
-    Je-li $U\subseteq P$ podprostor, pak $(U,\mathcal{L}|_U)$ je konečný projektivní prostor.
-\end{note}
-\begin{lemma}[Průnik podprostorů je podprostor]
-    Pro $U,V\subseteq \mathcal{L}$ je podprostor, pak $U\cap V$ je podprostor.
-\end{lemma}
-\begin{proof}
-    TODO
-\end{proof}
-\begin{definition}[Obal]
-    Buď $A\subseteq P, (P,\mathcal{L})$: pak $\langle A\rangle$ je nejmenší podprostor, který obsahuje $A$.
-\end{definition}
-\begin{note}[Obal skrze průniky]
-    $\langle A\rangle = \bigcap_{U \text{ podprostor} P, A\subseteq U} U$
 
-    $\forall U$ podprostor $P$, pokud $A\subseteq U$, pak $\langle A\rangle\subseteq U$.
-\end{note}
-\begin{lemma}[O přidání prvku do podprostoru]
-    Buď $S\subseteq P$ podprostor $(P,\mathcal{L}), a\not\in S$.
-    Potom $\langle S\cup\{a\}\rangle=\bigcup_{x\in S}ax$.
-\end{lemma}
-\begin{proof}
-    TODO
-\end{proof}
-\begin{lemma}[Sjednocení podprostorů]
-    Buďte $S,T\subseteq P$ podprostory $(P,\mathcal{L})$.
-    Potom $\langle S\cup T\rangle=\bigcup_{s\in S, t\in T, s\neq t}st$.
-\end{lemma}
-\begin{proof}
-    TODO
-\end{proof}
-\begin{definition}[Projektivně nezávislá množina]
-    Množina $A\subseteq P$ v $(P,\mathcal{L})$ je projektivně nezávislá, jestliže $\forall a\in A: \langle A\setminus \{a\}\rangle\neq\langle A\rangle$.
+\begin{observation}
+	\[ \forall l_1 \ne l_2 \in \LP : |l_1 \cap l_2| \leq 1\]
+	Protože jinak pro 2 body ležící v průniku je porušen A1.
+\end{observation}
+
+\begin{definition}[Podprostor]\label{kpp:subspace}
+    Je-li $(P, \LP)$ konečná geometrie, pak $U \subseteq P$ je podprostor, jestliže
+    \[ \forall x\neq y\in U: xy\subseteq U \]
+    Zachovává přímky pro všechny body v podprostoru.
 \end{definition}
-\begin{lemma}[Přidání prvku do projektivně nezávislé množiny]
-    Je-li $A$ projektivně nezávislá a $b\not\in\langle A\rangle$, pak $A\cup\{b\}$ je projektivně nezávislá.
+
+\begin{note}[Podprostor a KPP]
+    Je-li $U\subseteq P$ podprostor, pak $(U,\LP|_U)$ je konečný projektivní prostor.
+\end{note}
+
+\begin{lemma}[Průnik podprostorů je podprostor]
+    Pro $U,V\subseteq \LP$ je podprostor, pak $U\cap V$ je podprostor.
 \end{lemma}
 \begin{proof}
-    TODO
+	Pro libovolné 2 různé body v průniku, dle definice podprostoru
+	\[ x \ne y \in U \cap V \Rightarrow xy \subseteq U, xy \subseteq V \Rightarrow xy \subseteq U \cap V \]
 \end{proof}
-\begin{note}[Projektivní nezávislost a generované podprostory]
-    $A_1,A_2\subseteq P: \langle A_1\rangle=\langle A_2\rangle\Rightarrow \forall x: A_1\cup\{x\}$ je projektivně nezávislá, právě když $A_2\cup\{x\}$ je projektivně nezávislá.
-\end{note}
+
+\begin{observation}[Triviální podprostory]
+	$(\{ x \}, \emptyset)$ je KPP protože splňuje všechna tvrzení o přímkách, jelikož žádné nemá.
+
+	Podobně $( \emptyset, \emptyset)$ je KPP, z toho lze udělat disjunktní podprostory.
+\end{observation}
+
+\begin{definition}[Obal]
+    Buď $A \subseteq P, (P, \LP)$: pak $\langle A \rangle$ je nejmenší podprostor, který obsahuje $A$.
+
+    \[ \langle A \rangle = \bigcap_{\substack{U \text{podpr.}\ P \\ A \subseteq U }} U \]
+    Protože platí:
+    \[ \forall U \text{podpr.}\ P, A \subseteq U: \langle A \rangle \subseteq U \]
+\end{definition}
+
+\begin{lemma}[O přidání prvku do podprostoru]\label{kpp:point_add_sub}
+    Buď $S \subseteq P$ podprostor $(P, \LP), a \not\in S$.
+    Potom $\langle S \cup \{a\} \rangle = \bigcup_{x\in S}ax$.
+\end{lemma}
 \begin{proof}
-    TODO
+	"$\langle S \cup \{a\} \rangle \supseteq \bigcup_{x\in S}ax$".
+	Jelikož obal je podprostor, všechny přímky $ax$ v něm musí být.
+
+	Opačnou inkluzi ukážeme tak, že $AX = \bigcup_{x\in S} ax$ je podprostor.
+	Obal je průnikem všech podprostoru, takže pokud průnik obsahuje $AX$ tak nemůže mít nic navíc.
+	Neboli $\langle S \cup \{a\} \rangle \subseteq \bigcup_{x\in S}ax$".
+
+	Dle \cref{kpp:subspace} musíme ukázat:
+	\[ \forall t \ne r: tr \subseteq AX \]
+	Rozbor případů:
+	\begin{enumerate}
+		\item $t = a \lor r = a$, tak druhý bod leží na nějaké přímce $ax$.
+			Triviálně cela přímka $ax \subseteq AX$.
+		\item $t \in S \land r \in S$ je splněno dle \cref{kpp:subspace}.
+		\item BUNO $(t \in S \iff t = x) \land r \not\in S$.
+			Pokud $r \in ax$ triviálně.
+			Jinak $r \in ay, y \in S$.
+			// TODO finish
+		\item $r, t \notin S; r, t \ne a; rt \nsupseteq a$
+			Chceme $w \in rt \Rightarrow w \in AX$.
+
+		% predn 9 32:17
+		\includegraphics[scale=0.5]{g_1.eps}
+
+		Nechť $r^{\prime} \in ar \land r^{\prime} \in S$ analogicky $t^{\prime}$.
+		Dle A3:
+		\[ \exists y: rt \cap r^{\prime}t^{\prime} \in S \]
+		Další 3ce nekolineárních bodů je $r, r^{\prime}, y$.
+		Proto $\exists w^{\prime} \in r^{\prime}y \subseteq S$.
+		Pak i $w \in w^{\prime}a \Rightarrow w \in AX$.
+	\end{enumerate}
 \end{proof}
-\begin{theorem}[O výměně]
-    Buďte $A,B$ projektivně nezávislé množiny v $(P,\mathcal{L})$, $|A|\leq |B|$.
+
+\begin{lemma}[Sjednocení podprostorů]
+    Buďte $S,T \subseteq P$ podprostory $(P, \LP)$.
+    Potom
+    \[ \langle S \cup T \rangle = \bigcup_{\subseteq{ s\in S \\ t\in T \\ s\neq t}} st \]
+\end{lemma}
+\begin{proof}
+	Označme $\bigcup_{\subseteq{ s\in S \\ t\in T \\ s\neq t}} st = SUT$.
+	Triviálně platí: $SUT \subseteq \langle S \cup T \rangle$.
+
+	Pro rovnost stačí ukázat že SUT je podprostor.
+	Triviální případy:
+	\begin{enumerate}
+		\item $a \in S \land b \in S$ je splněno dle \cref{kpp:subspace}.
+			Analogicky pro $T$.
+		\item $a \in S \land b \in T$ dle konstrukce SUT.
+		\item $a \in S \land b \in rp, r \in S, p \in T$ jako v \cref{kpp:point_add_sub}.
+	\end{enumerate}
+
+	Netriviální případ:
+	\[ u \in s_1t_1: s_1 \in S, t_1 \in T \land v \in s_2t_2: s_2 \in S, t_2 \in T \]
+	Pokud by $s_1 = s_2 \lor t_1 = t_2$ tvrzení platí z \cref{kpp:point_add_sub}.
+
+	Chceme
+	\[ \forall x \in uv \exists a, b: a \in S, b \in T: x \in ab \]
+	Kroky:
+	\begin{enumerate}
+		\item podíváme se na body $s_1, u, v$:
+			\[ t_1x \cap s_1u = t_1 \land t_1x \cap uv = x \stackrel{A3}{\Rightarrow} \exists y: t_1x \cap s_1v = y \]
+		% predn 9 46:53
+		\includegraphics[scale=0.4]{g_2.eps}
+	\item podíváme se na body $s_1, s_2, v$:
+		\[ t_1y \cap s_2v = t_2 \land t_1y \cap s_1v = y \stackrel{A3}{\Rightarrow} \exists z \in S: t_2y \cap s_1s_2 = z \]
+		% predn 9 48:26
+		\includegraphics[scale=0.4]{g_3.eps}
+
+	\item podíváme se na body $t_1, t_2, y$:
+		\[ zx \cap yt_1 = x \land zx \cap t_2y = z \stackrel{A3}{\Rightarrow} \exists q \in T: t_1t_2 \cap zx = q \]
+		% predn 9 50:19
+		\includegraphics[scale=0.4]{g_4.eps}
+	\end{enumerate}
+	Dohromady $x \in zq$.
+\end{proof}
+
+\begin{definition}[Projektivně nezávislá množina]
+    Množina $A\subseteq P$ v $(P,\LP)$ je projektivně nezávislá, jestliže
+    \[ \forall a\in A: \langle A\setminus \{a\}\rangle\neq\langle A \rangle \]
+\end{definition}
+
+\begin{lemma}[Přidání prvku do projektivně nezávislé množiny]\label{kpp:point_add_ind}
+	Je-li $A$ projektivně nezávislá \& $b\not\in\langle A\rangle$, pak $A\cup\{b\}$ je projektivně nezávislá.
+
+	Analogie z vektorových prostoru: pokud máme lineárně nezávislé vektory a přidáme vektor který nelze vyjádřit jako lineární kombinaci, tak dostaneme množinu lineárně nezávislých vektorů.
+\end{lemma}
+\begin{proof}
+	Nechť sporem $A\cup\{b\}$ není projektivně nezávislá $\Rightarrow$
+	\[ \exists a \in A\cup\{b\}: \langle A\cup\{b\} \setminus \{ a \} \rangle = \langle A\cup\{b\} \rangle \]
+	Rozebereme 2 případy:
+	\begin{enumerate}
+		\item $a = b \Rightarrow \langle A \rangle = \langle A \cup \{ b\} \rangle \Rightarrow b \in \langle A \rangle$ spor s předpokladem.
+		\item $a \in A$.
+			Nechť $A^{\prime} = A \setminus \{ a \}$.
+			Pak
+			\[ \langle A^{\prime} \cup \{ b \} \rangle = \langle A \cup \{ b \} = \langle A^{\prime} \cup \{ b \} \cup \{ a \} \rangle \Rightarrow a \in \langle A^{\prime} \cup \{ b \} \rangle \]
+			Pak ale $a$ leží na nějaké přímce mezi $A^{\prime}$ i $\{ b \}$.
+			Neboli nastane situace na obrázku
+			% predn 9 59:48
+			\includegraphics[scale=0.4]{g_5.eps}
+			\[ b \in \langle\langle A^{\prime} \rangle \cup \{ a \} \rangle = \langle A \rangle \]
+			spor s předpokladem.
+	\end{enumerate}
+\end{proof}
+
+\begin{observation}[Projektivní nezávislost a generované podprostory]\label{kpp:pr_ind_equiv}
+    $A_1,A_2\subseteq P: \langle A_1\rangle=\langle A_2\rangle\Rightarrow \forall x: A_1\cup\{x\}$ je projektivně nezávislá, právě když $A_2\cup\{x\}$ je projektivně nezávislá.
+\end{observation}
+\begin{proof}
+	Tvrzení je symetrické, stačí ukázat:
+	\[ A_1\cup\{x\} \text{je pr n }\ \Rightarrow A_2\cup\{x\} \text{je pr n } \]
+	$A_1\cup\{x\}$ je pr n $\Rightarrow \langle A_1\cup\{x\} \rangle \ne \langle A_1 \rangle \Rightarrow x \notin \langle A_1 \rangle \Rightarrow x \notin \langle A_2 \rangle \Rightarrow A_2\cup\{x\}$ je pr n.
+\end{proof}
+
+\begin{theorem}[O výměně]\label{kpp:exchange}
+    Buďte $A,B$ projektivně nezávislé množiny v $(P,\LP)$, $|A| < |B|$.
     Pak existuje $b\in B$ taková, že $A\cup\{b\}$ je projektivně nezávislá.
 \end{theorem}
 \begin{proof}
-    TODO
+	Indukci podle $|A|$ a zpětnou indukci (sestupně) dle $|A \cap B|$.\\
+	1) $A = \emptyset \Rightarrow B \ne \emptyset \Rightarrow \exists b \in B \Rightarrow A \cup \{ b \} = \{ b \}$ je triviální případ KPP.
+
+	$A \subseteq B \Rightarrow \exists b \in B \setminus A \Rightarrow A \cup \{ b \}$ je pr nezávislá protože je podmnožinou pr nezávislé.
+
+	2) indukční krok $\exists a \in A \setminus B$.
+	Uvažme $A^{\prime} = A \setminus \{ a \}$.
+	Jelikož $|A^{\prime}| < |A| < |B|$.
+	Dle i.p $\exists b \in B: A^{\prime} \cup \{ b \}$ je pr nezávislá.
+	Rozebereme případy:
+	\begin{enumerate}
+		\item $b \notin \langle A \rangle \stackrel{\cref{kpp:point_add_ind}}{\Rightarrow} A \cup \{ b \}$ je pr nezávislá.
+		\item $b \in \langle A \rangle$.
+			Označme $A^{\prime\prime} = A^{\prime} \cup \{ b \}$
+			$|A^{\prime\prime}| = |A| < |B|$.
+			Taky $|A^{\prime\prime} \cap B| > |A \cap B|$.
+
+			Dle i.p (velikost průniku) $\exists c \in B: A^{\prime} \cup \{ c \}$ je pr nezávislá.
+			Dal $b \in \langle A \rangle \Rightarrow \langle A^{\prime\prime} \rangle$.
+			Dle \cref{kpp:pr_ind_equiv} $A^{\prime} \cup \{ c \}$ je pr nezávislá.
+
+		% predn 9 01:13:00
+		\includegraphics[scale=0.4]{g_6.eps}
+	\end{enumerate}
 \end{proof}
+
 \begin{definition}[Projektivní báze]
     Projektivní báze je do inkluze maximální projektivně nezávislá množina.
 \end{definition}
@@ -75,8 +210,15 @@
     Každou projektivně nezávislou množinu lze doplnit na bázi a všechny projektivní báze mají stejnou mohutnost.
 \end{consequence}
 \begin{proof}
-    TODO
+	Nechť máme pr nezávislou $A$.
+	KPP je konečný, takže i \# pr nezávislých je konečný.
+	Vezmeme největší $B$ pr nezávislou.
+	Pak buď $|A| = |B| \Rightarrow A$ je maximální je pr báze.
+
+	Nebo $|A| < |B| \stackrel{\cref{kpp:exchange}}{\Rightarrow} \exists b \in B: A \cup \{ b \}$ je pr nezávislá.
+	Můžeme postupovat dokud $|A| < |B|$.
 \end{proof}
+
 \begin{definition}[Dimenze]
     $\dim_P S=|B|-1$, kde $B$ je projektivní báze $S$.
 \end{definition}
@@ -85,26 +227,34 @@
         \item $\dim_P(\{a\},\emptyset)=0$
         \item $\dim_P(\emptyset, \emptyset)=-1$
         \item $\dim_P(\text{přímka})=2-1=1$.
-        \item $\dim_P(\text{KPR})=2$
+		2 body tvoří pr nezávislou množinu, 3 již určuji stejnou přímku.
+        \item Vezmeme 3 pr nezávislé body jejich obal je KPR. Pak $\dim_P(\text{KPR})=2$
+		Taky ale libovolný podprostor s $\dim_P = 2$ je KPR.
     \end{itemize}
 
     Důsledkem je, že všechny přímky v KPP mají stejnou mohutnost.
+
+    % predn 9 01:28:09
+    \includegraphics[scale=0.4]{g_7.eps}
 \end{note}
+
+% 10 predn
+
 \begin{theorem}[Singerova konstrukce]
-    Existuje-li $(P,\mathcal{L})$ KPP řádu $q$ dimenze $n$, pak existuje cyklický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-BIBD.
+    Existuje-li $(P,\LP)$ KPP řádu $q$ dimenze $n$, pak existuje cyklický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-BIBD.
 \end{theorem}
 \begin{proof}
     TODO
 \end{proof}
 \begin{theorem}[O dimenzi průniku a spojení]
-    Buďte $U,V$ podprostory $(P,\mathcal{L})$.
+    Buďte $U,V$ podprostory $(P,\LP)$.
     Pak $\dim_P(U\cap V) + \dim_P(U\lor V) = \dim P(U)+\dim_P(V)$.
 \end{theorem}
 \begin{proof}
     TODO
 \end{proof}
 \begin{theorem}[Modularita]
-    Nechť $A,B,C$ jsou podprostory v $(P,\mathcal{L})$ taková, že $B\subseteq A$.
+    Nechť $A,B,C$ jsou podprostory v $(P,\LP)$ taková, že $B\subseteq A$.
     Pak $A\cap(B\lor C) = B\lor(A\cap C)$.
 \end{theorem}
 \begin{proof}
@@ -117,19 +267,21 @@
     TODO
 \end{proof}
 \begin{theorem}[Roviny si jsou podobné]
-    Buď $(P,\mathcal{L})$, s $\pi,\sigma$ rovinami v $P$.
+    Buď $(P,\LP)$, s $\pi,\sigma$ rovinami v $P$.
     Pak $\pi\cong\sigma$.
 \end{theorem}
 \begin{proof}
     TODO
 \end{proof}
 \begin{theorem}[Nadroviny KPP tvoří BIBD]
-    Buď $(P,\mathcal{L})$ konečný projektivní prostor řádu $q$ a dimenze $n$.
+    Buď $(P,\LP)$ konečný projektivní prostor řádu $q$ a dimenze $n$.
     Pak jeho nadroviny tvoří symetrický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-BIBD.
 \end{theorem}
 \begin{proof}
     TODO
 \end{proof}
+
+% 11 predn
 \begin{theorem}[KPP dimenze alespoň 3 mají Desargovskou vlastnost]
     Konečné projektivní prostory dimenze alespoň 3 mají Desargovskou vlastnosti.
 \end{theorem}
@@ -170,18 +322,18 @@
 \begin{definition}[Fixace]
     $A\subseteq P$: $\alpha$ fixuje všechny body $A$, jestliže $\forall x\in A: \alpha(x)=x$
 
-    $l\in\mathcal{L}: \alpha$ fixuje $l$, jestliže $\alpha[l]=l$.
+    $l\in\LP: \alpha$ fixuje $l$, jestliže $\alpha[l]=l$.
 \end{definition}
 \begin{lemma}[Kolineace fixující nadrovinu]
     Buď $\alpha$ kolineace fixující všechny body nadroviny $H\subseteq P$.
     Pak existuje $C\in P$ tak, že $\alpha$ fixuje  všechny přímky procházející bodem $C$.
 \end{lemma}
 \begin{lemma}[Rozšíření kolineace]
-    Mějme $q_0\in\mathcal{L}\rightarrow (P',\mathcal{L}'), P' = P\setminus q_0$ množinový systém.
-    Pak každou kolineaci $\alpha$ množinového systému $(P',\mathcal{L}')$ je možno rozšířit na kolineaci $\alpha^*$ prostoru $(P, \mathcal{L})$ právě jedním způsobem, a tato kolineace fixuje $q_0$.
+    Mějme $q_0\in\LP\rightarrow (P',\LP'), P' = P\setminus q_0$ množinový systém.
+    Pak každou kolineaci $\alpha$ množinového systému $(P',\LP')$ je možno rozšířit na kolineaci $\alpha^*$ prostoru $(P, \LP)$ právě jedním způsobem, a tato kolineace fixuje $q_0$.
 \end{lemma}
 \begin{definition}[Centrální kolineace]
-    Centrální kolineace $(P,\mathcal{L})$ je kolineace, pro niž existuje nadrovina $H$ (nazývaná osa kolineace), jejíž všechny body jsou fixované kolineací $\alpha$, a bod $C\in P$ (nazývaný střed kolineace) takový, že všechny přímky jím procházející jsou zobrazením $\alpha$ fixované.
+    Centrální kolineace $(P,\LP)$ je kolineace, pro niž existuje nadrovina $H$ (nazývaná osa kolineace), jejíž všechny body jsou fixované kolineací $\alpha$, a bod $C\in P$ (nazývaný střed kolineace) takový, že všechny přímky jím procházející jsou zobrazením $\alpha$ fixované.
 
     (Pozor, může nastat $C\in H$ i $C\not\in H$.)
 \end{definition}
@@ -200,6 +352,8 @@
     Je-li $\alpha$ neidentická kolineace, pak její osa i střed jsou jednoznačně určené.
 \end{consequence}
 \begin{theorem}[Baerova]
-    Buď $H$ nadrovina v Desargovském prostoru $(\mathcal{P},\mathcal{L})$ a buďte $P,P', C$ tři různé kolineární body takové, že $P,P\not\in H$.
+    Buď $H$ nadrovina v Desargovském prostoru $(\mathcal{P},\LP)$ a buďte $P,P', C$ tři různé kolineární body takové, že $P,P\not\in H$.
     Pak existuje právě jedna centrální kolineace $\alpha$ taková, že $H$ je osa, $C$ je střed a $\alpha(P)=P'$.
 \end{theorem}
+
+%13 predn TODO

@@ -23,9 +23,10 @@
 \usepackage[makeroom]{cancel}
 \usepackage{microtype}
 \usepackage{fbox}
+%\usepackage{varioref}
+%\usepackage{nameref}
 \usepackage{hyperref}
 \usepackage{cleveref}
-\usepackage{nameref}
 \usepackage{enumerate}
 \usepackage{enumitem}
 \advance\textwidth by 2cm
@@ -39,6 +40,11 @@
 \usepackage{thmtools}
 \crefname{equation}{}{}
 \crefname{theorem}{}{}
+\crefname{consequence}{}{}
+\crefname{properties}{Vlastnosti}{}
+\crefname{definition}{Definice}{}
+\crefname{example}{Příklad}{}
+\crefname{observation}{}{}
 
 \makeatletter
 \def\th@plain{%
@@ -148,7 +154,7 @@
 
 \theoremstyle{novy_radek}
 \newtheorem{properties}[theorem]{Vlastnosti\vspace{2mm}}
-\newtheorem{propertiesBasic}[theorem]{Základní vlastnosti\vspace{2mm}}
+%\newtheorem{propertiesBasic}[theorem]{Základní vlastnosti\vspace{2mm}}
 
 \title{Kombinatorické struktury}
 \author{Jan Kratochvil}
