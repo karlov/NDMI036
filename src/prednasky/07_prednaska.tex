@@ -28,7 +28,7 @@
 
 \begin{definition}[Průhledná množina]
     Buď $(V,\B), \mathcal{A} \subseteq \B$.
-    Pak $\mathcal{A}$ je průhledná množina bloku, pokud obsahuje jen disjunktní množiny.
+    Pak $\mathcal{A}$ je průhledná množina bloků, pokud obsahuje navzájem disjunktní bloky.
 \end{definition}
 \begin{definition}[BIBD se středníkem]~\\
     $(V,\mathcal{B})$ definujeme jako $(v,k_1,\ldots,k_r;k_{r+1},k_m,\lambda)$-BIBD, je-li $(v,k_1,\ldots,k_r,k_{r+1},k_m,\lambda)$-BIBD a $\mathcal{B}_1\cup\ldots\cup\mathcal{B}_r$ je průhledná množina.
@@ -54,13 +54,6 @@
 	Matici $A_i$ získáme z $D_i$ škrtnutím prvního řádku a prvních $k_i$ sloupců.
 	Takže $A_i$ má $c$ řádků a $k_i^2 - k_i$ sloupců a její řádky jsou na sebe skoro kolmé v tom smyslu, že každé dva řádky nad sebou vidí všechny dvojice různých prvků z $\{1, 2, \ldots, k_i \}$.
 
-	\# sloupců je
-	% todo missing arguments
-	\begin{gather*}
-		\sum_i^r b_i \cdot k_i^2 + \sum_{i = v + 1} b_i (k_i^2 - k_i) =  \sum_{i = 1} b_i (k_i^2 - k_i) + \sum_i^r b_i \cdot k_i + v - \sum_i^r b_i \cdot k_i =\\
-		= v + \sum b_i (k_i^2 - k_i) = v + v(v - 1) = v^2
-	\end{gather*}
-
 	\includegraphics[scale=0.5]{lc_2.eps}
 
 	Zafixujme nyní $(v, k_1, k_2, \ldots, k_r; k_{r + 1}, \ldots, k_m, 1)$-BIBD $(V, \B)$, který podle předpokladu existuje, a nechť $S_1, S_2, \ldots, S_b$ jsou bloky.
@@ -68,8 +61,15 @@
 	Potom matice
 	\[ (B_1, \ldots, B_b, E) \]
 	kde $E$ je matice obsahující sloupce $(x, \ldots, x)^T$ pro všechna
-	\[ x \in V \setminus \{ \bigcup_{S_j \in \bigcup_i^r \B_i} S_j \]
+	\[ x \in V \setminus \bigcup_{S_j \in \bigcup_i^r \B_i} S_j \]
 	Pak tato matice je matice OA($v, c$) $\stackrel{\cref{nolc_oa}}{\Rightarrow} NOLČ(v) \geq c - 2$.
+
+	Alternativně, můžeme zpozorovat, že \# sloupců této matice je
+	\begin{gather*}
+		\sum_i^r b_i \cdot k_i^2 + \sum_{i = r + 1}^{m} b_i (k_i^2 - k_i) + \text{sloupce z }E =  \sum_{i = 1} b_i (k_i^2 - k_i) + \sum_i^r b_i \cdot k_i + v - \sum_i^r b_i \cdot k_i =\\
+		= v + \sum b_i (k_i^2 - k_i) = v + v(v - 1) = v^2
+	\end{gather*}
+
 \end{proof}
 
 \begin{example}
@@ -99,8 +99,8 @@
     \end{itemize}
 \end{proof}
 
-\begin{theorem}[$(v,k,1)$-BIBD a NOLČ($v-3$)]\label{nolc_lower_3}
-    Existuje-li $(v,k,1$)-BIBD, pak NOLČ($v-3$)$\geq\min\{$NOLČ($k-2$),NOLČ($k-1)-1$,NOLČ($k$)$-1\}$.
+\begin{theorem}[$(v,k,1)$-BIBD a NOLČ$(v-3)$]\label{nolc_lower_3}
+    Existuje-li $(v,k,1)$-BIBD, pak NOLČ$(v-3)\geq\min\{$NOLČ$(k-2)$,NOLČ$(k-1)-1$,NOLČ$(k)-1\}$.
 \end{theorem}
 \begin{proof}
 	Z blokového schématu (v, k, 1)-BIBD zahoďme tři prvky, které neleží ve stejném bloku.
@@ -113,12 +113,11 @@
 	KPR(4) = $(21, 5, 1)$-BIBD $\stackrel{\cref{nolc_lower_3}}{\Rightarrow}$:
 	\[ NOLČ(18) \geq \min \{ NOLČ(3) = 2, NOLČ(5) - 1 = 3, NOLČ(4) - 1 = 2 \} = 2 \]
 
-	Přitom $18 \equiv 2 mod 4$, ale 18 není tvaru $12k + 10$.
+	Přitom $18 \equiv 2 \mod 4$, ale 18 není tvaru $12k + 10$.
 \end{example}
 
 \begin{definition}[Řešitelný systém]
-	%todo why sqcup? disjoint union?
-    Systém $(V,\mathcal{B})$ je řešitelný, pokud $\mathcal{B}=\mathcal{B}1\sqcup\ldots\sqcup\mathcal{B}_r$ takový, že
+	Systém $(V,\mathcal{B})$ je řešitelný, pokud $\mathcal{B}=\mathcal{B}_1\dot\cup\dots\dot\cup\mathcal{B}_r$ takový, že
     \begin{enumerate}
         \item $\forall i: \mathcal{B}_i$ je průhledná
         \item $\bigcup\mathcal{B}_i=B$
@@ -128,27 +127,45 @@
 \end{definition}
 
 \begin{example}[Řešitelný systém]
-	Každá KAR řádu $m$ je řešitelný $(m^2, m, 1)$-BIBD s $(m + 1)$ třídami řešitelnosti.
+	Každá KAR řádu $m$ je řešitelný $(m^2, m, 1)$-BIBD s $(m + 1)$ třídami řešitelnosti, neboť každá třída ekvivalence rovnoběžnosti tvoří jednu třídu řešitelnosti.
 
-	% todo popis
 	\includegraphics[scale=0.4]{lc_4.eps}
 \end{example}
 
 \begin{theorem}[Řešitelnost a odhady na NOLČ]
     Pokud existuje řešitelný $(v,k,1)$-BIBD a r třídami řešitelnosti, pak
     \begin{enumerate}
-        \item NOLČ($v+1$)$\geq\min\{$NOLČ($k$)$-1$, NOLČ($k+1$)$-1\}$
-        \item pro $2\leq x\leq r-2:$ NOLČ($v+x$)$\geq\min\{$NOLČ($x$),NOLČ($k$)$-1$, NOLČ($k+1$)$-1\}$
-        \item NOLČ($v+r-1$)$\geq\min\{$NOLČ($r-1$),NOLČ($k$), NOLČ($k+1$)$-1\}$
-        \item NOLČ($v+r$)$\geq\min\{$NOLČ($r$), NOLČ($k+1$)$-1\}$
+        \item NOLČ($v+1$)$\geq\min\{$NOLČ$(k)-1$, NOLČ$(k+1)-1\}$
+        \item pro $2\leq x\leq r-2:$ NOLČ$(v+x)\geq\min\{$NOLČ$(x)$,NOLČ$(k)-1$, NOLČ$(k+1)-1\}$
+        \item NOLČ($v+r-1$)$\geq\min\{$NOLČ$(r-1)$,NOLČ$(k)$, NOLČ$(k+1)-1\}$
+        \item NOLČ($v+r$)$\geq\min\{$NOLČ$(r)$, NOLČ$(k+1)-1\}$
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    TODO
+    Pro prvních $x$ tříd řešitelnosti přidáme jeden prvek $y_i$, přidáme blok obsahující všechna $y_i$ (pokud jich je více než 1) a zároveň prvek $y_i$ přidáme ke každému bloku \uv{své} třídy řešitelnosti.
+    Tím získáme po řadě
+    \begin{itemize}
+        \item[1)] $(v+1,k,k+1,1)$-BIBD
+        \item[2a)] $(v+x,x;k,k+1,1)$-BIBD pro $x\neq k$
+        \item[3a)] $(v+r-1, r-1, k;k+1,1)$-BIBD pro $r-1\neq k, k+1$
+        \item[4a)] $(v+r, r; k+1, 1)$-BIBD pro $r\neq k+1$
+    \end{itemize}
+    Pro speciální případy:
+    \begin{itemize}
+        \item[2b)] $x=k$: máme $(r+k,k,k+1,1)$-BIBD, tedy NOLČ$(r+k)$$\geq\min\{$ NOLČ$(k)$-1, NOLČ($k+1$)-1 $\}\geq\min\{$NOLČ($x$),NOLČ($k$)$-1$, NOLČ($k+1$)$-1\}$
+        \item[3b)] $r-1=k$: máme $(r+k, k;k+1,1)$-BIBD, tedy NOLČ$(r+k)\geq\min\{$ NOLČ$(k)$, NOLČ$(k+1)-1\}$
+        \item[3c)] $r-1=k+1$: máme $(r+k+1,k+1,1)$-BIBD, tedy NOLČ$(r+k+1)\geq$NOLČ$(k+1)-1\geq\min\{$NOLČ$(k+1)$,NOLČ$(k+1)-1\}$
+        \item[4b)] $r=k+1$, tedy máme $(r+k+1, k+1,1)$-BIBD, tedy NOLČ$(r+k+1)\geq$NOLČ$(k+1)-1\geq\min\{$NOLČ$(k+1)$,NOLČ$(k+1)-1\}$
+    \end{itemize}
 \end{proof}
 
 \begin{example}[Řešitelný systém 2]
-	TODO whiteboard
+	KAR(7) je (49,7,1)-BIBD, je řešitelný a má osm tříd řešitelnosti.
+
+	Tedy při volbě $x=1$
+	\[ NOLČ(50) \geq \min \{ NOLČ(7)-1, NOLČ(8)-1 \} = \min \{5,6\} = 5 \]
+	a při volbě $x=5$:
+	\[ NOLČ(54) \geq \min \{ NOLČ(5), NOLČ(7)-1, NOLČ(8)-1 \} = \min \{4,5,6\} = 4\]
 \end{example}
 
 \begin{definition}[Skupinově rozložitelný systém]
@@ -166,7 +183,7 @@
 \end{theorem}
 \begin{proof}
 	NOLČ($m$)$\geq k-1 \Rightarrow \exists OA(m, k + 1)$.
-	BUNO poslední řádek v tabulce má symbol $i$ v $i$-tem bloku.
+	BÚNO poslední řádek v tabulce má symbol $i$ v $i$-tém bloku.
 	Tento řádek zahodíme.
 
 	Prvek na pozice $(i, j)$ nahradíme právě dvojici souřadnic, takže stejná písmena v různých řádcích jsou odlišné.
