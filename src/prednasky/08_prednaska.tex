@@ -153,7 +153,7 @@
 		\item $a \in A$.
 			Nechť $A^{\prime} = A \setminus \{ a \}$.
 			Pak
-			\[ \langle A^{\prime} \cup \{ b \} \rangle = \langle A \cup \{ b \} = \langle A^{\prime} \cup \{ b \} \cup \{ a \} \rangle \Rightarrow a \in \langle A^{\prime} \cup \{ b \} \rangle \]
+			\[ \langle A^{\prime} \cup \{ b \} \rangle = \langle A \cup \{ b \} \rangle = \langle A^{\prime} \cup \{ b \} \cup \{ a \} \rangle \Rightarrow a \in \langle A^{\prime} \cup \{ b \} \rangle \]
 			Pak ale $a$ leží na nějaké přímce mezi $A^{\prime}$ i $\{ b \}$.
 			Neboli nastane situace na obrázku
 			% predn 9 59:48
@@ -206,7 +206,7 @@
 \begin{definition}[Projektivní báze]
     Projektivní báze je do inkluze maximální projektivně nezávislá množina.
 \end{definition}
-\begin{consequence}[Projektivně nezávislá množina a báze]
+\begin{consequence}[Projektivně nezávislá množina a báze]\label{kpp:basis}
     Každou projektivně nezávislou množinu lze doplnit na bázi a všechny projektivní báze mají stejnou mohutnost.
 \end{consequence}
 \begin{proof}
@@ -278,42 +278,201 @@
 	$V = P$, $\B = $ nadroviny v $(P, \LP) = $ podprostory $\dim = n - 1$.
 	Které vzniknou tak, že ve vektorovém prostoru vezmeme podprostor $\dim = n$.
 	\[ |V| = |P| = \frac{q^{n + 1}}{q - 1} = q^n + q^{n - 1} + \ldots + 1 \]
-	Velikost nadroviny $H \subseteq P: |H| = \frac{q^n - 1}{1 - 1} = q^{n - 1} + q^{n - 2} + \ldots + 1$.
-    TODO
+	Velikost nadroviny $H \subseteq P: |H| = \frac{q^n - 1}{q - 1} = q^{n - 1} + q^{n - 2} + \ldots + 1$.
+
+	Nechť $H_1, H_2$ jsou podprostory KPP, které vznikli z podprostoru VP $U_1, U_2$.
+	Pak
+	\[ \dim(U_1 \cap U_2) = n - 1 \Rightarrow |U_1 \cap U_2| = 2^{n - 1} \]
+	Jelikož v průniku podprostorů VP je vždy 0 vektor a $q - 1$ jsou násobky stejného vektoru neboli stejného bodu v KPP.
+	Takže
+	\[ |H_1 \cap H_2| = \frac{q^{n - 1} - 1}{q - 1} \]
+	Nadrovin je tolik, kolik je podprostoru v VP.
+	Každý podprostor VP je určen lineární rovnici, jejichž počet je roven $\dim$.
+	Neboli
+	\[ |B| = \frac{q^{n + 1}}{q - 1} = |V| = |P| \]
+
+	V matici incidence $A$ vzniklého množinového systému každé 2 sloupečky mají stejný \$ 1.
+	% todo tady nechapu argument proc transpozice a radky misto transpozice a sloupce
+	Pokud matici transponujeme, tak řádky mají stejný počet 1.
+	Neboli $A$ je matice symetrického BIBDu a:
+	\[ |H_1 \cap H_2| = \frac{q^{n - 1} - 1}{q - 1} = \lambda \]
+
+    	% predn 10 21:00
+    	\includegraphics[scale=0.4]{g_8.eps}
+
+	Takže množinový systém je cyklický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-BIBD.
+	Cyklický BIBD znamená, že existuje automorfismus (neboli permutace) který je jediný cyklus.
+	Permutace bloků taky bude jediný cyklus.
 \end{proof}
+
 \begin{theorem}[O dimenzi průniku a spojení]
     Buďte $U,V$ podprostory $(P,\LP)$.
-    Pak $\dim_P(U\cap V) + \dim_P(U\lor V) = \dim P(U)+\dim_P(V)$.
+    Pak
+    \[ \dim_P(U \cap V) + \dim_P(\langle U \cup V \rangle) = \dim_P(U)+\dim_P(V) \]
 \end{theorem}
 \begin{proof}
-    TODO
+	Z uzavřenosti na podprostory, $U \cap V$ je podprostor.
+	Z \cref{kpp:basis} má bázi $A$.
+
+	Analogicky má bázi $\langle U \cup V \rangle$.
+
+	Doplníme dle \cref{kpp:exchange} $A$ na bázi $B: \langle B \rangle = U$ a taky na $C: \langle C \rangle = V$.
+	$ A \subseteq B, A \subseteq C$.
+
+	Označme:
+	\[ \dim_P (U) = u, \dim_P (V) = v, \dim_P (U \cap V) = w \]
+	Taky víme
+	\[ |B| = u + 1, |A| = v + 1, |A| = w + 1 \]
+	\paragraph{Pozorování 1} $B \cup C$ je pr nezávislá množina a generuje $\langle U \cup V \rangle$.
+	Vezmeme libovolný $x \in \langle U \cup V \rangle$ tak leží na přímce $ab: a \in U, b \in V$.
+	Taky $a, b$ leží na přímkách spojujících 2 body z bázi.
+	Najdeme přímku spojující bod z bázi $U$ a bázi $V$ takovou že obsahuje $x$.
+
+    	% predn 10 35:00
+    	\includegraphics[scale=0.3]{g_9.eps}
+
+	Nechť sporem $B \cup C$ není pr nezávislá množina, pak jeden bod můžeme zahodit.
+	\[ \exists a \in C: \langle B \cup C \rangle = \langle (B \cup C) \setminus \{ a \} \rangle \]
+	Nutně $a \in C \setminus B$, označme $C_1 = C \setminus \{ a \}$.
+	Pak
+	\[ \langle B \cup C \rangle = \langle (B \cup C) \setminus \{ a \} \rangle = \langle B \cup C_1 \rangle \]
+
+	Najdeme 2 body $x, y: a \in xy$.
+	Může nastat pouze případ $x \in U, y \in V$.
+	Protože jinak z vlastnosti podprostoru by $a$ leželo na přímce spojující 2 body báze.
+	Takže
+	\[ a \in xy: x \in U \setminus V, y \in V \setminus U \Rightarrow x \in ya \subseteq V \]
+	spor.
+
+    	% predn 10 39:40
+    	\includegraphics[scale=0.3]{g_10.eps}
+
+	Znovu napíšeme rovnici dimenzi:
+	\[ w + \dim_P(\langle U \cup V \rangle) = u + v \]
+	Navíc $|B \cup C| - u + 1 + v + 1 - (w + 1) = u + v - w $.
+	Pak $\dim_P (B \cup C) = u + v - w$ a dostáváme rovnost.
 \end{proof}
+
+\begin{observation}\label{kpp:subspace_dim}
+	$U$ je podprostor KPP $P$ a $\dim_P(U) = \dim_P(P) \Rightarrow U = P$.
+\end{observation}
+\begin{proof}
+	Sporem nechť $U \ne V \Rightarrow \exists x \in P \setminus U \Rightarrow x$ je pr nezávislý na bázi $U$.
+	Pak
+	\[ \dim_P(\langle U \cup \{ x \} \rangle) = \dim_P U + 1 \leq \dim_P P = \dim_P U \]
+	spor jak vyšitý.
+\end{proof}
+
 \begin{theorem}[Modularita]
-    Nechť $A,B,C$ jsou podprostory v $(P,\LP)$ taková, že $B\subseteq A$.
-    Pak $A\cap(B\lor C) = B\lor(A\cap C)$.
+    Nechť $A,B,C$ jsou podprostory v $(P, \LP)$ taková, že $B \subseteq A$.
+    Pak
+    \[ A \cap (\langle B \cup C \rangle) = \langle B \cup (A \cap C) \rangle \]
 \end{theorem}
 \begin{proof}
-    TODO
+	\[ B \subseteq A \& B \subseteq \langle B \cup C \rangle \Rightarrow B \subseteq A \cap (\langle B \cup C \rangle) \]
+	Podobně
+	\[A \cap C \subseteq A \& A \cap C \subseteq C \subseteq \langle B \cup C \rangle \Rightarrow \langle A \cup C \rangle \subseteq A \cap (\langle B \cup C \rangle) \]
+	Dohromady
+    \[ A \cap (\langle B \cup C \rangle) \supseteq \langle B \cup (A \cap C) \rangle \]
+
+    	% predn 10 47:00
+    	\includegraphics[scale=0.4]{g_11.eps}
+
+	Druhou inkluzi ukážeme pomoci dimenzi a \cref{kpp:subspace_dim}:
+	\[ D_1 = \dim_P(A \cap (\langle B \cup C \rangle)) = \dim_P A = \dim_P(\langle B \cup C \rangle) - \dim_P(\langle A \cup B \cup C \rangle) \]
+	\[ D_2 = \dim_P(\langle B \cup (A \cap C) \rangle) = \dim_P B + \dim_P(A \cap C) - \dim_P(A \cap B \cap C) \]
+	Jelikož $B \subseteq A$:
+	\[ D_1 = \dim_P A = \dim_P(\langle B \cup C \rangle) - \dim_P(\langle A \cup C \rangle) \]
+	\[ D_2 = \dim_P(\langle B \cup (A \cap C) \rangle) = \dim_P B + \dim_P(A \cap C) - \dim_P(B \cap C) \]
+	Taky
+	\begin{gather*}
+	\dim_P A + \dim_P(B \cap C) + \dim_P(\langle B \cup C \rangle) = \\
+	\dim_P A + \dim_P B + \dim_P C = \\
+	\dim_P B + \dim_P(A \cap C) + \dim_P(\langle A \cup C \rangle)
+	\end{gather*}
+	Po úpravách $D_1 = D_2$.
 \end{proof}
+
 \begin{consequence}[Průnikem dvou rovin v prostoru je přímka]
     Buď $P,\pi,\sigma: \dim_P P=3, \dim_P\pi = \dim_P\sigma=2, \pi\neq\sigma\Rightarrow \pi\cap\sigma$ je přímka -- $\dim_P(\pi\cap\sigma)=1$.
 \end{consequence}
 \begin{proof}
-    TODO
+	$\langle \pi \cup \sigma \rangle = P$.
+	\[ \dim_P(\pi \cap \sigma) = \dim_P \pi + \dim_P \sigma - \dim_P (\langle \pi \cup \sigma \rangle) = 2 + 2 - 3 = 1 \]
 \end{proof}
+
+\begin{definition}[Izomorfizmus KPP $\pi \cong \sigma$]
+	\[ \exists f: \pi \to \sigma: x, y, z \in l \in \LP_1 \iff f(x), f(y), f(z) \in LP_2 \]
+	kde $f$ je bijekce.
+\end{definition}
+
 \begin{theorem}[Roviny si jsou podobné]
     Buď $(P,\LP)$, s $\pi,\sigma$ rovinami v $P$.
     Pak $\pi\cong\sigma$.
 \end{theorem}
 \begin{proof}
-    TODO
+	Víme $\dim_P(\pi \cap \sigma) \leq 2$, pak
+    \begin{enumerate}
+        \item $\dim_P(\pi \cap \sigma) = 1$ v průniku je přímka.
+		Vezmeme $x \in \langle \pi \cup \sigma \rangle \setminus (\pi \cup \sigma)$
+		Uvažme
+		\[ \forall y \in \pi: xy \cap \sigma = x^{\prime} \]
+		Bod existuje protože
+		\[ \dim_P xy \cap \sigma = \dim_P xy + \dim_P \sigma - \dim_P(xy \cup \sigma) = 1 + 2 - 3 = 0 \]
+		Různým bodům $x$ naleží různé body $x^{\prime}$ protože jinak by byl porušen axiom o 1 přímce.
+
+    	% predn 10 01:11:00
+    	\includegraphics[scale=0.4]{g_12.eps}
+
+	Zbývá ukázat $xy \cap (\pi \cap \sigma = A) \Rightarrow y^{\prime} \in A^{\prime}x^{\prime}$.
+	Plyne z A3, dle obrázku:
+
+    	% predn 10 01:14:20
+    	\includegraphics[scale=0.4]{g_13.eps}
+
+        \item $\dim_P(\pi \cap \sigma) = 0$ v průniku je bod $x$.
+		Vezmeme bázi $\pi$ a $\sigma$.
+		Pak vezmeme $y \in$ bázi $\pi$, $z \in$ bázi $\sigma$ a bod $x$.
+		Nechť $\langle \{ x, y, z \} \rangle = \tau$.
+		\[ \dim_P \pi \cap \tau = 1 \& \dim_P \sigma \cap \tau = 1 \]
+		dle předchozího případu $\pi \cong \tau \cong \sigma$.
+	\item $\pi \cap \sigma = \emptyset$.
+		Sestavíme $\tau_1$ jako 2 body z bázi $\pi$ a jeden bod z bázi $\sigma$.
+		Opačně $\tau_2$ jako 2 body z bázi $\sigma$ a jeden bod z bázi $\pi$.
+		Pak
+		\[ \dim_P \pi \cap \tau_1 = 1 \& \dim_P \sigma \cap \tau_2 = 1 \& \dim_P \tau_1 \cap \tau_2 = 1 \]
+		Takže $\pi \cong \tau_1 \cong \tau_2 \cong \sigma$.
+    \end{enumerate}
 \end{proof}
+
 \begin{theorem}[Nadroviny KPP tvoří BIBD]
     Buď $(P,\LP)$ konečný projektivní prostor řádu $q$ a dimenze $n$.
     Pak jeho nadroviny tvoří symetrický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-BIBD.
 \end{theorem}
 \begin{proof}
-    TODO
+	Zkontrolujeme vlastnosti BIBDu indukci dle dimenze prostoru, základní případ KPR.
+    \begin{enumerate}
+	    \item $|P| = q^n + q^{n - 1} + \ldots + 1 = \frac{q^{n+1}-1}{q-1}$.
+
+		    Indukční krok: nechť $H$ podprostor $P$.
+		    Dle i.p $|H| = q^{n - 1} + q^{n - 2} + \ldots + 1$.
+		    Vezmeme $x$ ležící mimo $H$, vytvoříme podprostor spojením každého bodu z $H$ s $x$.
+		    Na každé z těchto přímek je dalších $q$ bodů.
+		    Neboli
+		    \[ |P| = q \cdot |H| + 1 = q(q^{n - 1} + q^{n - 2} + \ldots + 1) + 1 = q^n + q^{n - 1} + \ldots + 1 \]
+	    \item \# nadrovin.
+		    Nechť znovu $H, A$ nadroviny: $H \cap A = U$
+		    \[ \dim_P H \cup A = n \Rightarrow \dim_P U = n - 2 \]
+		    $U$ je nadrovina v $H$.
+		    $A$ vznikne přidáním přímek mezi 1 bod mimo průnik a $U$.
+		    \[ |P \setminus H| = (q^n + q^{n - 1} + \ldots + 1) - (q^{n - 1} + q^{n - 2} + \ldots + 1) = q^n \]
+		    Analogicky
+		    \[ |H \setminus U| = q^{n - 1} \]
+		    Pokud zafixujeme $U$, tak ho lze doplnit na nadrovinu $\frac{q^n}{q^{n - 1}}$ způsoby.
+		    Dle i.p $H$ má $(q^{n - 1} + q^{n - 2} + \ldots + 1)$ nadrovin.
+		    Z nich vznikne
+		    \[ q(q^{n - 1} + q^{n - 2} + \ldots + 1) + \text{sama}\ H = q^n + q^{n - 1} + \ldots + 1 \]
+    \end{enumerate}
 \end{proof}
 
 % 11 predn
