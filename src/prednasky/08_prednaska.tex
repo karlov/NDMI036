@@ -472,6 +472,7 @@
 		    Dle i.p $H$ má $(q^{n - 1} + q^{n - 2} + \ldots + 1)$ nadrovin.
 		    Z nich vznikne
 		    \[ q(q^{n - 1} + q^{n - 2} + \ldots + 1) + \text{sama}\ H = q^n + q^{n - 1} + \ldots + 1 \]
+
     \end{enumerate}
 \end{proof}
 
@@ -480,74 +481,295 @@
     Konečné projektivní prostory dimenze alespoň 3 mají Desargovskou vlastnosti.
 \end{theorem}
 \begin{proof}
-    TODO
+	Rozbor případu:
+	\begin{enumerate}
+		\item $O, A, B, C$ neleží v jedné rovině.
+			Taky to znamená, že
+			\[ \pi = \langle A, B, C \rangle \ne \langle A^{\prime}, B^{\prime}, C^{\prime} \rangle = \sigma \]
+			Všechny body na obrázku leží v 3-dim podprostoru.
+
+    	% predn 11 05:00
+    	\includegraphics[scale=0.2]{g_14.eps}
+
+	Protože např $OA^{\prime}C^{\prime}$ tvoří rovinu.
+	Přidáním bodu $B$ dimenze se zvedne o 1.
+	Konečné bod $B^{\prime}$ vytvoří 3d prostor
+
+	Proto
+	\[ \dim_P(\pi \cap \sigma) = \dim_P \pi + \dim_P \sigma - \dim_P(\langle \pi \cup \sigma \rangle) = 2 + 2 - 3 = 1 \]
+	Bod $P \in AB \& P \in A^{\prime}B^{\prime} \Rightarrow \in \pi \cap \sigma$
+	Podobně $Q, R$.
+	Tyto 3 body jsou na hledané přímce.
+		\item $O, A, B, C$ leží v jedné rovině $\pi$.
+			Vezmeme 2 body mimo rovinu
+			\[ \exists S \notin \pi, B_0 \in SB, B_0 \ne S, B_0 \notin \pi \]
+			Pak přímky SP a AB se protnou v bodě $P_0$.
+			Taky $SB^{\prime} \cap OB_0 = B_0^{\prime}$.
+
+			Tvrdíme $P_0, A^{\prime}, B_0^{\prime}$ jsou kolineární.
+			Za prvé leží v $SPB^{\prime} \cap OAB_0$.
+			\[ P_0 \in PS \& A^{\prime} \in PB^{\prime} \& B_0^{\prime} \in SB^{\prime} \Rightarrow P_0, A^{\prime}, B_0^{\prime} \in SPB^{\prime} \]
+
+			\[ P_0 \in AB_0 \& A^{\prime} \in OA \& B_0^{\prime} \in OB_0^{\prime} \Rightarrow P_0, A^{\prime}, B_0^{\prime} \in OAB_0 \]
+
+			Podobně $R_0 = CB_0 \cap RS$.
+			Tvrdíme jako výš $R_0, C^{\prime}, B_0^{\prime}$ jsou kolineární.
+
+			Tvrdíme jako výš $P_0, R_0, Q$ jsou kolineární.
+			Protože $P_0, R_0, Q \in AB_0C \cap A^{\prime}B_0^{\prime}C^{\prime}$.
+			\[ P_0 \in AB_0 \& R_0 \in CB_0 \& Q = AC \cap A^{\prime}C^{\prime} \Rightarrow Q \in AC \Rightarrow \in AB_0C \]
+			\[ P_0 \in A^{\prime}B_0^{\prime} \& R_0 \in C^{\prime}B_0^{\prime} \& Q \in A^{\prime}C^{\prime} \Rightarrow \in A^{\prime}B_0^{\prime}C^{\prime} \]
+
+			Finálně $P, Q, R$ jsou kolineární.
+			$P, Q, R \subseteq \pi$
+			\[ P \in SP_0 \& R \in SR_0 \& Q \in P_0R_0 \Rightarrow \in SP_0R_0 \]
+	\end{enumerate}
 \end{proof}
+
 \begin{definition}[Automorfismus]
-    Bijekce $\alpha: (V,\mathcal{B})\rightarrow (V,\mathcal{B})$ taková, že $\forall B\in \mathcal{B} \alpha[B]\in\mathcal{B}$ je automorfismus.
+    Bijekce $\alpha: (V,\B)\rightarrow (V,\B)$ taková, že $\forall B\in \B: \alpha[B]\in\B$ je automorfismus.
 \end{definition}
+
 \begin{note}[Inverz automorfismu je automorfismus]
     Pro konečné prostory platí, že pro $\alpha$ automorfismus je $\alpha^{-1}$ automorfismus.
 \end{note}
 \begin{proof}
-    TODO
+	$\alpha$ jako permutace prvků je disjunktní sjednocení cyklů.
+	Jelikož $\alpha$ je automorfismus, z každého bloku vede právě jedna šipka.
+	Nemůže se stát, aby z bloky vedli 2 hrany.
+	Taky dokážeme, že do každého bloku vede právě jedna šipka.
+	Pro libovolný blok z bijekce platí:
+	\[ \exists! A: \alpha(A) = B^{\prime} \]
+	V grafu zobrazení $\alpha: \forall u: deg_{out}(u) = 1, deg_{in} \leq 1$.
+	Z konečnosti i $deg_{in} = 1$.
+
+    	% predn 11 31:00
+    	\includegraphics[scale=0.4]{g_15.eps}
+
+	Neboli $\alpha$ na blocích je taky permutace.
+	Pokud půjdeme po cyklech zpátky, znovu dostaneme bloky:
+	\[ \forall B \in \B: \alpha^{-1}(B) \in \B \]
+
+	Takže automorfismy tvoří grupu.
 \end{proof}
+
 \begin{definition}[Kolineace]
-    Kolineace je zobrazení $\alpha: V\cup \mathcal{B}\rightarrow V\cup \mathcal{B}$ takové, že $\alpha\upharpoonright V$ je bijekce na $V$, $\alpha\upharpoonright \mathcal{B}$ je bijekce na $\mathcal{B}$ a $\forall x\in V, \forall B\in\mathcal{B}: x\in B\Leftrightarrow \alpha(x)\in\alpha(B)$.
+    Kolineace je zobrazení $\alpha: V \cup \B \rightarrow V \cup \B$ takové, že $\alpha\upharpoonright V$ je bijekce na $V$, $\alpha\upharpoonright \B$ je bijekce na $\B$ a zachovává incidence
+    \[ \forall x \in V, \forall B \in \B: x \in B \Leftrightarrow \alpha(x) \in \alpha(B) \]
 \end{definition}
+
 \begin{theorem}[Automorfismy a kolineace]
-    Nechť pro $(V,\mathcal{B})$ každé dva různé prvky patří do jednoho bloku a všechny bloky mají mohutnost alespoň 2.
-    Nechť $\alpha: V\rightarrow V$ je permutace, $\overline{\alpha}: V\cup B\rightarrow V\cup 2^V$ takové, že $\overline{\alpha}(x)=\alpha(x)$ a $\overline{\alpha}(B)=\alpha[B]$.
-    Pak následující jsou ekvivalentní:
+    Nechť pro $(V,\B)$ platí:
+    \[ \forall B \in \B: |B| \geq 2 \& \forall x \ne y \in V \exists! B \in \B: x, y \in B \]
+    Neboli je to nepravidelný $(|V|, \{ 2, 3, \ldots \}, \lambda = 1)$-BIBD.
+
+    Nechť $\alpha: V\rightarrow V$ je permutace, $\overline{\alpha}: V\cup B\rightarrow V\cup 2^V$ takové, že
+    \[ \forall x \in V: \overline{\alpha}(x) = \alpha(x) \]
+    a $\overline{\alpha}(B) = \{ \alpha(x): x \in B \}$.
+    Pak následující tvrzení jsou ekvivalentní:
     \begin{enumerate}
         \item $\alpha$ je automorfismus
         \item $\overline{\alpha}$ je kolineace
-        \item $\alpha$ zachovává kolinearitu
+        \item $\alpha$ zachovává kolinearitu:
+		\[ \forall x \ne y \ne z \ne x \in V: x, y, z \text{kolineární}\ \Rightarrow \alpha(x), \alpha(y), \alpha(z) \text{kolineární} \]
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    TODO
+    \begin{enumerate}
+        \item Označme zobrazení na prvcích a blocích jako $\overline{\alpha}$.
+		Aby vůbec byla kolineace, musí zachovávat incidence:
+		\[ \overline{\alpha}(B) = \{ \alpha(x): x \in B \]
+		Z vlastnosti automorfismu, zobrazuje blok na blok, neboli je kolineace.
+        \item $\overline{\alpha}$ je kolineace což implikuje, že $\overline{\alpha}$ permutace na blocích $\Rightarrow \alpha$ je automorfismus.
+        \item z kolinearity
+		\[ \forall B \in \B \exists B^{\prime} \in \B: \alpha(B) \subseteq B^{\prime} \]
+		Sestrojíme graf, vrcholy jsou bloky, hrany dle předchozího vztahu:
+		\[ \B_{\alpha}^C = (\B, \{ BB^{\prime}: \alpha(B) \subseteq B^{\prime}\}) \]
+		Z každého vrcholu vychází aspoň 1 hrana.
+		Nechť sporem z bloku $B$ máme 2 out hrany.
+		Pak $\alpha(B) \subseteq B_1 \cap B_2$, z předpokladu $|B| \geq 2$.
+		Takže v průniku jsou 2 body, spor protože každé 2 prvky jednoznačně určuji blok.
+		Neboli $\forall u: deg_{out}(u) = 1$.
+
+		Rozdělíme bloky dle velikosti, víme pro hrany z jednoznačnosti $|B| \leq |B^{\prime}|$.
+		V rámci skupiny největších bloků $B^{\prime}$ už nemůže být větší, takže $\alpha(B)$ je blok.
+		Nechť sporem kdyby ze skupiny menších bloku vedla hrana do větších, tak platí:
+		\[ |B_m| < |B| = |B^{\prime}|: \alpha(B) = B^{\prime} \& \alpha(B_m) = B^{\prime} \]
+		Z bijekce na prvcích nutně $B_m \subseteq B$, znovu spor s jednoznačnosti bloků určených 2ma prvky.
+
+		Sestupnou indukci dle velikosti bloků dokážeme, že blok se zobrazuje na blok.
+
+    	% predn 11 31:00
+    	\includegraphics[scale=0.4]{g_16.eps}
+    \end{enumerate}
 \end{proof}
+
+\begin{agreement}
+	Nadále mluvíme o KPP řádu $q \geq 2$ a $\dim_P \geq 2$(většinou $\geq 3$).
+\end{agreement}
+
 \begin{note}[Kolineace a obrazy přímek]
-    Je-li $\alpha$ kolineace prostoru, pak $\forall x\neq y\in P: \alpha(xy)=\alpha(x)\alpha(y)$.
+    Je-li $\alpha$ kolineace prostoru, pak
+    \[ \forall x\neq y\in P: \alpha(xy)=\alpha(x)\alpha(y) \]
 \end{note}
-\begin{proof}
-    TODO
-\end{proof}
+%\begin{proof}
+%    TODO
+%\end{proof}
+
 \begin{definition}[Fixace]
     $A\subseteq P$: $\alpha$ fixuje všechny body $A$, jestliže $\forall x\in A: \alpha(x)=x$
 
     $l\in\LP: \alpha$ fixuje $l$, jestliže $\alpha[l]=l$.
 \end{definition}
-\begin{lemma}[Kolineace fixující nadrovinu]
-    Buď $\alpha$ kolineace fixující všechny body nadroviny $H\subseteq P$.
-    Pak existuje $C\in P$ tak, že $\alpha$ fixuje  všechny přímky procházející bodem $C$.
-\end{lemma}
-\begin{lemma}[Rozšíření kolineace]
-    Mějme $q_0\in\LP\rightarrow (P',\LP'), P' = P\setminus q_0$ množinový systém.
-    Pak každou kolineaci $\alpha$ množinového systému $(P',\LP')$ je možno rozšířit na kolineaci $\alpha^*$ prostoru $(P, \LP)$ právě jedním způsobem, a tato kolineace fixuje $q_0$.
-\end{lemma}
-\begin{definition}[Centrální kolineace]
+
+\begin{definition}[Centrální kolineace]\label{kpp:centr_kolin}
     Centrální kolineace $(P,\LP)$ je kolineace, pro niž existuje nadrovina $H$ (nazývaná osa kolineace), jejíž všechny body jsou fixované kolineací $\alpha$, a bod $C\in P$ (nazývaný střed kolineace) takový, že všechny přímky jím procházející jsou zobrazením $\alpha$ fixované.
 
     (Pozor, může nastat $C\in H$ i $C\not\in H$.)
 \end{definition}
-\begin{lemma}[Centrální kolineace jsou grupa]
-    Centrální kolineace s osou $H$a středem $C$tvoří grupu vzhledem ke skládání, jednotkou je identita.
+
+\begin{lemma}[Kolineace fixující nadrovinu]
+    Buď $\alpha$ kolineace fixující všechny body nadroviny $H\subseteq P$.
+    Pak existuje $C\in P$ tak, že $\alpha$ fixuje  všechny přímky procházející bodem $C$.
+
+    Ekvivalentně každá kolineace je nutně Centrální.
 \end{lemma}
+\begin{proof}
+    TODO Handout 10, lemma 2
+\end{proof}
+
+\begin{lemma}[Rozšíření kolineace]
+    Mějme $q_0\in\LP\rightarrow (P',\LP'), P' = P\setminus q_0$ množinový systém.
+    Pak každou kolineaci $\alpha$ množinového systému $(P',\LP')$ je možno rozšířit na kolineaci $\alpha^*$ prostoru $(P, \LP)$ právě jedním způsobem, a tato kolineace fixuje $q_0$.
+\end{lemma}
+\begin{proof}
+    TODO Handout 10 lemma 3
+\end{proof}
+
+\begin{lemma}[Centrální kolineace jsou grupa (BD)]
+    Centrální kolineace s osou $H$ a středem $C$ tvoří grupu vzhledem ke skládání, jednotkou je identita.
+\end{lemma}
+
 \begin{lemma}[Vlastnosti centrální kolineace]
     Buď $\alpha$ centrální kolineace s osou $H$ a středem $C$. Potom
     \begin{enumerate}
-        \item $P\not\in H\cup\{C\}\Rightarrow \forall x: \alpha(x)$ jednoznačně určuje $\alpha_(P): \alpha(x)=CX\cap F\alpha(P)$, kde $F=PX\cap H$
+        \item $P\not\in H\cup\{C\}\Rightarrow \forall x: \alpha(x)$ jednoznačně určen bodem $\alpha(P)$ tak, že:
+		\[ \alpha(x)=CX\cap F\alpha(P), F=PX\cap H \]
         \item Není-li $\alpha$ identická kolineace, pak každý bod mimo $H\cup \{C\}$ není fixovaný
         \item Centrální kolineace $\alpha$ je jednoznačně určena kteroukoliv dvojicí $P\neq\alpha(P)$.
     \end{enumerate}
 \end{lemma}
+\begin{proof}
+	%\paragraph{
+	Pozorování: $P, \alpha(P), C$ jsou kolineární.
+	Přímka $\alpha(PC) = PC$ z \cref{kpp:centr_kolin} jako střed.
+	Taky ale
+	\[ \alpha(PC) = \alpha(P)\alpha(C) \stackrel{střed}{=} \alpha(P) C \Rightarrow \alpha(P) \in PC \]
+
+	Dal $PC \nsubseteq H$, spojení nadroviny a přímky už je nutně celý prostor, proto
+	\[ \dim_P H = n - 1 \& \dim_P PC = 1 \Rightarrow \dim_P (H \cap PC) = n - 1 + 1 - n = 0 \]
+	V průniku jeden bod.
+
+    \begin{enumerate}
+	    \item Vezmeme $X \notin PC$.
+		    Přímka $PX \notin H \Rightarrow PX \cap H = F$ bod.
+		    \[ X \in FP \Rightarrow \alpha(X) \in \alpha(FP) = \alpha(F)\alpha(P) \stackrel{osa}{=} F\alpha(P) \]
+		    Protože $\alpha$ kolineace: $X \in SC \Rightarrow \alpha(X) \in \alpha(XC) \stackrel{střed}{=} XC$.
+		    $XC, FP$ jsou různé přímky, proto $\alpha(X) = XC \cap F\alpha(P)$.
+		    Taky $X \ne \alpha(X)$ protože přímky $X \in FP, \alpha(X) \in F\alpha(P)$ jsou různé $X \notin F\alpha(P)$.
+
+    	% predn 11 01:24:00
+    	\includegraphics[scale=0.3]{g_17.eps}
+\item Vezmeme $X \in PC$, nutně neleží v $H$, protože jinak je fixovaný a je určen jednoznačně.
+	Analogicky $X \ne C$.
+	Vezmeme libovolný $R \notin PC, H$, přímka $RC$ jednoznačně určuje bod $\alpha(R)$.
+	$X \notin RC$, dle 1) $\alpha(X)$ je jednoznačně určen $\alpha(R)$.
+    \end{enumerate}
+\end{proof}
+
 \begin{consequence}[Jednoznanost středu i osy kolineace]
     Je-li $\alpha$ neidentická kolineace, pak její osa i střed jsou jednoznačně určené.
 \end{consequence}
+\begin{proof}
+    TODO HW
+\end{proof}
+
+%13 predn
+
 \begin{theorem}[Baerova]
     Buď $H$ nadrovina v Desargovském prostoru $(\mathcal{P},\LP)$ a buďte $P,P', C$ tři různé kolineární body takové, že $P,P\not\in H$.
     Pak existuje právě jedna centrální kolineace $\alpha$ taková, že $H$ je osa, $C$ je střed a $\alpha(P)=P'$.
 \end{theorem}
+\begin{proof}[Náznak důkazu]
+    $\mathcal{P}':=\mathcal{P}\setminus PC$ -- zadefinujeme $\alpha(x) := x$ pro $x\in H\cup \{C\}$ a $\alpha(X) := FP'\cap CX$ pro $F=PX\cap H$ pro $x\not\in H\cup \{x\}$.
+    Toto je jednoznačné, neboť (TODO obrázek).
 
-%13 predn TODO
+    Dále se jedná o kolineaci, neboť $\alpha$ je bijekce, jelikož máme $c\neq \alpha(x_1)\neq\alpha(x_2)\neq c\Rightarrow \alpha(x_1)\neq\alpha(x_2)$.
+
+    Nyní máme-li $X,Y,P$ kolineární, je snadno vidět, že je kolinearita zachována.
+    TODO
+\end{proof}
+
+\begin{definition}[Množiny kolineací]
+    \begin{itemize}
+        \item Množinu centrálních kolineací označíme $\mathrm{Col}(H)$.
+        \item Množinu kolineací s osou $H$ a středem $C$ značíme $\mathrm{Col}(C,H)$.
+        \item Kolineace s osou $H$ a středem v $H$ značíme $T(H)$.
+    \end{itemize}
+\end{definition}
+\begin{theorem}[Kolineace tvoří grupu]
+    Množina $(\mathrm{Col}(H), \circ)$ je grupa, navíc $\mathrm{Col}(C,H)$ je její podgrupa a $T(H)$ je též její podgrupa.
+    Navíc $T(H)$ je komutativní.
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{definition}[Sčítání na $P\setminus H$]
+    Dle Baerovy věty existuje pro každý bod $P\in\mathcal{P}\setminus H$ centrální kolineace $\tau_P\in T(H)$ taková, že $\tau_P(O)=P$.
+    Pro dva ne nutně různé body $P,Q\in\mathcal{P}\setminus H$ označíme jako $P+Q$ takový bod $Z$, že $\tau_Z=\tau_P\tau_Q(=\tau_Q\tau_P)$.
+\end{definition}
+\begin{theorem}[$T(H)$ se skládáním a $P^*$ se sčítáním]
+    $(T(H),\circ)\cong(\mathcal{P}^*,+)$
+\end{theorem}
+\begin{proof}
+    Baerova věta zajišťuje, že $P\rightarrow \tau_P$ je bijekce, a izomorfismus plyne z definice.
+\end{proof}
+\begin{definition}[Operace s kolineacemi]
+    Označme $\mathcal{D}_O$ množinu všech centrálních kolineací s osou $H$ a středem $O$.
+    Dále označme $\omega$ zobrazení z $P$ do $P$, které $X$ zobrazí samo na sebe, je-li v ose a na $O$, je-li $X$ mimo osu.
+
+    Na množině $F=D_O\cup\{\omega\}$ definujeme sčítání a násobení následovně:
+    $(\alpha+\beta)(X) = X$ pro $X\in H$ a $\alpha(X)+\beta(X)$ pro $X$ mimo osu.
+\end{definition}
+\begin{lemma}[O zobrazení $\mu$]
+    Definujme zobrazení $\mu$ předpisem $\mu(X) = X$ pro $X\in H$ a $\mu(X) = -X$ jinak.
+    Pak $\mu\in D_O$.
+\end{lemma}
+\begin{proof}
+    Z definice $\mu$ fixuje každý bod nadroviny i střed $O$.
+    Stačí tedy ukázat, že $\mu$ je kolineace -- neboť $\mu$ zachovává kolinearitu.
+    Pro body ležící na přímce procházející bodem $O$ to je zjevné.
+    Pro $g$ neprocházející bodem $O$ mějme $C=g\cap H$.
+    Pak $g=\{P+X: X\in OC\}$ a $\mu(g) = \{\mu(P+X): X\in OC\} = \{-P+(-X):X\in OC\}=\{-P+Y: Y\in OC\}=-PC$.
+\end{proof}
+\begin{lemma}[Kolineace jsou automorfismy grupy]
+    Každá kolineace $\alpha\in D_O$ je automorfismus grupy $(P^*,+)$, neboli $\alpha(O)=O$ a $\alpha(X+Y)=\alpha(Y)+\alpha(Y)$, $\alpha(-X)=-\alpha(X)$ pro všechna $X,Y\in P^*$.
+\end{lemma}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{lemma}[Součet kolineací je v $F$]
+    Pro každé dvě ne nutně různé kolineace $\alpha,\beta\in D_O$ je $\alpha+\beta\in F$.
+\end{lemma}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{theorem}[Veblenova]
+    Struktura $(F,+,\cdot)$ je konečné těleso o $q$ prvcích.
+\end{theorem}
+\begin{proof}
+    TODO
+\end{proof}
+\begin{consequence}[Řád KPP je mocnina prvočísla]
+    KPP řádu $q$ dimenze $>2$ existuje právě tehdy, když $q$ je mocnina prvočísla.
+\end{consequence}
