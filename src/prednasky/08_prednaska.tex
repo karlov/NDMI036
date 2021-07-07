@@ -558,7 +558,7 @@
     \[ \forall x \in V, \forall B \in \B: x \in B \Leftrightarrow \alpha(x) \in \alpha(B) \]
 \end{definition}
 
-\begin{theorem}[Automorfismy a kolineace]
+\begin{theorem}[Automorfismy a kolineace]\label{kpp:equiv}
     Nechť pro $(V,\B)$ platí:
     \[ \forall B \in \B: |B| \geq 2 \& \forall x \ne y \in V \exists! B \in \B: x, y \in B \]
     Neboli je to nepravidelný $(|V|, \{ 2, 3, \ldots \}, \lambda = 1)$-BIBD.
@@ -634,16 +634,72 @@
 
     Ekvivalentně každá kolineace je nutně Centrální.
 \end{lemma}
-\begin{proof}
-    TODO Handout 10, lemma 2
+\begin{proof}~
+	%predn 12 05:00
+    \begin{enumerate}
+	    \item $ \exists C \notin H: \alpha(C) = C$.
+		    Každá přímka, která neleží v $H$ ji protíná v 1 bodě.
+		    Nechť $P \in H: (CP = g) \cap H = P$.
+		    \[ \alpha(g) = \alpha(PC) = \alpha(P)\alpha(C) \stackrel{osa}{=} P\alpha(C) \stackrel{předpoklad}{=} PC \]
+		    Neboli každá přímka procházející $C$ je fixovaná.
+	    \item $ \forall X \in P \setminus H: \alpha(X) \ne X$.
+		    Vezmeme libovolný $Y \notin H$, pak $\alpha(Y) \ne Y, \alpha(Y) \notin H$.
+		    Nechť $P\alpha(P) \cap H = C$, dal nějakou přímky která neleží v $H$.
+		    Nechť na této přímce je bod $Q \notin H$.
+
+		    $PQ \notin H \Rightarrow PQ \cap H = S$
+		    Pak $\alpha: PQS \to \alpha(P) \alpha(Q) \alpha(S) = \alpha(P) \alpha(Q) S$.
+		    Takže $\alpha(Q) \in S \alpha(P)$
+		    $P, Q$ jsou různé body, proto i přímky $Q\alpha(Q) \ne P\alpha(P)$.
+		    Taky leží ve stejné rovině určené přímky $SP, PQ$.
+		    Proto $\exists T:= Q\alpha(Q) \cap P\alpha(P)$.
+		    Pak
+		    \[ \alpha(T) = \alpha(Q\alpha(Q)) \cap \alpha(P\alpha(P)) \]
+		    Kvůli tomu, že $H$ střed, $P\alpha(P)$ je fixovaná, analogicky $Q\alpha(Q)$.
+		    Neboli
+		    \[ \alpha(T) = \alpha(Q\alpha(Q)) \cap \alpha(P\alpha(P)) = Q\alpha(Q) \cap P\alpha(P) = T \]
+		    Což implikuje $T = H \cap P\alpha(P)$, protože body mimo $H$ nejsou fixované.
+		    Jediný takový bod je ale $C \Rightarrow T = C$.
+
+    	% predn 12 14:40
+    	\includegraphics[scale=0.3]{g_18.eps}
+    \end{enumerate}
 \end{proof}
 
-\begin{lemma}[Rozšíření kolineace]
+\begin{lemma}[Rozšíření kolineace]\label{kpp:extension}
     Mějme $q_0\in\LP\rightarrow (P',\LP'), P' = P\setminus q_0$ množinový systém.
     Pak každou kolineaci $\alpha$ množinového systému $(P',\LP')$ je možno rozšířit na kolineaci $\alpha^*$ prostoru $(P, \LP)$ právě jedním způsobem, a tato kolineace fixuje $q_0$.
 \end{lemma}
 \begin{proof}
-    TODO Handout 10 lemma 3
+	Z původního KPP vznikne množinový systém $(P',\LP')$:
+	\[ P' = P\setminus q_0 \& \LP' = \{ l': l' = l \setminus g_0: l \in \LP \} \]
+	Potřebujeme dodefinovat $\alpha^*$ pro přímku $g_0$, jinde je shodné s $\alpha$.
+	Přímky disjunktní s $g_0$ jsou fixované:
+	\[ \forall l \in \LP \cap \LP': l \cap g_0 = \emptyset: \alpha^*(l) = \alpha(l) \]
+	Ostatní:
+	\[ \forall l \in \LP: l \cap g_0 = x: \alpha^*(l) = \alpha(l') \cup \{ \alpha(x) \} \]
+	Problém ale nastane, pokud máme 2 zkrácené, které se protínají s $g_0$ ve stejném bodě.
+	Dokážeme že to nejde
+	\[ \forall g \ne h \in \LP: g \cap h = p \in g_0 \Rightarrow |\alpha^*(g) \cap \alpha*(h)| \ne 0 \& \alpha^*(g) \cap \alpha*(h) \subseteq g_0 \]
+    \begin{enumerate}
+	    \item $q > 2$, takže přímky $g, h$ kromě průniku mají ještě aspoň 3 body.
+		    Pak určuji rovinu $H = \langle g \cup h \rangle$.
+		    Z velikosti podprostoru, máme ještě nějakou přímku a bod $Q \in H: Q \notin g \cup h$.
+		    Vezmeme přímky $Q \in m, n: g,h \cap n,m \ne \emptyset$.
+		    Z kolineace $\alpha(g'), \alpha(h')$ jsou ve stejné rovine $\Rightarrow \alpha^*(g) \cap \alpha*(h)$ taky.
+		    Pak $\exists x = \alpha^*(g) \cap \alpha*(h) \in g_0$.
+
+    	% predn 12 28:30
+    	\includegraphics[scale=0.3]{g_19.eps}
+
+	\item $q = 2$, pokud $g_0, g, h$ neleží v jedné rovině.
+		Pak stejná úvaha jako v 1).
+
+	\item $q = 2$, pokud $g_0, g, h$ leží v jedné rovině.
+		Víme že $\dim_P \geq 3 \Rightarrow \exists m$ která v rovině neleží.
+		Použijeme případ 2) pro $m, h, g_0$ a $m, g, g_0$.
+	\item $q = 2, \dim_P P = 2 \iff$ Fanova rovina taky platí, důkaz ad hoc.
+    \end{enumerate}
 \end{proof}
 
 \begin{lemma}[Centrální kolineace jsou grupa (BD)]
@@ -696,44 +752,102 @@
 
 %13 predn
 
-\begin{theorem}[Baerova]
+\begin{theorem}[Baerova]\label{kpp:baer}
     Buď $H$ nadrovina v Desargovském prostoru $(\mathcal{P},\LP)$ a buďte $P,P', C$ tři různé kolineární body takové, že $P,P\not\in H$.
-    Pak existuje právě jedna centrální kolineace $\alpha$ taková, že $H$ je osa, $C$ je střed a $\alpha(P)=P'$.
+    Pak existuje právě jedna centrální kolineace $\alpha$ taková, že $H$ je osa, $C$ je střed, $\alpha(P)=P'$.
 \end{theorem}
 \begin{proof}[Náznak důkazu]
-    $\mathcal{P}':=\mathcal{P}\setminus PC$ -- zadefinujeme $\alpha(x) := x$ pro $x\in H\cup \{C\}$ a $\alpha(X) := FP'\cap CX$ pro $F=PX\cap H$ pro $x\not\in H\cup \{x\}$.
+    $\mathcal{P}':=\mathcal{P}\setminus PC$ -- zadefinujeme
+    \[ \alpha(x) := \twopartdef{x}{x\in H\cup \{C\}}{FP'\cap CX, F=PX\cap H}{x\not\in H\cup \{C\}} \]
     Toto je jednoznačné, neboť (TODO obrázek).
 
-    Dále se jedná o kolineaci, neboť $\alpha$ je bijekce, jelikož máme $c\neq \alpha(x_1)\neq\alpha(x_2)\neq c\Rightarrow \alpha(x_1)\neq\alpha(x_2)$.
+    % predn 12 40:00
+    \includegraphics[scale=0.3]{g_20.eps}
 
-    Nyní máme-li $X,Y,P$ kolineární, je snadno vidět, že je kolinearita zachována.
-    TODO
+    Dokážeme, že $\alpha$ je kolineace v $P'$.
+    \begin{enumerate}
+	    \item neboť $\alpha$ je bijekce, jelikož máme
+		    \[ c\neq \alpha(x_1)\neq\alpha(x_2)\neq c\Rightarrow \alpha(x_1)\neq\alpha(x_2) \]
+    		\begin{enumerate}
+			\item $x_1, x_2, P$ kolineární.
+
+    % predn 12 47:00
+    \includegraphics[scale=0.3]{g_21.eps}
+
+    Z obrázku, $\alpha(x_1)\neq\alpha(x_2)$ protože jinak by $Cx_1, Cx_2$ různé přímky by měli 2 společné body.
+			\item $x, y, P$ nekolineární.
+				\[ Q = xy \cap \alpha(x)\alpha(y) \]
+    % predn 12 47:00
+    \includegraphics[scale=0.3]{g_22.eps}
+
+    			Na obrázku jsou body jako v definici Desargovské vlastnosti, která platí pro KPP dostatečné velikosti.
+			Takže $Q, F, G$ jsou kolineární proto
+			\[ \Rightarrow F, G \in H \Rightarrow FG \subseteq H \Rightarrow Q \in H\]
+
+    		\end{enumerate}
+
+		Dohromady odvodíme
+		\[ \forall x, y: xy \cap \alpha(x)\alpha(y) \in H \]
+		Pokud vezmeme 3 kolineární body, tak z tvrzení výš průnik přímky určené jejích obrazy je stejný bod $F$. Neboli $\alpha$ zachovává kolinearitu.
+
+		Dle \cref{kpp:equiv} $\alpha$ je kolineace.
+
+    % predn 12 57:20
+    \includegraphics[scale=0.3]{g_23.eps}
+
+	\item použijeme \cref{kpp:extension} pro $\alpha$, čímž dostaneme zobrazení zachovávající kolinearitu pro $P$.
+		% todo ref
+	\item Z vlastnosti 3 plyne, že všechny další přímky procházející bodem $C$ jsou fixovány.
+		Je tedy $C$ střed a $H$ osa kolineace $\alpha^*$.
+    \end{enumerate}
 \end{proof}
 
 \begin{definition}[Množiny kolineací]
     \begin{itemize}
-        \item Množinu centrálních kolineací označíme $\mathrm{Col}(H)$.
+	\item Množinu kolineací prostoru značíme $\mathrm{Col}(P)$.
+        \item Množinu centrálních kolineací označíme $\mathrm{Col}(H), H \subseteq P$.
         \item Množinu kolineací s osou $H$ a středem $C$ značíme $\mathrm{Col}(C,H)$.
-        \item Kolineace s osou $H$ a středem v $H$ značíme $T(H)$.
+        \item Kolineace s osou $H$ a středem v $H$ značíme
+		\[ T(H) = \bigcup_{C \in H} \mathrm{Col}(C,H) \]
     \end{itemize}
 \end{definition}
-\begin{theorem}[Kolineace tvoří grupu]
+
+\begin{theorem}[Kolineace tvoří grupu (BD)]
     Množina $(\mathrm{Col}(H), \circ)$ je grupa, navíc $\mathrm{Col}(C,H)$ je její podgrupa a $T(H)$ je též její podgrupa.
     Navíc $T(H)$ je komutativní.
 \end{theorem}
 \begin{proof}
     TODO
 \end{proof}
+
 \begin{definition}[Sčítání na $P\setminus H$]
-    Dle Baerovy věty existuje pro každý bod $P\in\mathcal{P}\setminus H$ centrální kolineace $\tau_P\in T(H)$ taková, že $\tau_P(O)=P$.
-    Pro dva ne nutně různé body $P,Q\in\mathcal{P}\setminus H$ označíme jako $P+Q$ takový bod $Z$, že $\tau_Z=\tau_P\tau_Q(=\tau_Q\tau_P)$.
+	Uvažme prostor $P^* = \mathcal{P}\setminus H$ který je KAR, protože jsme každou přímku zkrátili o 1 bod.
+
+    Dle Baerovy věty \cref{kpp:baer} existuje pro každý bod $P \in P^*$ centrální kolineace $\tau_P\in T(H)$ taková, že $\tau_P(O)=P$.
+    Pro dva ne nutně různé body $P,Q\in\mathcal{P}\setminus H$ označíme jako $P+Q$ takový bod $Z$, že
+    \[ \tau_Z=\tau_P\tau_Q(=\tau_Q\tau_P) \]
 \end{definition}
+
+\begin{observation}
+	Pokud $P, Q, O$ jsou nekolineární, tak
+	\[ \tau_P: OQ^* \to PQ^* \& P + Q = \tau_P (\tau_Q(O)) = \tau_P(Q) \in PQ^* \]
+	Neboli
+	\[ P + Q \in PQ^* \land P + Q \in P^*Q \]
+
+    % predn 12 01:15:00
+    \includegraphics[scale=0.3]{g_24.eps}
+\end{observation}
+
 \begin{theorem}[$T(H)$ se skládáním a $P^*$ se sčítáním]
     $(T(H),\circ)\cong(\mathcal{P}^*,+)$
 \end{theorem}
 \begin{proof}
-    Baerova věta zajišťuje, že $P\rightarrow \tau_P$ je bijekce, a izomorfismus plyne z definice.
+    Baerova věta \cref{kpp:baer} zajišťuje, že $P\rightarrow \tau_P$ je bijekce, a izomorfismus plyne z definice.
+
+    Taky
+    \[ \tau_{-x} \circ \tau_x = id \Rightarrow \tau_{-x} = \tau_x^{-1} \]
 \end{proof}
+
 \begin{definition}[Operace s kolineacemi]
     Označme $\mathcal{D}_O$ množinu všech centrálních kolineací s osou $H$ a středem $O$.
     Dále označme $\omega$ zobrazení z $P$ do $P$, které $X$ zobrazí samo na sebe, je-li v ose a na $O$, je-li $X$ mimo osu.
@@ -741,6 +855,7 @@
     Na množině $F=D_O\cup\{\omega\}$ definujeme sčítání a násobení následovně:
     $(\alpha+\beta)(X) = X$ pro $X\in H$ a $\alpha(X)+\beta(X)$ pro $X$ mimo osu.
 \end{definition}
+
 \begin{lemma}[O zobrazení $\mu$]
     Definujme zobrazení $\mu$ předpisem $\mu(X) = X$ pro $X\in H$ a $\mu(X) = -X$ jinak.
     Pak $\mu\in D_O$.
@@ -768,6 +883,7 @@
     Struktura $(F,+,\cdot)$ je konečné těleso o $q$ prvcích.
 \end{theorem}
 \begin{proof}
+	% todo write idea 12 predn od 01:18:00
     TODO
 \end{proof}
 \begin{consequence}[Řád KPP je mocnina prvočísla]
