@@ -12,11 +12,11 @@
 \begin{proof}
 	Kvůli symetrii pojmů, stačí jedna implikace směrem.
 	Podělíme matici $\sqrt{m}$:
-	\[ \left(\frac{1}{\sqrt{m}} H \right) \left(\frac{1}{\sqrt{m}} H^T \right) = E \]
+	\[ \left(\frac{1}{\sqrt{m}} H \right) \left(\frac{1}{\sqrt{m}} H^T \right) = I \]
 	Neboli
-	\[ \left(\frac{1}{\sqrt{m}} H \right) = \left(\frac{1}{\sqrt{m}} H \right)^{-1} = \sqrt{m}H^{-1} \]
+	\[ \left(\frac{1}{\sqrt{m}} H \right) = \left(\frac{1}{\sqrt{m}} H^T \right)^{-1} = \sqrt{m}H^{-1} \]
 	Tedy
-	\[ H^T H = m H^{-1}H = mE \]
+	\[ H^T H = m H^{-1}H = mI \]
 \end{proof}
 
 \begin{definition}[Normální forma HM]
@@ -173,7 +173,7 @@
 	      \end{pmatrix}
 	\]
 	Z definici $Q$ a vlastnosti konečného tělesa $Q$ má mimo diagonálu $-1 \lor 1$.
-	Neboli $H \in \{ 0, 1 \}^{q + 1 \times q + 1}$.
+	Neboli $H \in \{ -1, 1 \}^{q + 1 \times q + 1}$.
 	Skalární součin řádku se sebou, $i > 0$:
 	\[ S = -1 + 1 + \sum_{j = 1}^q \chi(a_i - a_j) \]
 	Jelikož $j \in [q]$, tak suma probíhá všemi prvky $GF(q)$, dle \eqref{chi_all} je 0.
@@ -265,7 +265,7 @@
     Mějme $A,B\in\R^{m\times m}$ takové, že
     \[ AA^T=BB^T=mI_m, AB^T=-\varepsilon BA^T \]
     Pak pro matici
-    \[ K=A\times E_n + B\times S \]
+    \[ K=A\times I_n + B\times S \]
     platí $KK^T=mnI_{mn}$.
 \end{lemma}
 \begin{proof}

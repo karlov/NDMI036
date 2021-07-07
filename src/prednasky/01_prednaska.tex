@@ -81,8 +81,9 @@
 
 	Tedy celkem $|X|=|\LP|=m^2+m+1$ bodů a $|\LP| = 1 + m(m +1)$ přímek.
 
-	% todo 1 predn 20:10
 	Kanonický obrázek KPR:
+	% 1 predn 20:10
+	\includegraphics[scale=0.5]{kpr_2.eps}
 
 	"Přímky" se nerovnají geometrickým přímkám, jen mnemonický název.
 \end{proof}
@@ -114,7 +115,7 @@
 			    \item Stejně pro šikmé přímky, protože je lze stejně vyjádřit.
 			    \item Jednobodový průnik přímek ze svazku a vodorovných zaručuje jednoznačný bod $x_{i, j}$.
 			    \item Potřebujeme ukázat
-				    \[ \forall k_1 \ne k_2, \forall b_1, b_2: |l_{k_1, b_1}, l_{k_2, b_2}| = 1 \]
+				    \[ \forall k_1 \ne k_2, \forall b_1, b_2: |l_{k_1, b_1} \cap l_{k_2, b_2}| = 1 \]
 				    Dle definice přímek ze svazku bod v průniku má souřadnice:
 				    \[ x_{i, j} = x_{i, k_1 \cdot i + b_1} = x_{i, k_2 \cdot i + b_2} \Rightarrow k_1 \cdot i + b_1 = k_2 \cdot i + b_2 \iff i = (b_1 - b_2) \cdot (k_2 - k_1)^{-1} \]
 				    Z vlastnosti konečného tělesa, takové $i$ je jednoznačné.
@@ -217,8 +218,9 @@ A: ano, ale nevíme co dříve.
 \end{consequence}
 \begin{definition}[Desargova vlastnost]
     Desargova vlastnost je následující: \emph{Pro každých šest různých bodů $A_1, A_2, B_1,$ $B_2, C_1, C_2$ takových, že se přímky $A_1A_2, B_1B_2, C_1C_2$ protínají v jednom bodě platí, že průsečíky dvojic přímek $A_1B_1, A_2B_2$ a $B_1C_1, B_2C_2$ a $A_1C_1, A_2C_2$ leží na jedné přímce.}
-\end{definition}
-\begin{definition}[Desargovská projektivní rovina]
+%\end{definition}
+%\begin{definition}[Desargovská projektivní rovina]
+
     Projektivní rovina je Desargovská, pokud má Desargovu vlastnost. Jinak je ne-Desargovská.
 \end{definition}
 \begin{exercise}

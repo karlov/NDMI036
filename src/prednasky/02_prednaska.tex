@@ -76,7 +76,7 @@
 
 Kdy máme extremální řešení?
 
-\begin{theorem}[Extremální NOLČ a KPR]
+\begin{theorem}[Extremální NOLČ a KPR]\label{lc:nolc_kpr}
 	\[ NOLČ(n) = n - 1 \iff \exists KPR(n) \]
 	Z předchozí přednášky platí pro mocniny prvočísla.
 \end{theorem}
@@ -112,14 +112,15 @@ Kdy máme extremální řešení?
 			Vodorovné a svislé se protínají v šachovnici.
 
 			Šikmé vs svislé a Vodorovné vs svislé se protínají protože průniky jsou určené LČ.
+			% todo 2 ze svazku?
 			2 Šikmé přímky se protínají právě v 1 bodě protože čtverce jsou $\perp$.
 		\item $A_3$. Plyne z toho, že $n \geq 2$.
 		\item $A_2$. Spočítáme 2ma způsoby \# 3jic.
-			\[ T = |\{ ((x,y), l): x \ne y \in X, l \in L, x,y \in l \}| \]
+			\[ C = |\{ ((x,y), L): x \ne y \in X, L \in \LP, x,y \in L \}| \]
 			Máme $(n^2 + n + 1)$ přímek, na každé z nich je $(n + 1)$ bodů. Pak
-			\[ T = (n^2 + n + 1) \binom{n + 1}{2} \]
+			\[ C = (n^2 + n + 1) \binom{n + 1}{2} \]
 			Na druhou stranu, máme $(n^2 + n + 1)$ bodů. Každou 2ci prochází nejvýše 1 přímka.
-			\[ T \leq 1 \cdot \binom{n^2 + n + 1}{2} \]
+			\[ C \leq 1 \cdot \binom{n^2 + n + 1}{2} \]
 			Dohromady
 			\[ (n^2 + n + 1) \binom{n + 1}{2} \leq \binom{n^2 + n + 1}{2} \]
 			Po roznásobení dostaneme stejná čísla na obou stranách, což může nastat pouze v případě že každou 2cí bodů prochází \emph{právě 1} přímka.
@@ -192,7 +193,7 @@ Kdy máme extremální řešení?
 \end{theorem}
 \begin{proof}
 	Nechť \[ s = \min_{i = 1}^k \{ p_i^{r_i} - 1 \} \]
-	Z věty \cref{nolc_lower0}
+	Jelikož $p_i^{r_i}$ je mocnina prvočísla, z věty \cref{lc:nolc_kpr}:
 	\[ NOLČ(p_i^{r_i}) \geq p_i^{r_i} - 1 \]
 	Pak protože $s = \min \Rightarrow p_i^{r_i} - 1 \geq s$.\\
 	Což spolu s větou \cref{nolc_oa} dává:

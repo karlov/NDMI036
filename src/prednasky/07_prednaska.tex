@@ -31,11 +31,11 @@
     Pak $\mathcal{A}$ je průhledná množina bloků, pokud obsahuje navzájem disjunktní bloky.
 \end{definition}
 \begin{definition}[BIBD se středníkem]~\\
-    $(V,\mathcal{B})$ definujeme jako $(v,k_1,\ldots,k_r;k_{r+1},k_m,\lambda)$-BIBD, je-li $(v,k_1,\ldots,k_r,k_{r+1},k_m,\lambda)$-BIBD a $\mathcal{B}_1\cup\ldots\cup\mathcal{B}_r$ je průhledná množina.
+    $(V,\mathcal{B})$ definujeme jako $(v,k_1,\ldots,k_r;k_{r+1}, \ldots, k_m,\lambda)$-BIBD, je-li $(v,k_1,\ldots,k_r,k_{r+1},k_m,\lambda)$-BIBD a $\mathcal{B}_1\cup\ldots\cup\mathcal{B}_r$ je průhledná množina.
 \end{definition}
 
 \begin{theorem}[Dolní odhad na NOLČ]\label{nolc_lower_2}~\\
-    Existuje-li $(v,k_1,\ldots,k_r;k_{r+1},k_m,\lambda)$-BIBD, pak
+    Existuje-li $(v,k_1,\ldots,k_r;k_{r+1},k_m, 1)$-BIBD, pak
     %NOLČ($v$)$\geq\min\{$NOLČ($k_1$),$\ldots$,NOLČ($k_r$),NOLČ($k_{r+1}$)$-1,\ldots,$NOLČ($k_m$)$-1\}$
     \[ \text{NOLČ}(v) \geq \min\{\text{NOLČ}(k_1), \ldots, \text{NOLČ}(k_r), \text{NOLČ}(k_{r+1}) - 1, \ldots, \text{NOLČ}(k_m) - 1\} \]
 \end{theorem}
@@ -46,6 +46,7 @@
 	Pro $i \leq r$ z \cref{nolc_oa}:
 	\[ \text{NOLČ}(k_i) + 2 \geq c \Rightarrow \exists OA(k_i, c) \]
 	Označme OA jako $A_i$ nad symboly $1, 2, \ldots, k_i$.
+
 	Pro $i > r$ z \cref{nolc_oa}:
 	\[ \text{NOLČ}(k_i) + 1 \geq c \Rightarrow \exists OA(k_i, c + 1) \]
 
