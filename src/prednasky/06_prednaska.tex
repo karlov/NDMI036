@@ -273,7 +273,7 @@
 		KK^T = (A \times I_n + B \times S)(A^T \times I_n + B^T \times S^T) = \\
 		= AA^T \times I_n + AB^T \times S^T + BA^T \times S + BB^T \times SS^T = \\
 		= m I_m \times I_n + (-\varepsilon BA^T) \times (\varepsilon S) + BA^T \times S + m I_m \times (n - 1)  I_n \\
-		= m I_m \times (-\varepsilon^2 + 1)(BA^T \times S) + m(n - 1) I_{mn} = mn I_{mn}
+		= m I_{mn} + (-\varepsilon^2 + 1)(BA^T \times S) + m(n - 1) I_{mn} \stackrel{(-\varepsilon^2 + 1) = 0}{=} mn I_{mn}
 	\end{gather*}
 \end{proof}
 \begin{theorem}[Williamsonova konstrukce]
@@ -287,7 +287,7 @@
 
 	Nechť $A$ je HM řádu $h$.
 	Sestrojíme pomocnou $U$:
-	\[ U = I_{\frac{h}{2}} \times \begin{pmatrix} 0 & 1 \\ 01 & 1 \end{pmatrix} \]
+	\[ U = I_{\frac{h}{2}} \times \begin{pmatrix} 0 & 1 \\ -1 & 1 \end{pmatrix} \]
 	Což je komplikovaný zápis pro matici, která má 0 na hlavní diagonále.
 	Na dvou vedlejších diagonálách se střídá $1, -1$.
 	Položme

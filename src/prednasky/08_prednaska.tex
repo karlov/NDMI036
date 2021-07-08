@@ -272,7 +272,7 @@
 \end{example}
 
 \begin{theorem}[Singerova konstrukce]
-    Existuje-li $(P,\LP)$ KPP řádu $q$ dimenze $n$, pak existuje cyklický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-BIBD.
+    Existuje-li $(P,\LP)$ KPP řádu $q$ dimenze $n$, pak existuje cyklický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-SBIBD.
 \end{theorem}
 \begin{proof}
 	$V = P$, $\B = $ nadroviny v $(P, \LP) = $ podprostory $\dim = n - 1$.
@@ -282,7 +282,7 @@
 
 	Nechť $H_1, H_2$ jsou podprostory KPP, které vznikli z podprostoru VP $U_1, U_2$.
 	Pak
-	\[ \dim(U_1 \cap U_2) = n - 1 \Rightarrow |U_1 \cap U_2| = 2^{n - 1} \]
+	\[ \dim(U_1 \cap U_2) = n - 1 \Rightarrow |U_1 \cap U_2| = q^{n - 1} \]
 	Jelikož v průniku podprostorů VP je vždy 0 vektor a $q - 1$ jsou násobky stejného vektoru neboli stejného bodu v KPP.
 	Takže
 	\[ |H_1 \cap H_2| = \frac{q^{n - 1} - 1}{q - 1} \]
@@ -291,7 +291,7 @@
 	Neboli
 	\[ |B| = \frac{q^{n + 1}}{q - 1} = |V| = |P| \]
 
-	V matici incidence $A$ vzniklého množinového systému každé 2 sloupečky mají stejný \$ 1.
+	V matici incidence $A$ vzniklého množinového systému každé 2 sloupečky mají stejný \# 1.
 	% todo tady nechapu argument proc transpozice a radky misto transpozice a sloupce
 	Pokud matici transponujeme, tak řádky mají stejný počet 1.
 	Neboli $A$ je matice symetrického BIBDu a:
