@@ -63,7 +63,7 @@
 
 	Opačnou inkluzi ukážeme tak, že $AX = \bigcup_{x\in S} ax$ je podprostor.
 	Obal je průnikem všech podprostoru, takže pokud průnik obsahuje $AX$ tak nemůže mít nic navíc.
-	Neboli $\langle S \cup \{a\} \rangle \subseteq \bigcup_{x\in S}ax$".
+	Neboli $\langle S \cup \{a\} \rangle \subseteq \bigcup_{x\in S}ax$.
 
 	Dle \cref{kpp:subspace} musíme ukázat:
 	\[ \forall t \ne r: tr \subseteq AX \]
@@ -94,10 +94,10 @@
 \begin{lemma}[Sjednocení podprostorů]
     Buďte $S,T \subseteq P$ podprostory $(P, \LP)$.
     Potom
-    \[ \langle S \cup T \rangle = \bigcup_{\subseteq{ s\in S \\ t\in T \\ s\neq t}} st \]
+    \[ \langle S \cup T \rangle = \bigcup_{\substack{ s\in S \\ t\in T \\ s\neq t}} st \]
 \end{lemma}
 \begin{proof}
-	Označme $\bigcup_{\subseteq{ s\in S \\ t\in T \\ s\neq t}} st = SUT$.
+	Označme $\bigcup_{\substack{ s\in S \\ t\in T \\ s\neq t}} st = SUT$.
 	Triviálně platí: $SUT \subseteq \langle S \cup T \rangle$.
 
 	Pro rovnost stačí ukázat že SUT je podprostor.
@@ -402,7 +402,7 @@
 \end{proof}
 
 \begin{definition}[Izomorfizmus KPP $\pi \cong \sigma$]
-	\[ \exists f: \pi \to \sigma: x, y, z \in l \in \LP_1 \iff f(x), f(y), f(z) \in LP_2 \]
+	\[ \exists f: \pi \to \sigma: x, y, z \in l \in \LP_1 \iff f(x), f(y), f(z) \in \LP_2 \]
 	kde $f$ je bijekce.
 \end{definition}
 
@@ -632,7 +632,7 @@
     Buď $\alpha$ kolineace fixující všechny body nadroviny $H\subseteq P$.
     Pak existuje $C\in P$ tak, že $\alpha$ fixuje  všechny přímky procházející bodem $C$.
 
-    Ekvivalentně každá kolineace je nutně Centrální.
+    Ekvivalentně každá kolineace fixující rovinu je nutně Centrální.
 \end{lemma}
 \begin{proof}~
 	%predn 12 05:00
@@ -680,14 +680,14 @@
 	\[ \forall l \in \LP: l \cap g_0 = x: \alpha^*(l) = \alpha(l') \cup \{ \alpha(x) \} \]
 	Problém ale nastane, pokud máme 2 zkrácené, které se protínají s $g_0$ ve stejném bodě.
 	Dokážeme že to nejde
-	\[ \forall g \ne h \in \LP: g \cap h = p \in g_0 \Rightarrow |\alpha^*(g) \cap \alpha*(h)| \ne 0 \& \alpha^*(g) \cap \alpha*(h) \subseteq g_0 \]
+	\[ \forall g \ne h \in \LP: g \cap h = p \in g_0 \Rightarrow |\alpha^*(g) \cap \alpha^*(h)| \ne 0 \& \alpha^*(g) \cap \alpha^*(h) \subseteq g_0 \]
     \begin{enumerate}
 	    \item $q > 2$, takže přímky $g, h$ kromě průniku mají ještě aspoň 3 body.
 		    Pak určuji rovinu $H = \langle g \cup h \rangle$.
 		    Z velikosti podprostoru, máme ještě nějakou přímku a bod $Q \in H: Q \notin g \cup h$.
 		    Vezmeme přímky $Q \in m, n: g,h \cap n,m \ne \emptyset$.
 		    Z kolineace $\alpha(g'), \alpha(h')$ jsou ve stejné rovine $\Rightarrow \alpha^*(g) \cap \alpha*(h)$ taky.
-		    Pak $\exists x = \alpha^*(g) \cap \alpha*(h) \in g_0$.
+		    Pak $\exists x = \alpha^*(g) \cap \alpha^*(h) \in g_0$.
 
     	% predn 12 28:30
     	\includegraphics[scale=0.3]{g_19.eps}
@@ -740,6 +740,8 @@
 	Analogicky $X \ne C$.
 	Vezmeme libovolný $R \notin PC, H$, přímka $RC$ jednoznačně určuje bod $\alpha(R)$.
 	$X \notin RC$, dle 1) $\alpha(X)$ je jednoznačně určen $\alpha(R)$.
+
+	\item TODO
     \end{enumerate}
 \end{proof}
 
@@ -846,10 +848,11 @@
 
     Taky
     \[ \tau_{-x} \circ \tau_x = id \Rightarrow \tau_{-x} = \tau_x^{-1} \]
+    % todo finish
 \end{proof}
 
 \begin{definition}[Operace s kolineacemi]
-    Označme $\mathcal{D}_O$ množinu všech centrálních kolineací s osou $H$ a středem $O$.
+    Označme $\D_O$ množinu všech centrálních kolineací s osou $H$ a středem $O$.
     Dále označme $\omega$ zobrazení z $P$ do $P$, které $X$ zobrazí samo na sebe, je-li v ose a na $O$, je-li $X$ mimo osu.
 
     Na množině $F=D_O\cup\{\omega\}$ definujeme sčítání a násobení následovně:
@@ -858,7 +861,7 @@
 
 \begin{lemma}[O zobrazení $\mu$]
     Definujme zobrazení $\mu$ předpisem $\mu(X) = X$ pro $X\in H$ a $\mu(X) = -X$ jinak.
-    Pak $\mu\in D_O$.
+    Pak $\mu\in \D_O$.
 \end{lemma}
 \begin{proof}
     Z definice $\mu$ fixuje každý bod nadroviny i střed $O$.
@@ -868,13 +871,13 @@
     Pak $g=\{P+X: X\in OC\}$ a $\mu(g) = \{\mu(P+X): X\in OC\} = \{-P+(-X):X\in OC\}=\{-P+Y: Y\in OC\}=-PC$.
 \end{proof}
 \begin{lemma}[Kolineace jsou automorfismy grupy]
-    Každá kolineace $\alpha\in D_O$ je automorfismus grupy $(P^*,+)$, neboli $\alpha(O)=O$ a $\alpha(X+Y)=\alpha(Y)+\alpha(Y)$, $\alpha(-X)=-\alpha(X)$ pro všechna $X,Y\in P^*$.
+    Každá kolineace $\alpha\in \D_O$ je automorfismus grupy $(P^*,+)$, neboli $\alpha(O)=O$ a $\alpha(X+Y)=\alpha(Y)+\alpha(Y)$, $\alpha(-X)=-\alpha(X)$ pro všechna $X,Y\in P^*$.
 \end{lemma}
 \begin{proof}
     TODO
 \end{proof}
 \begin{lemma}[Součet kolineací je v $F$]
-    Pro každé dvě ne nutně různé kolineace $\alpha,\beta\in D_O$ je $\alpha+\beta\in F$.
+    Pro každé dvě ne nutně různé kolineace $\alpha,\beta\in \D_O$ je $\alpha+\beta\in F$.
 \end{lemma}
 \begin{proof}
     TODO
