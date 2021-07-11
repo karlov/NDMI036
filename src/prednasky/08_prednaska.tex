@@ -1,6 +1,8 @@
 \section{\texorpdfstring{Konečné projektivní prostory}{Konečné projektivní prostory}}
 % 9 predn
 
+\subsection{KPP zaklady}
+
 \begin{definition}[Konečný projektivní prostor, kolinearita]\label{kpp:kpp}
     $(P,\LP)$ takový, že $P$ je konečná množina bodů a $\LP$ je množinový systém (přímek) na $P$, je konečný projektivní prostor, splňuje-li axiomy A1, A2, A3.
 
@@ -239,72 +241,6 @@
 \end{note}
 
 % 10 predn
-\begin{example}
-	Nechť $q = p^r$ taky $n \leq 3 \in \N$.
-	Uvažme $GF(q)^{n + 1}$, pak body jsou lineární obaly jednotlivých vektorů:
-	\[ P = \{ \langle u \rangle |\ u \in GF(q)^{n + 1} \setminus \{ 0 \} \} \]
-	Přímky budou všechny podprostory dimenze 2:
-	\[ \LP = \{ \langle u, v \rangle |\ u,v LN \in GF(q)^{n + 1} \} \]
-	Označme přímky určené vektory $u, v := l_{u, v}$.
-
-	Ověříme axiomy \cref{kpp:kpp}:
-	\begin{enumerate}
-		\item $|l_{u, v}|$.
-			Lineární kombinace dvou vektorů je tvaru $\alpha u + \beta v$.
-			Kde $\alpha, \beta \in GF(q)$, neboli $q$ možnosti zvolit každý.
-			Musíme ale zahodit kombinaci která dává 0 vektor.
-			Vždy ale $q - 1$ násobku stejného vektoru je dle definice stejný bod.
-			\[ \# = \frac{q^2 - 1}{q - 1} = q + 1 \]
-			Toto $q$ bude řad prostoru.
-		\item z konstrukce $\forall u, v LN \exists!$ přímka $l: \langle u \rangle, \langle v \rangle \in l$.
-		\item Nechť $u, v, w$ jsou LN vektory.
-			Vezmeme $a, b$ ležící na přímce $vu, uw$:
-			\[ a = \alpha u + \beta v, b = \gamma u + \delta w \]
-			Chceme $xa + yb = rv + sw$.
-			\begin{gather*}
-				x(\alpha u + \beta v) + y(\gamma u + \delta w) = rv + sw \\
-				x \alpha + y \gamma = 0 \\
-				x \beta = r \\
-				y \delta = s
-			\end{gather*}
-			Soustava má řešení.
-	\end{enumerate}
-\end{example}
-
-\begin{theorem}[Singerova konstrukce]
-    Existuje-li $(P,\LP)$ KPP řádu $q$ dimenze $n$, pak existuje cyklický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-SBIBD.
-\end{theorem}
-\begin{proof}
-	$V = P$, $\B = $ nadroviny v $(P, \LP) = $ podprostory $\dim = n - 1$.
-	Které vzniknou tak, že ve vektorovém prostoru vezmeme podprostor $\dim = n$.
-	\[ |V| = |P| = \frac{q^{n + 1}}{q - 1} = q^n + q^{n - 1} + \ldots + 1 \]
-	Velikost nadroviny $H \subseteq P: |H| = \frac{q^n - 1}{q - 1} = q^{n - 1} + q^{n - 2} + \ldots + 1$.
-
-	Nechť $H_1, H_2$ jsou podprostory KPP, které vznikli z podprostoru VP $U_1, U_2$.
-	Pak
-	\[ \dim(U_1 \cap U_2) = n - 1 \Rightarrow |U_1 \cap U_2| = q^{n - 1} \]
-	Jelikož v průniku podprostorů VP je vždy 0 vektor a $q - 1$ jsou násobky stejného vektoru neboli stejného bodu v KPP.
-	Takže
-	\[ |H_1 \cap H_2| = \frac{q^{n - 1} - 1}{q - 1} \]
-	Nadrovin je tolik, kolik je podprostoru v VP.
-	Každý podprostor VP je určen lineární rovnici, jejichž počet je roven $\dim$.
-	Neboli
-	\[ |B| = \frac{q^{n + 1}}{q - 1} = |V| = |P| \]
-
-	V matici incidence $A$ vzniklého množinového systému každé 2 sloupečky mají stejný \# 1.
-	% todo tady nechapu argument proc transpozice a radky misto transpozice a sloupce
-	Pokud matici transponujeme, tak řádky mají stejný počet 1.
-	Neboli $A$ je matice symetrického BIBDu a:
-	\[ |H_1 \cap H_2| = \frac{q^{n - 1} - 1}{q - 1} = \lambda \]
-
-    	% predn 10 21:00
-    	\includegraphics[scale=0.4]{g_8.eps}
-
-	Takže množinový systém je cyklický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-BIBD.
-	Cyklický BIBD znamená, že existuje automorfismus (neboli permutace) který je jediný cyklus.
-	Permutace bloků taky bude jediný cyklus.
-\end{proof}
-
 \begin{theorem}[O dimenzi průniku a spojení]
     Buďte $U,V$ podprostory $(P,\LP)$.
     Pak
@@ -443,6 +379,75 @@
 		\[ \dim_P \pi \cap \tau_1 = 1 \& \dim_P \sigma \cap \tau_2 = 1 \& \dim_P \tau_1 \cap \tau_2 = 1 \]
 		Takže $\pi \cong \tau_1 \cong \tau_2 \cong \sigma$.
     \end{enumerate}
+\end{proof}
+
+\subsection{Singerova konstrukce, Veblen–Young věta}
+
+% 10 predn
+\begin{example}
+	Nechť $q = p^r$ taky $n \leq 3 \in \N$.
+	Uvažme $GF(q)^{n + 1}$, pak body jsou lineární obaly jednotlivých vektorů:
+	\[ P = \{ \langle u \rangle |\ u \in GF(q)^{n + 1} \setminus \{ 0 \} \} \]
+	Přímky budou všechny podprostory dimenze 2:
+	\[ \LP = \{ \langle u, v \rangle |\ u,v LN \in GF(q)^{n + 1} \} \]
+	Označme přímky určené vektory $u, v := l_{u, v}$.
+
+	Ověříme axiomy \cref{kpp:kpp}:
+	\begin{enumerate}
+		\item $|l_{u, v}|$.
+			Lineární kombinace dvou vektorů je tvaru $\alpha u + \beta v$.
+			Kde $\alpha, \beta \in GF(q)$, neboli $q$ možnosti zvolit každý.
+			Musíme ale zahodit kombinaci která dává 0 vektor.
+			Vždy ale $q - 1$ násobku stejného vektoru je dle definice stejný bod.
+			\[ \# = \frac{q^2 - 1}{q - 1} = q + 1 \]
+			Toto $q$ bude řad prostoru.
+		\item z konstrukce $\forall u, v LN \exists!$ přímka $l: \langle u \rangle, \langle v \rangle \in l$.
+		\item Nechť $u, v, w$ jsou LN vektory.
+			Vezmeme $a, b$ ležící na přímce $vu, uw$:
+			\[ a = \alpha u + \beta v, b = \gamma u + \delta w \]
+			Chceme $xa + yb = rv + sw$.
+			\begin{gather*}
+				x(\alpha u + \beta v) + y(\gamma u + \delta w) = rv + sw \\
+				x \alpha + y \gamma = 0 \\
+				x \beta = r \\
+				y \delta = s
+			\end{gather*}
+			Soustava má řešení.
+	\end{enumerate}
+\end{example}
+
+\begin{theorem}[Singerova konstrukce]
+    Existuje-li $(P,\LP)$ KPP řádu $q$ dimenze $n$, pak existuje cyklický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-SBIBD.
+\end{theorem}
+\begin{proof}
+	$V = P$, $\B = $ nadroviny v $(P, \LP) = $ podprostory $\dim = n - 1$.
+	Které vzniknou tak, že ve vektorovém prostoru vezmeme podprostor $\dim = n$.
+	\[ |V| = |P| = \frac{q^{n + 1}}{q - 1} = q^n + q^{n - 1} + \ldots + 1 \]
+	Velikost nadroviny $H \subseteq P: |H| = \frac{q^n - 1}{q - 1} = q^{n - 1} + q^{n - 2} + \ldots + 1$.
+
+	Nechť $H_1, H_2$ jsou podprostory KPP, které vznikli z podprostoru VP $U_1, U_2$.
+	Pak
+	\[ \dim(U_1 \cap U_2) = n - 1 \Rightarrow |U_1 \cap U_2| = q^{n - 1} \]
+	Jelikož v průniku podprostorů VP je vždy 0 vektor a $q - 1$ jsou násobky stejného vektoru neboli stejného bodu v KPP.
+	Takže
+	\[ |H_1 \cap H_2| = \frac{q^{n - 1} - 1}{q - 1} \]
+	Nadrovin je tolik, kolik je podprostoru v VP.
+	Každý podprostor VP je určen lineární rovnici, jejichž počet je roven $\dim$.
+	Neboli
+	\[ |B| = \frac{q^{n + 1}}{q - 1} = |V| = |P| \]
+
+	V matici incidence $A$ vzniklého množinového systému každé 2 sloupečky mají stejný \# 1.
+	% todo tady nechapu argument proc transpozice a radky misto transpozice a sloupce
+	Pokud matici transponujeme, tak řádky mají stejný počet 1.
+	Neboli $A$ je matice symetrického BIBDu a:
+	\[ |H_1 \cap H_2| = \frac{q^{n - 1} - 1}{q - 1} = \lambda \]
+
+    	% predn 10 21:00
+    	\includegraphics[scale=0.4]{g_8.eps}
+
+	Takže množinový systém je cyklický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-BIBD.
+	Cyklický BIBD znamená, že existuje automorfismus (neboli permutace) který je jediný cyklus.
+	Permutace bloků taky bude jediný cyklus.
 \end{proof}
 
 \begin{theorem}[Nadroviny KPP tvoří BIBD]
@@ -628,7 +633,7 @@
     (Pozor, může nastat $C\in H$ i $C\not\in H$.)
 \end{definition}
 
-\begin{lemma}[Kolineace fixující nadrovinu]
+\begin{lemma}[Kolineace fixující nadrovinu]\label{kpp:kolin_centr_kolin}
     Buď $\alpha$ kolineace fixující všechny body nadroviny $H\subseteq P$.
     Pak existuje $C\in P$ tak, že $\alpha$ fixuje  všechny přímky procházející bodem $C$.
 
@@ -706,7 +711,7 @@
     Centrální kolineace s osou $H$ a středem $C$ tvoří grupu vzhledem ke skládání, jednotkou je identita.
 \end{lemma}
 
-\begin{lemma}[Vlastnosti centrální kolineace]
+\begin{lemma}[Vlastnosti centrální kolineace]\label{kpp:centr_kolin_prop}
     Buď $\alpha$ centrální kolineace s osou $H$ a středem $C$. Potom
     \begin{enumerate}
         \item $P\not\in H\cup\{C\}\Rightarrow \forall x: \alpha(x)$ jednoznačně určen bodem $\alpha(P)$ tak, že:
@@ -814,15 +819,48 @@
     \end{itemize}
 \end{definition}
 
-\begin{theorem}[Kolineace tvoří grupu (BD)]
-    Množina $(\mathrm{Col}(H), \circ)$ je grupa, navíc $\mathrm{Col}(C,H)$ je její podgrupa a $T(H)$ je též její podgrupa.
-    Navíc $T(H)$ je komutativní.
+\begin{theorem}[Kolineace tvoří grupu]\label{kpp:kolin_group}
+	\begin{enumerate}
+		\item Množina $(\mathrm{Col}(H), \circ)$ je grupa
+		\item navíc $\mathrm{Col}(C,H)$ je její podgrupa a $T(H)$ je též její podgrupa.
+		\item Navíc $T(H)$ je komutativní.
+	\end{enumerate}
 \end{theorem}
-\begin{proof}
-    TODO
+\begin{proof}~
+	\begin{enumerate}
+		\item Složení kolineací fixujících každý bod nadroviny $H$ je opět kolineace fixující každý bod nadroviny $H$.
+	 Podle \cref{kpp:kolin_centr_kolin} je tato kolineace centrální, takže Col(H) je grupa.
+ 		\item
+ 		\item
+		\item Za prvé, $T(H)$ je grupa. Nechť $\alpha, \beta \ne id \in T(H)$.
+			Což taky znamená, že nefixuji žádný bod z $P^*$ dle \cref{kpp:centr_kolin_prop}.
+			Pak ale i $\alpha^{-1}$ nefixuje žádný bod z $P^*$, je kolineace s osou $H$ se středem v $H \Rightarrow \alpha^{-1} \in T(H)$.
+
+			Dal víme $\alpha, \beta \in \mathrm{Col}(C,H)$, zbývá ukázat že střed $\alpha \circ \beta \in H$.
+			Nechť sporem $\alpha \circ \beta$ fixuje nějaký bod $P \in P^*$.
+			Pak $\beta(P) = \alpha^{-1}(P) \ne P$.
+			Proto dle \cref{kpp:centr_kolin_prop}.3 kolineace je jednoznačné těmi body určená, neboli $\beta = \alpha^{-1} \Rightarrow \alpha \circ \beta = id \in T(H)$.
+
+			Komutativita: znovu BUNO $\alpha, \beta \ne id \in T(H)$.
+			Nechť $C$ je středem $\alpha, D$ je středem $\beta$, neboli
+			\[ \forall X \in P^*: C = X\alpha(X) \cap H \& D = X\beta(X) \cap H \]
+			Pak můžou nastat 2 možnosti:
+			\begin{enumerate}
+				\item $C \ne D$. Body $D, X, \beta(X)$ jsou kolineární, pak i $\alpha(D) = D, \alpha(X), \alpha(\beta(X))$.
+					Analogicky, $C, \beta(X), \alpha(\beta(X))$. Přímky jsou různé, proto
+					\[ \alpha(\beta(X)) \in D\alpha(X) \cap C\beta(X) \]
+					Podobně $\beta(\alpha(X)) \in D\alpha(X) \cap C\beta(X)$.
+					Pak
+					\[ D\alpha(X) \ne C\beta(X) \Rightarrow \alpha(\beta(X)) = \beta(\alpha(X)) \]
+				\item $C = D$. Zvolme bod $E \ne C \in H$ a nechť $\epsilon \ne id$ je centrální kolineace s osou $H$ a středem (existuje dle Baerovi \cref{kpp:baer}).
+					Dle (a) $\epsilon$ komutuje s $\alpha, \beta$.
+					Pak jelikož $\beta\epsilon \notin \mathrm{Col}(C,H)$ (jinak by $\epsilon$ střed C) neboli dle (a) $\beta \epsilon$ komutuje s $\alpha$:
+					\[ \alpha\beta = \alpha\beta(\epsilon\epsilon^{-1}) = \alpha(\beta\epsilon)\epsilon^{-1} = (\beta\epsilon)\alpha\epsilon^{-1} = \beta(\alpha\epsilon)\epsilon^{-1} = \beta\alpha (\epsilon\epsilon^{-1}) = \beta \alpha \]
+			\end{enumerate}
+	\end{enumerate}
 \end{proof}
 
-\begin{definition}[Sčítání na $P\setminus H$]
+\begin{definition}[Sčítání na $P\setminus H$]\label{kpp:sum_operation}
 	Uvažme prostor $P^* = \mathcal{P}\setminus H$ který je KAR, protože jsme každou přímku zkrátili o 1 bod.
 
     Dle Baerovy věty \cref{kpp:baer} existuje pro každý bod $P \in P^*$ centrální kolineace $\tau_P\in T(H)$ taková, že $\tau_P(O)=P$.
@@ -845,22 +883,39 @@
 \end{theorem}
 \begin{proof}
     Baerova věta \cref{kpp:baer} zajišťuje, že $P\rightarrow \tau_P$ je bijekce, a izomorfismus plyne z definice.
-
-    Taky
-    \[ \tau_{-x} \circ \tau_x = id \Rightarrow \tau_{-x} = \tau_x^{-1} \]
-    % todo finish
 \end{proof}
+
+\begin{note}
+	Nulovým prvkem v $(P^*, +)$ je bod $O, \tau_O = id$.
+	Opačný prvkem k $X$ je $-X, (\tau_X)^{-1}(O)$ je kolineace, je $-X \in OX$.
+	Pak pro všechna $X, Y \in P^*$ platí:
+	\begin{gather*}
+		\tau_{X + Y} = \tau_X \tau_Y\\
+    		\tau_{-X} \circ \tau_X = id \Rightarrow \tau_{-X} = \tau_X^{-1}\\
+		\tau_{-(X + Y)} = (\tau_X \tau_Y)^{-1} = \tau_X^{-1} \tau_Y^{-1} = \tau_{-Y}\tau_{-X} = \tau_{-Y + (-X)}\\
+		\text{Tedy}\\
+		-(X + Y) = (-X) + (-Y)
+	\end{gather*}
+\end{note}
 
 \begin{definition}[Operace s kolineacemi]
     Označme $\D_O$ množinu všech centrálních kolineací s osou $H$ a středem $O$.
-    Dále označme $\omega$ zobrazení z $P$ do $P$, které $X$ zobrazí samo na sebe, je-li v ose a na $O$, je-li $X$ mimo osu.
+    Dále označme $\omega$ zobrazení z $P$ do $P$, definované předpisem:
+    \[ \omega(X) = \twopartdef{X}{X \in H}{O}{X \in P^*} \]
+    %které $X$ zobrazí samo na sebe, je-li v ose a na $O$, je-li $X$ mimo osu.
 
-    Na množině $F=D_O\cup\{\omega\}$ definujeme sčítání a násobení následovně:
-    $(\alpha+\beta)(X) = X$ pro $X\in H$ a $\alpha(X)+\beta(X)$ pro $X$ mimo osu.
+    Na množině $F=\D_O\cup\{\omega\}$ definujeme sčítání a násobení následovně:
+    \[ (\alpha+\beta)(X) = \twopartdef{X}{X \in H}{\alpha(X)+\beta(X)}{X \in P^*} \]
 \end{definition}
 
+\begin{observation}
+	Pro každé $\alpha \in F$ platí:
+	\[ \alpha + \omega = \omega + \alpha = \alpha \& \alpha \cdot \omega = \omega \cdot \alpha = \omega \]
+\end{observation}
+
 \begin{lemma}[O zobrazení $\mu$]
-    Definujme zobrazení $\mu$ předpisem $\mu(X) = X$ pro $X\in H$ a $\mu(X) = -X$ jinak.
+    Definujme zobrazení $\mu$ předpisem
+    \[ \mu(X) = \twopartdef{X}{X \in H}{-X}{jinak} \]
     Pak $\mu\in \D_O$.
 \end{lemma}
 \begin{proof}
@@ -868,26 +923,40 @@
     Stačí tedy ukázat, že $\mu$ je kolineace -- neboť $\mu$ zachovává kolinearitu.
     Pro body ležící na přímce procházející bodem $O$ to je zjevné.
     Pro $g$ neprocházející bodem $O$ mějme $C=g\cap H$.
-    Pak $g=\{P+X: X\in OC\}$ a $\mu(g) = \{\mu(P+X): X\in OC\} = \{-P+(-X):X\in OC\}=\{-P+Y: Y\in OC\}=-PC$.
+    Pak $g=\{P+X: X\in OC\}$ a
+    \[ \mu(g) = \{\mu(P+X): X\in OC\} = \{-P+(-X):X\in OC\}=\{-P+Y: Y\in OC\}=-PC \]
 \end{proof}
 \begin{lemma}[Kolineace jsou automorfismy grupy]
     Každá kolineace $\alpha\in \D_O$ je automorfismus grupy $(P^*,+)$, neboli $\alpha(O)=O$ a $\alpha(X+Y)=\alpha(Y)+\alpha(Y)$, $\alpha(-X)=-\alpha(X)$ pro všechna $X,Y\in P^*$.
 \end{lemma}
 \begin{proof}
-    TODO
+    TODO Lemma 9
 \end{proof}
 \begin{lemma}[Součet kolineací je v $F$]
     Pro každé dvě ne nutně různé kolineace $\alpha,\beta\in \D_O$ je $\alpha+\beta\in F$.
 \end{lemma}
 \begin{proof}
-    TODO
+    TODO Lemma 10
 \end{proof}
+
 \begin{theorem}[Veblenova]
     Struktura $(F,+,\cdot)$ je konečné těleso o $q$ prvcích.
 \end{theorem}
-\begin{proof}
-	% todo write idea 12 predn od 01:18:00
-    TODO
+\begin{proof}~
+	% idea 12 predn od 01:18:00
+	\begin{enumerate}
+		\item Podle \cref{kpp:kolin_group} je $\D_O = \mathrm{Col}(C,H)$ grupa vůči operaci $\circ$.
+		\item Sčítání na $F$ \cref{kpp:sum_operation} tvoří komutativní grupu s nulovým prvkem $\omega$, přičemž opačným prvkem k $\alpha \in F$ je $\mu \alpha$.
+		\item Je snadné ukázat, že operace $+$ a $\circ$ jsou svázány distributivními zákony.
+		\item Velikost $F$.
+	Zvolme pevně bod $P \in P^*\setminus \{O\}$.
+	Podle \cref{kpp:centr_kolin_prop} je centrální kolineace $\alpha \in \D_O$ jednoznačně určena hodnotou $\alpha(P) \in OP$.
+	Na přímce $OP$ je $q + 1$ bodů, z toho 2 nelze použít ($O$ a průsečík přímky $OP$ s nadrovinou $H$), takže máme $q - 1$ možností (včetně identické kolineace).
+	Podle Baerovy věty \cref{kpp:baer} pro každou z těchto možností
+centrální kolineace skutečně existuje a je jediná.
+	Je tedy $|\D_O| = q - 1 \Rightarrow |F| = q$.
+	\end{enumerate}
+
 \end{proof}
 \begin{consequence}[Řád KPP je mocnina prvočísla]
     KPP řádu $q$ dimenze $>2$ existuje právě tehdy, když $q$ je mocnina prvočísla.
