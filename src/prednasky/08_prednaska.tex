@@ -592,14 +592,14 @@
         \item $\alpha$ je automorfismus
         \item $\overline{\alpha}$ je kolineace
         \item $\alpha$ zachovává kolinearitu:
-		\[ \forall x \ne y \ne z \ne x \in V: x, y, z \text{kolineární}\ \Rightarrow \alpha(x), \alpha(y), \alpha(z) \text{kolineární} \]
+		\[ \forall x \ne y \ne z \ne x \in V: x, y, z\ \text{kolineární}\ \Rightarrow \alpha(x), \alpha(y), \alpha(z)\ \text{kolineární} \]
     \end{enumerate}
 \end{theorem}
 \begin{proof}
     \begin{enumerate}
         \item Označme zobrazení na prvcích a blocích jako $\overline{\alpha}$.
 		Aby vůbec byla kolineace, musí zachovávat incidence:
-		\[ \overline{\alpha}(B) = \{ \alpha(x): x \in B \]
+		\[ \overline{\alpha}(B) = \{ \alpha(x): x \in B \} \]
 		Z vlastnosti automorfismu, zobrazuje blok na blok, neboli je kolineace.
         \item $\overline{\alpha}$ je kolineace což implikuje, že $\overline{\alpha}$ permutace na blocích $\Rightarrow \alpha$ je automorfismus.
         \item z kolinearity
@@ -664,11 +664,11 @@
 		    \[ \alpha(g) = \alpha(PC) = \alpha(P)\alpha(C) \stackrel{osa}{=} P\alpha(C) \stackrel{předpoklad}{=} PC \]
 		    Neboli každá přímka procházející $C$ je fixovaná.
 	    \item $ \forall X \in P \setminus H: \alpha(X) \ne X$.
-		    Vezmeme libovolný $Y \notin H$, pak $\alpha(Y) \ne Y, \alpha(Y) \notin H$.
+		    Vezmeme libovolný $Y \notin H$, pak $\alpha(P) \ne P, \alpha(P) \notin H$.
 		    Nechť $P\alpha(P) \cap H = C$, dal nějakou přímky která neleží v $H$.
 		    Nechť na této přímce je bod $Q \notin H$.
 
-		    $PQ \notin H \Rightarrow PQ \cap H = S$
+		    \[ PQ \notin H \Rightarrow PQ \cap H = S \]
 		    Pak $\alpha: PQS \to \alpha(P) \alpha(Q) \alpha(S) = \alpha(P) \alpha(Q) S$.
 		    Takže $\alpha(Q) \in S \alpha(P)$
 		    $P, Q$ jsou různé body, proto i přímky $Q\alpha(Q) \ne P\alpha(P)$.
@@ -676,11 +676,12 @@
 		    Proto $\exists T:= Q\alpha(Q) \cap P\alpha(P)$.
 		    Pak
 		    \[ \alpha(T) = \alpha(Q\alpha(Q)) \cap \alpha(P\alpha(P)) \]
-		    Kvůli tomu, že $H$ střed, $P\alpha(P)$ je fixovaná, analogicky $Q\alpha(Q)$.
+		    Kvůli tomu, že $H$ osa, $\alpha(PC) = \alpha(P)C = PC \Rightarrow P\alpha(P)$ je fixovaná, analogicky $Q\alpha(Q)$.
 		    Neboli
 		    \[ \alpha(T) = \alpha(Q\alpha(Q)) \cap \alpha(P\alpha(P)) = Q\alpha(Q) \cap P\alpha(P) = T \]
 		    Což implikuje $T = H \cap P\alpha(P)$, protože body mimo $H$ nejsou fixované.
 		    Jediný takový bod je ale $C \Rightarrow T = C$.
+		    Takže přímka $QC$ je fixovaná $\alpha$.
 
     	% predn 12 14:40
     	\includegraphics[scale=0.3]{g_18.eps}
@@ -688,12 +689,12 @@
 \end{proof}
 
 \begin{lemma}[Rozšíření kolineace]\label{kpp:extension}
-    Mějme $q_0\in\LP\rightarrow (P',\LP'), P' = P\setminus q_0$ množinový systém.
-    Pak každou kolineaci $\alpha$ množinového systému $(P',\LP')$ je možno rozšířit na kolineaci $\alpha^*$ prostoru $(P, \LP)$ právě jedním způsobem, a tato kolineace fixuje $q_0$.
+    Mějme $q_0\in\LP\rightarrow (P',\LP'), P' = P\setminus g_0$ množinový systém.
+    Pak každou kolineaci $\alpha$ množinového systému $(P',\LP')$ je možno rozšířit na kolineaci $\alpha^*$ prostoru $(P, \LP)$ právě jedním způsobem, a tato kolineace fixuje $g_0$.
 \end{lemma}
 \begin{proof}
 	Z původního KPP vznikne množinový systém $(P',\LP')$:
-	\[ P' = P\setminus q_0 \& \LP' = \{ l': l' = l \setminus g_0: l \in \LP \} \]
+	\[ P' = P\setminus g_0 \& \LP' = \{ l': l' = l \setminus g_0: l \in \LP \} \]
 	Potřebujeme dodefinovat $\alpha^*$ pro přímku $g_0$, jinde je shodné s $\alpha$.
 	Přímky disjunktní s $g_0$ jsou fixované:
 	\[ \forall l \in \LP \cap \LP': l \cap g_0 = \emptyset: \alpha^*(l) = \alpha(l) \]
@@ -703,11 +704,11 @@
 	Dokážeme že to nejde
 	\[ \forall g \ne h \in \LP: g \cap h = p \in g_0 \Rightarrow |\alpha^*(g) \cap \alpha^*(h)| \ne 0 \& \alpha^*(g) \cap \alpha^*(h) \subseteq g_0 \]
     \begin{enumerate}
-	    \item $q > 2$, takže přímky $g, h$ kromě průniku mají ještě aspoň 3 body.
+	\item $q > 2$, takže přímky $g, h$ kromě průniku mají ještě aspoň 3 body.
 		    Pak určuji rovinu $H = \langle g \cup h \rangle$.
 		    Z velikosti podprostoru, máme ještě nějakou přímku a bod $Q \in H: Q \notin g \cup h$.
 		    Vezmeme přímky $Q \in m, n: g,h \cap n,m \ne \emptyset$.
-		    Z kolineace $\alpha(g'), \alpha(h')$ jsou ve stejné rovine $\Rightarrow \alpha^*(g) \cap \alpha*(h)$ taky.
+		    Z kolineace kvůli $\alpha(m), \alpha(n)$, $\alpha(g'), \alpha(h')$ jsou ve stejné rovině $\Rightarrow \alpha^*(g) \cap \alpha^*(h)$ taky.
 		    Pak $\exists x = \alpha^*(g) \cap \alpha^*(h) \in g_0$.
 
     	% predn 12 28:30
@@ -723,7 +724,7 @@
     \end{enumerate}
 \end{proof}
 
-\begin{lemma}[Centrální kolineace jsou grupa (BD)]
+\begin{lemma}[Centrální kolineace tvoří grupu (BD)]
     Centrální kolineace s osou $H$ a středem $C$ tvoří grupu vzhledem ke skládání, jednotkou je identita.
 \end{lemma}
 \begin{proof}
@@ -761,7 +762,7 @@ Source ~\cite[p. 96]{beutelspacher1998projective}.
 	    \item Vezmeme $X \notin PC$.
 		    Přímka $PX \notin H \Rightarrow PX \cap H = F$ bod.
 		    \[ X \in FP \Rightarrow \alpha(X) \in \alpha(FP) = \alpha(F)\alpha(P) \stackrel{osa}{=} F\alpha(P) \]
-		    Protože $\alpha$ kolineace: $X \in SC \Rightarrow \alpha(X) \in \alpha(XC) \stackrel{střed}{=} XC$.
+		    Protože $\alpha$ kolineace: $X \in XC \Rightarrow \alpha(X) \in \alpha(XC) \stackrel{střed}{=} XC$.
 		    $XC, FP$ jsou různé přímky, proto $\alpha(X) = XC \cap F\alpha(P)$.
 		    Taky $X \ne \alpha(X)$ protože přímky $X \in FP, \alpha(X) \in F\alpha(P)$ jsou různé $X \notin F\alpha(P)$.
 
@@ -779,9 +780,12 @@ Source ~\cite[p. 96]{beutelspacher1998projective}.
 \begin{consequence}[Jednoznanost středu i osy kolineace]
     Je-li $\alpha$ neidentická kolineace, pak její osa i střed jsou jednoznačně určené.
 \end{consequence}
-\begin{proof}
+\begin{proof}~
 	\begin{enumerate}
 		\item Osa je jednoznačná.
+			Nechť $\alpha$ fixuje 2 nadroviny $H \ne A$.
+			Průnik je o 1 dimenze menší, neboli $\exists X, Y \in A \setminus H$ které jsou fixované.
+			Spor s \cref{kpp:centr_kolin_prop}.2.
 		\item Nechť $H$ je osa.
 			Nechť $\alpha$ neidentická kolineace se středy $C_1 \ne C_2 \notin H$.
 			Pak spor protože dle \cref{kpp:centr_kolin_prop} žádný další bod kromě $C_1$ není fixovaný.
@@ -806,7 +810,7 @@ Source ~\cite[p. 96]{beutelspacher1998projective}.
     Dokážeme, že $\alpha$ je kolineace v $P'$.
     \begin{enumerate}
 	    \item neboť $\alpha$ je bijekce, jelikož máme
-		    \[ c\neq \alpha(x_1)\neq\alpha(x_2)\neq c\Rightarrow \alpha(x_1)\neq\alpha(x_2) \]
+		    \[ c \neq x_1 \neq x_2 \neq c\Rightarrow \alpha(x_1)\neq\alpha(x_2) \]
     		\begin{enumerate}
 			\item $x_1, x_2, P$ kolineární.
 
@@ -919,7 +923,8 @@ Source ~\cite[p. 96]{beutelspacher1998projective}.
 
 \begin{note}
 	Nulovým prvkem v $(P^*, +)$ je bod $O, \tau_O = id$.
-	Opačný prvkem k $X$ je $-X, (\tau_X)^{-1}(O)$ je kolineace, je $-X \in OX$.
+	Opačný prvkem k $X$ je $-X$.
+	Protože $(\tau_X)^{-1}(O)$ je kolineace, je $-X \in OX$.
 	Pak pro všechna $X, Y \in P^*$ platí:
 	\begin{gather*}
 		\tau_{X + Y} = \tau_X \tau_Y\\
@@ -930,7 +935,7 @@ Source ~\cite[p. 96]{beutelspacher1998projective}.
 	\end{gather*}
 \end{note}
 
-\begin{definition}[Operace s kolineacemi]
+\begin{definition}[Operace s kolineacemi, nula]
     Označme $\D_O$ množinu všech centrálních kolineací s osou $H$ a středem $O$.
     Dále označme $\omega$ zobrazení z $P$ do $P$, definované předpisem:
     \[ \omega(X) = \twopartdef{X}{X \in H}{O}{X \in P^*} \]
@@ -952,7 +957,7 @@ Source ~\cite[p. 96]{beutelspacher1998projective}.
 \end{lemma}
 \begin{proof}
     Z definice $\mu$ fixuje každý bod nadroviny i střed $O$.
-    Stačí tedy ukázat, že $\mu$ je kolineace -- neboť $\mu$ zachovává kolinearitu.
+    Stačí tedy ukázat, že $\mu$ je kolineace dle \cref{kpp:equiv} -- neboť $\mu$ zachovává kolinearitu.
     Pro body ležící na přímce procházející bodem $O$ to je zjevné.
     Pro $g$ neprocházející bodem $O$ mějme $C=g\cap H$.
     Pak $g=\{P+X: X\in OC\}$ a
