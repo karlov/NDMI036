@@ -68,28 +68,31 @@
 	Neboli $\langle S \cup \{a\} \rangle \subseteq \bigcup_{x\in S}ax$.
 
 	Dle \cref{kpp:subspace} musíme ukázat:
-	\[ \forall t \ne r: tr \subseteq AX \]
+	\[ \forall u \ne v: uv \subseteq AX \]
 	Rozbor případů:
 	\begin{enumerate}
-		\item $t = a \lor r = a$, tak druhý bod leží na nějaké přímce $ax$.
+		\item $u = a \lor v = a$, tak druhý bod leží na nějaké přímce $ax$.
 			Triviálně cela přímka $ax \subseteq AX$.
-		\item $t \in S \land r \in S$ je splněno dle \cref{kpp:subspace}.
-		\item BUNO $(t \in S \iff t = x) \land r \not\in S$.
-			Pokud $r \in ax$ triviálně.
-			Jinak $r \in ay, y \in S$.
+		\item $u \in S \land v \in S$ je splněno dle \cref{kpp:subspace}.
+		\item BUNO $(u \in S \iff u = x) \land v \not\in S$.
+			Pokud $u \in ax$ triviálně.
+			Jinak $u \in ay, y \in S$.
 			// TODO finish
-		\item $r, t \notin S; r, t \ne a; rt \nsupseteq a$
-			Chceme $w \in rt \Rightarrow w \in AX$.
+		\item $u, v \notin S; u, v \ne a; uv \nsupseteq a$
+			Chceme $w \in uv \Rightarrow w \in AX$.
 
 		% predn 9 32:17
 		\includegraphics[scale=0.5]{g_1.eps}
 
-		Nechť $r^{\prime} \in ar \land r^{\prime} \in S$ analogicky $t^{\prime}$.
+		Nechť $u^{\prime} \in au \land u^{\prime} \in S$ analogicky $v^{\prime}$.
 		Dle A3:
-		\[ \exists y: rt \cap r^{\prime}t^{\prime} \in S \]
-		Další 3ce nekolineárních bodů je $r, r^{\prime}, y$.
-		Proto $\exists w^{\prime} \in r^{\prime}y \subseteq S$.
+		\[ \exists y: uv \cap u^{\prime}v^{\prime} \in S \]
+		Další 3ce nekolineárních bodů je $u, u^{\prime}, y$.
+		Proto $\exists w^{\prime} \in u^{\prime}y \subseteq S$.
 		Pak i $w \in w^{\prime}a \Rightarrow w \in AX$.
+
+		% predn 9 37:00
+		\includegraphics[scale=0.5]{g_25.eps}
 	\end{enumerate}
 \end{proof}
 
@@ -124,7 +127,7 @@
 		% predn 9 46:53
 		\includegraphics[scale=0.4]{g_2.eps}
 	\item podíváme se na body $s_1, s_2, v$:
-		\[ t_1y \cap s_2v = t_2 \land t_1y \cap s_1v = y \stackrel{A3}{\Rightarrow} \exists z \in S: t_2y \cap s_1s_2 = z \]
+		\[ t_2y \cap s_2v = t_2 \land t_2y \cap s_1v = y \stackrel{A3}{\Rightarrow} \exists z \in S: t_2y \cap s_1s_2 = z \]
 		% predn 9 48:26
 		\includegraphics[scale=0.4]{g_3.eps}
 
@@ -208,6 +211,7 @@
 \begin{definition}[Projektivní báze]
     Projektivní báze je do inkluze maximální projektivně nezávislá množina.
 \end{definition}
+
 \begin{consequence}[Projektivně nezávislá množina a báze]\label{kpp:basis}
     Každou projektivně nezávislou množinu lze doplnit na bázi a všechny projektivní báze mají stejnou mohutnost.
 \end{consequence}
@@ -224,6 +228,7 @@
 \begin{definition}[Dimenze]
     $\dim_P S=|B|-1$, kde $B$ je projektivní báze $S$.
 \end{definition}
+
 \begin{note}[O dimenzi]
     \begin{itemize}
         \item $\dim_P(\{a\},\emptyset)=0$
@@ -241,7 +246,7 @@
 \end{note}
 
 % 10 predn
-\begin{theorem}[O dimenzi průniku a spojení]
+\begin{theorem}[O dimenzi průniku a spojení]\label{kpp:dim_join_inter}
     Buďte $U,V$ podprostory $(P,\LP)$.
     Pak
     \[ \dim_P(U \cap V) + \dim_P(\langle U \cup V \rangle) = \dim_P(U)+\dim_P(V) \]
@@ -258,7 +263,7 @@
 	Označme:
 	\[ \dim_P (U) = u, \dim_P (V) = v, \dim_P (U \cap V) = w \]
 	Taky víme
-	\[ |B| = u + 1, |A| = v + 1, |A| = w + 1 \]
+	\[ |B| = u + 1, |C| = v + 1, |A| = w + 1 \]
 	\paragraph{Pozorování 1} $B \cup C$ je pr nezávislá množina a generuje $\langle U \cup V \rangle$.
 	Vezmeme libovolný $x \in \langle U \cup V \rangle$ tak leží na přímce $ab: a \in U, b \in V$.
 	Taky $a, b$ leží na přímkách spojujících 2 body z bázi.
@@ -385,7 +390,7 @@
 
 % 10 predn
 \begin{example}
-	Nechť $q = p^r$ taky $n \leq 3 \in \N$.
+	Nechť $q = p^r$ taky $n \geq 3 \in \N$.
 	Uvažme $GF(q)^{n + 1}$, pak body jsou lineární obaly jednotlivých vektorů:
 	\[ P = \{ \langle u \rangle |\ u \in GF(q)^{n + 1} \setminus \{ 0 \} \} \]
 	Přímky budou všechny podprostory dimenze 2:
@@ -450,7 +455,7 @@
 	Permutace bloků taky bude jediný cyklus.
 \end{proof}
 
-\begin{theorem}[Nadroviny KPP tvoří BIBD]
+\begin{theorem}[KPP $\exists$ BIBD]
     Buď $(P,\LP)$ konečný projektivní prostor řádu $q$ a dimenze $n$.
     Pak jeho nadroviny tvoří symetrický $(\frac{q^{n+1}-1}{q-1},\frac{q^n-1}{q-1},\frac{q^{n-1}-1}{q-1})$-BIBD.
 \end{theorem}
@@ -461,14 +466,14 @@
 
 		    Indukční krok: nechť $H$ podprostor $P$.
 		    Dle i.p $|H| = q^{n - 1} + q^{n - 2} + \ldots + 1$.
-		    Vezmeme $x$ ležící mimo $H$, vytvoříme podprostor spojením každého bodu z $H$ s $x$.
+		    Vezmeme $x \in P \setminus H$, vytvoříme podprostor spojením každého bodu $h \in H$ s $x$ přímkou $xh$, dle \cref{kpp:point_add_sub}.
 		    Na každé z těchto přímek je dalších $q$ bodů.
 		    Neboli
 		    \[ |P| = q \cdot |H| + 1 = q(q^{n - 1} + q^{n - 2} + \ldots + 1) + 1 = q^n + q^{n - 1} + \ldots + 1 \]
 	    \item \# nadrovin.
 		    Nechť znovu $H, A$ nadroviny: $H \cap A = U$
-		    \[ \dim_P H \cup A = n \Rightarrow \dim_P U = n - 2 \]
-		    $U$ je nadrovina v $H$.
+		    \[ \dim_P H \cup A = n \stackrel{\cref{kpp:dim_join_inter}}{\Rightarrow} \dim_P U = n - 2 \]
+		    $U$ je nadrovina v $H$ taky $U$ je průnikem $H$ s $q$ dalšími nadrovinami.
 		    $A$ vznikne přidáním přímek mezi 1 bod mimo průnik a $U$.
 		    \[ |P \setminus H| = (q^n + q^{n - 1} + \ldots + 1) - (q^{n - 1} + q^{n - 2} + \ldots + 1) = q^n \]
 		    Analogicky
@@ -477,7 +482,9 @@
 		    Dle i.p $H$ má $(q^{n - 1} + q^{n - 2} + \ldots + 1)$ nadrovin.
 		    Z nich vznikne
 		    \[ q(q^{n - 1} + q^{n - 2} + \ldots + 1) + \text{sama}\ H = q^n + q^{n - 1} + \ldots + 1 \]
-
+	    \item Vezměme bod $X \in H$.
+		    Každá další nadrovina, která bod X obsahuje, protíná $H$ v prostoru projektivní dimenze $(n - 2)$, tento průnik je tedy nadrovina v $H$ obsahující bod $X$.
+		    Podle indukčního předpokladu je takovýchto nadrovin $q^{n-2} + q^{n-3} + \ldots + 1$, a podobně jako v předchozím bodě, každá z nich vznikla jako průnik s $q$ možnými nadrovinami v $P$.
     \end{enumerate}
 \end{proof}
 
@@ -710,6 +717,16 @@
 \begin{lemma}[Centrální kolineace jsou grupa (BD)]
     Centrální kolineace s osou $H$ a středem $C$ tvoří grupu vzhledem ke skládání, jednotkou je identita.
 \end{lemma}
+\begin{proof}
+	Nechť $\Gamma$ je množina centrálních kolineace s osou $H$ a středem $C$.
+	Je neprázdná, protože obsahuje identitu.
+
+	$\Gamma$ je uzavřená na kompozice, protože pro libovolné $\alpha, \beta \in \Gamma, \alpha \circ \beta$ fixuje body $H$ a každou přímku procházející bodem $C$.
+
+	Konečné, $\forall \alpha \in \Gamma$ je $\alpha^{-1} \in \Gamma$ protože $\alpha\alpha^{-1} = id$, $\alpha^{-1}$ taky musí fixovat body $H$ a každou přímku procházející bodem $C$.
+\end{proof}
+% lemma 3.1.2
+Source ~\cite[p. 96]{beutelspacher1998projective}.
 
 \begin{lemma}[Vlastnosti centrální kolineace]\label{kpp:centr_kolin_prop}
     Buď $\alpha$ centrální kolineace s osou $H$ a středem $C$. Potom
@@ -746,7 +763,7 @@
 	Vezmeme libovolný $R \notin PC, H$, přímka $RC$ jednoznačně určuje bod $\alpha(R)$.
 	$X \notin RC$, dle 1) $\alpha(X)$ je jednoznačně určen $\alpha(R)$.
 
-	\item TODO
+	\item Plyne okamžitě z 1).
     \end{enumerate}
 \end{proof}
 
@@ -754,7 +771,13 @@
     Je-li $\alpha$ neidentická kolineace, pak její osa i střed jsou jednoznačně určené.
 \end{consequence}
 \begin{proof}
-    TODO HW
+	\begin{enumerate}
+		\item Osa je jednoznačná.
+		\item Nechť $H$ je osa.
+			Nechť $\alpha$ neidentická kolineace se středy $C_1 \ne C_2 \notin H$.
+			Pak spor protože dle \cref{kpp:centr_kolin_prop} žádný další bod kromě $C_1$ není fixovaný.
+	\end{enumerate}
+    TODO not complete
 \end{proof}
 
 %13 predn
