@@ -947,7 +947,10 @@ Source ~\cite[p. 96]{beutelspacher1998projective}.
 
 \begin{observation}
 	Pro každé $\alpha \in F$ platí:
-	\[ \alpha + \omega = \omega + \alpha = \alpha \& \alpha \cdot \omega = \omega \cdot \alpha = \omega \]
+	\begin{gather*}
+		\alpha + \omega = \omega + \alpha = \alpha \\
+		\alpha \cdot \omega = \omega \cdot \alpha = \omega
+	\end{gather*}
 \end{observation}
 
 \begin{lemma}[O zobrazení $\mu$]
@@ -964,11 +967,30 @@ Source ~\cite[p. 96]{beutelspacher1998projective}.
     \[ \mu(g) = \{\mu(P+X): X\in OC\} = \{-P+(-X):X\in OC\}=\{-P+Y: Y\in OC\}=-PC \]
 \end{proof}
 \begin{lemma}[Kolineace jsou automorfismy grupy]
-    Každá kolineace $\alpha\in \D_O$ je automorfismus grupy $(P^*,+)$, neboli $\alpha(O)=O$ a $\alpha(X+Y)=\alpha(Y)+\alpha(Y)$, $\alpha(-X)=-\alpha(X)$ pro všechna $X,Y\in P^*$.
+    Každá kolineace $\alpha\in \D_O$ je automorfismus grupy $(P^*,+)$, neboli
+	\begin{enumerate}
+		\item $\alpha(O)=O$
+		\item $\alpha(X+Y)=\alpha(Y)+\alpha(Y)$
+		\item $\forall X,Y \in P^*: \alpha(-X)=-\alpha(X)$.
+	\end{enumerate}
 \end{lemma}
-\begin{proof}
+\begin{proof}~
+	\begin{enumerate}
+		\item $\alpha(O)=O$ je zřejmé.
+		%\item $\alpha(X+Y)=\alpha(Y)+\alpha(Y)$
+		%\item $\forall X,Y \in P^*: \alpha(-X)=-\alpha(X)$.
+	\end{enumerate}
     TODO Lemma 9
 \end{proof}
+
+\begin{consequence}
+	Pro každé $\alpha \in \D_O$ platí:
+	\begin{gather*}
+		\alpha \cdot \mu = \mu \cdot \alpha \\
+		\alpha \cdot \mu + \alpha = \omega
+	\end{gather*}
+\end{consequence}
+
 \begin{lemma}[Součet kolineací je v $F$]
     Pro každé dvě ne nutně různé kolineace $\alpha,\beta\in \D_O$ je $\alpha+\beta\in F$.
 \end{lemma}
