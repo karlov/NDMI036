@@ -513,28 +513,37 @@
 	Podobně $Q, R$.
 	Tyto 3 body jsou na hledané přímce.
 		\item $O, A, B, C$ leží v jedné rovině $\pi$.
-			Vezmeme 2 body mimo rovinu
+			\begin{enumerate}
+				\item Vezmeme 2 body mimo rovinu
 			\[ \exists S \notin \pi, B_0 \in SB, B_0 \ne S, B_0 \notin \pi \]
-			Pak přímky SP a AB se protnou v bodě $P_0$.
+			Pak přímky $SP \cap AB_0 = P_0$.
 			Taky $SB^{\prime} \cap OB_0 = B_0^{\prime}$.
 
 			Tvrdíme $P_0, A^{\prime}, B_0^{\prime}$ jsou kolineární.
 			Za prvé leží v $SPB^{\prime} \cap OAB_0$.
-			\[ P_0 \in PS \& A^{\prime} \in PB^{\prime} \& B_0^{\prime} \in SB^{\prime} \Rightarrow P_0, A^{\prime}, B_0^{\prime} \in SPB^{\prime} \]
+			\begin{gather*}
+			P_0 \in PS \& A^{\prime} \in PB^{\prime} \& B_0^{\prime} \in SB^{\prime} \Rightarrow P_0, A^{\prime}, B_0^{\prime} \in SPB^{\prime} \\
+			P_0 \in AB_0 \& A^{\prime} \in OA \& B_0^{\prime} \in OB_0^{\prime} \Rightarrow P_0, A^{\prime}, B_0^{\prime} \in OAB_0
+			\end{gather*}
 
-			\[ P_0 \in AB_0 \& A^{\prime} \in OA \& B_0^{\prime} \in OB_0^{\prime} \Rightarrow P_0, A^{\prime}, B_0^{\prime} \in OAB_0 \]
+    	% predn 11 05:00
+    	\includegraphics[scale=0.4]{g_26.eps}
 
-			Podobně $R_0 = CB_0 \cap RS$.
+				\item Podobně $R_0 = CB_0 \cap RS$.
 			Tvrdíme jako výš $R_0, C^{\prime}, B_0^{\prime}$ jsou kolineární.
 
-			Tvrdíme jako výš $P_0, R_0, Q$ jsou kolineární.
-			Protože $P_0, R_0, Q \in AB_0C \cap A^{\prime}B_0^{\prime}C^{\prime}$.
-			\[ P_0 \in AB_0 \& R_0 \in CB_0 \& Q = AC \cap A^{\prime}C^{\prime} \Rightarrow Q \in AC \Rightarrow \in AB_0C \]
-			\[ P_0 \in A^{\prime}B_0^{\prime} \& R_0 \in C^{\prime}B_0^{\prime} \& Q \in A^{\prime}C^{\prime} \Rightarrow \in A^{\prime}B_0^{\prime}C^{\prime} \]
+			\item Tvrdíme jako výš $P_0, R_0, Q$ jsou kolineární.
+			Protože
+			\begin{gather*}
+			P_0, R_0, Q \in AB_0C \cap A^{\prime}B_0^{\prime}C^{\prime} \\
+			P_0 \in AB_0 \& R_0 \in CB_0 \& Q = AC \cap A^{\prime}C^{\prime} \Rightarrow Q \in AC \Rightarrow \in AB_0C \\
+			P_0 \in A^{\prime}B_0^{\prime} \& R_0 \in C^{\prime}B_0^{\prime} \& Q \in A^{\prime}C^{\prime} \Rightarrow \in A^{\prime}B_0^{\prime}C^{\prime}
+			\end{gather*}
 
-			Finálně $P, Q, R$ jsou kolineární.
-			$P, Q, R \subseteq \pi$
+			\item Finálně $P, Q, R$ jsou kolineární.
+			$P, Q, R \subseteq \pi \cap SP_0R_0$
 			\[ P \in SP_0 \& R \in SR_0 \& Q \in P_0R_0 \Rightarrow \in SP_0R_0 \]
+			\end{enumerate}
 	\end{enumerate}
 \end{proof}
 
