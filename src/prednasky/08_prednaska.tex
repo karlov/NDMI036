@@ -77,7 +77,9 @@
 		\item BUNO $(u \in S \iff u = x) \land v \not\in S$.
 			Pokud $u \in ax$ triviálně.
 			Jinak $u \in ay, y \in S$.
-			// TODO finish
+
+			Nechť $w \in uv$ libovolný, pak
+			\[ aw \cap uv = w \& aw \cap yv = a \Rightarrow aw \cap uy = w' \in S \Rightarrow w \in aw' \in AX \]
 		\item $u, v \notin S; u, v \ne a; uv \nsupseteq a$
 			Chceme $w \in uv \Rightarrow w \in AX$.
 
@@ -96,7 +98,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{lemma}[Sjednocení podprostorů]
+\begin{lemma}[Sjednocení podprostorů]\label{kpp:sub_join}
     Buďte $S,T \subseteq P$ podprostory $(P, \LP)$.
     Potom
     \[ \langle S \cup T \rangle = \bigcup_{\substack{ s\in S \\ t\in T \\ s\neq t}} st \]
@@ -229,7 +231,7 @@
     $\dim_P S=|B|-1$, kde $B$ je projektivní báze $S$.
 \end{definition}
 
-\begin{note}[O dimenzi]
+\begin{note}[O dimenzi]~
     \begin{itemize}
         \item $\dim_P(\{a\},\emptyset)=0$
         \item $\dim_P(\emptyset, \emptyset)=-1$
@@ -265,7 +267,7 @@
 	Taky víme
 	\[ |B| = u + 1, |C| = v + 1, |A| = w + 1 \]
 	\paragraph{Pozorování 1} $B \cup C$ je pr nezávislá množina a generuje $\langle U \cup V \rangle$.
-	Vezmeme libovolný $x \in \langle U \cup V \rangle$ tak leží na přímce $ab: a \in U, b \in V$.
+	Vezmeme libovolný $x \in \langle U \cup V \rangle$ tak leží na přímce $ab: a \in U, b \in V$ dle \cref{kpp:sub_join}.
 	Taky $a, b$ leží na přímkách spojujících 2 body z bázi.
 	Najdeme přímku spojující bod z bázi $U$ a bázi $V$ takovou že obsahuje $x$.
 
@@ -290,8 +292,9 @@
 
 	Znovu napíšeme rovnici dimenzi:
 	\[ w + \dim_P(\langle U \cup V \rangle) = u + v \]
-	Navíc $|B \cup C| - u + 1 + v + 1 - (w + 1) = u + v - w $.
-	Pak $\dim_P (B \cup C) = u + v - w$ a dostáváme rovnost.
+	Navíc
+	\[ |B \cup C| = |B| + |C| - |(B \cap C) = A| =  u + 1 + v + 1 - (w + 1) = u + v - w + 1 \]
+	Pak dimenze je o 1 menší než počet prvků baze $\dim_P (B \cup C) = u + v - w$ a dostáváme rovnost.
 \end{proof}
 
 \begin{observation}\label{kpp:subspace_dim}
@@ -484,7 +487,7 @@
 		    \[ q(q^{n - 1} + q^{n - 2} + \ldots + 1) + \text{sama}\ H = q^n + q^{n - 1} + \ldots + 1 \]
 	    \item Vezměme bod $X \in H$.
 		    Každá další nadrovina, která bod X obsahuje, protíná $H$ v prostoru projektivní dimenze $(n - 2)$, tento průnik je tedy nadrovina v $H$ obsahující bod $X$.
-		    Podle indukčního předpokladu je takovýchto nadrovin $q^{n-2} + q^{n-3} + \ldots + 1$, a podobně jako v předchozím bodě, každá z nich vznikla jako průnik s $q$ možnými nadrovinami v $P$.
+		    Podle i.p je takovýchto nadrovin $q^{n-2} + q^{n-3} + \ldots + 1$, a podobně jako v předchozím bodě, každá z nich vznikla jako průnik s $q$ možnými nadrovinami v $P$.
     \end{enumerate}
 \end{proof}
 
