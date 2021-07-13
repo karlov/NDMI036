@@ -975,12 +975,32 @@ Source ~\cite[p. 96]{beutelspacher1998projective}.
 	\end{enumerate}
 \end{lemma}
 \begin{proof}~
-	\begin{enumerate}
-		\item $\alpha(O)=O$ je zřejmé.
-		%\item $\alpha(X+Y)=\alpha(Y)+\alpha(Y)$
-		%\item $\forall X,Y \in P^*: \alpha(-X)=-\alpha(X)$.
-	\end{enumerate}
-    TODO Lemma 9
+	%\begin{enumerate}
+	%	\item $\alpha(O)=O$ je zřejmé.
+	%\end{enumerate}
+    $\alpha(O)=O$ zjevně.
+
+    Mějme $X,Y,O$ nekolineární.
+    Označíme $X^*=OX\cap H, Y^*=OY\cap H$, a neboť $\alpha$ je kolineace se středem $O$, jsou body $O,X,\alpha(X),X^*$ kolineární, a stejně tak $O,Y,\alpha(Y),Y^*$.
+    Z konstrukce plyne $X+Y=Y^*X\cap X^*Y$, a tedy
+    \[ \alpha(X+Y)=\alpha(Y^*X)\cap\alpha(X^*Y)=Y^*\alpha(X)\cap X^*\alpha(Y)\]
+    což je přesně $\alpha(X)+\alpha(Y)$.
+
+    Spočteme $\alpha(-X)$ pro $X\neq O$.
+    Mějme $P\in\mathcal P^*$ neležící na $OX$.
+    Pak body $O,P,X$, tedy i body $P+X, O, -X$ jsou nekolineární.
+    Z výše dokázaného máme
+    \[ \alpha(P)=\alpha(P + X + (-X))=\alpha(P+X) + \alpha(-X) = \alpha(P) + \alpha(X) + \alpha(-X)\]
+    a tedy $O=\alpha(-X)+\alpha(X)$.
+
+    Mějme $X\neq Y\in\mathcal P^*$ tak, že $O\in XY$ a mějme $P$ neležící na $XO$.
+    Pak ani $-P$ neleží na $XO$ a navíc $X+P\neq X-P$.
+    Dle předchozího
+    \[ \alpha(X+Y)=\alpha(X+P-P+Y)=\alpha(X+P) + \alpha(Y-P) = \alpha(X) + \alpha(P) + \alpha(Y) + \alpha(-P) = \alpha(X)+\alpha(Y) \]
+
+    Nakonec mějme $X=Y\neq O$ a volme $P$ neležící na $XO$, pak totiž ani $-P$ neleží na $XO$ a $X+P\neq X-P$.
+    Pak
+    \[ \alpha(X+X) = \alpha(X+P+X-P) = \alpha(X) + \alpha(P) + \alpha(X) + \alpha(-P)=\alpha(X) + \alpha(X) \]
 \end{proof}
 
 \begin{consequence}
@@ -995,7 +1015,24 @@ Source ~\cite[p. 96]{beutelspacher1998projective}.
     Pro každé dvě ne nutně různé kolineace $\alpha,\beta\in \D_O$ je $\alpha+\beta\in F$.
 \end{lemma}
 \begin{proof}
-    TODO Lemma 10
+    Označíme $\sigma = \alpha+\beta$.
+    Pak
+    \[ \sigma(O) = O, \sigma(X+Y) = \sigma(X)+\sigma(Y)\forall X,Y\in\mathcal P^* \]
+    Dále $\sigma$ fixuje každou přímku procházející bodem $O$.
+
+    Mějme $g$ přímku neprocházející bodem $O$ a $P=g\cap \mathcal{P}^*$ a označme $X=g\cap H$.
+    Pak
+    \[ g=\{P+X: X\in OC\}\text{, a tedy}\ \sigma(P)=\{\sigma(P+X): X\in OC\}=\{\sigma(P)+\sigma(X): X\in OC\}\subseteq \{\sigma(P)+Y: Y\in OC\} \]
+    dle předchozího, a tedy $\sigma$ zachovává kolinearitu.
+
+    Dále ukážeme, že buď $\sigma=\omega$, nebo je $\sigma$ bijekce.
+    Mějme $\sigma(X)=\sigma(Y)$ pro $X\neq Y\in\mathcal P^*$
+    Pak tedy $\alpha(X)+\beta(X) = \alpha(Y)+\beta(Y)$, a tedy
+    \[\alpha(X-Y) = \alpha(X)-\alpha(Y) = \beta(Y)-\beta(X) = \beta(Y-X)=\beta(\mu(X-Y)) = (\mu\beta)(X-Y) \]
+    Neboť $\alpha, \mu\beta$ jsou dvě centrální kolineace se stejnou osou, středem a shodují se na $X-Y\in\mathcal P^*\setminus\{0\}$, jsou totožné.
+    Pak ovšem $\sigma = \alpha+\beta = \mu\beta+\beta = \omega$.
+
+    Tedy buď je $\sigma=\omega\in F$, nebo to je bijekce zachovávající kolinearitu, a tedy kolineace, fixující každý bod nadroviny $H$i každou přímku procházející bodem $O$, a tedy $\sigma\in D_O\subset F$.
 \end{proof}
 
 \begin{theorem}[Veblenova]
