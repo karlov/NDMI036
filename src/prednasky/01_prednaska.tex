@@ -186,8 +186,8 @@ A: ano, ale nevíme co dříve.
 	\begin{equation}\label{kar_x}
 		|A| + 1 = \text{\# přímek obsahujících}\ x
 	\end{equation}
-	Vezmeme 2 přímky $A, B: A \nparallel B$. Dle AF1, AF2, AF3 $\Rightarrow$ nejde pokryt 2ma různoběžnými přímkami.
-	Pak $\exists t \notin A \cup B$, zobrazeni $\varphi$ určuje přímku pro každý bod A, B.
+	Vezmeme 2 přímky $A, B: A \nparallel B$. Dle AF1, AF2, AF3 $\Rightarrow$ nejde pokryt dvěma různoběžnými přímkami.
+	Pak $\exists t \notin A \cup B$, zobrazeni $\varphi$ určuje přímku pro každý bod $A, B$.
 	Neboli $|A| = |B|$.
 
 	Vezmeme 2 rovnoběžky $A, B$ a různoběžku $C$ z předchozího případu usoudíme $|A| = |C| = |B|$.
@@ -207,7 +207,6 @@ A: ano, ale nevíme co dříve.
 	Na jedné straně, počet bodu je $m^2$. Každým bodem prochází $(m + 1)$ přímek.
 	Na druhé straně se to rovná počtu přímek krát počet bodů na přímce $m$.
 	\[ m^2 \cdot (m + 1) = |\LP| \cdot |A| = |\LP| \cdot m \Rightarrow |\LP| = m \cdot (m + 1) \]
-
 \end{proof}
 \begin{consequence}[O vztahu KAR a KPR]
     Každá afinní rovina řádu $m$ vznikne z projektivní roviny řádu $m$ vynecháním jedné přímky a jejích bodů.
@@ -231,7 +230,33 @@ A: ano, ale nevíme co dříve.
 
 % 1 predn 01:08:10
 \begin{example}[Extremální Moorovy grafy]
+	Moorův graf neobsahuje $K_3, C_4$.
+	Víme $|V| \geq r^2 + 1$.
+
+	Pokud $|V| = r^2 + 2$, tak jsou pouze 6-cykly.
+
+	Z KPR víme, že $r$-regulární graf bez $K_3, C_4$ má $\approx 2r^2$ vrcholů pro $\infty$ mnoho $r$.
+	Vezmeme graf incidence KPR($m$) $B_{KPR}$.
+	Graf je bipartitní, $(m + 1)$-regulární, z vlastnosti $K_3, C_4$.
+	\[ B_{KPR} = 2(m^2 + m + 1) = 2((m + 1)^2 - m - 1 + 1) = 2(m^2 - m + 1) \]
 \end{example}
 
 \begin{example}[Copnumber grafu]
+	Hra na policajty a zloděje: P a Z se pohybuji po hranách grafu, 1 hrana za tah, můžou taky zůstat na místě.
+	Pak \emph{compnumber} je \# policajtů které chytí zloděje.
+	Zjištění compnumber pro libovolný graf $G$ je $EXPTIME$-úplné.
+	Stále otevřené pro různé třídy grafů.
+
+	\begin{conj}[Meynil]
+		$\forall$ grafy na $n$ vrcholech $\exists c > 0: cp(G) \leq c \sqrt{n}$.
+	\end{conj}
+
+	\begin{observation}
+		Pokud $G$ je Moorův graf, $d$-regulární $\Rightarrow cp(G) \geq d$.
+	\end{observation}
+	\begin{proof}
+		Pokud \# policajtů je $\leq (d - 1)$, tak Z hraje dle následující strategie: stoji na místě dokud nemá P v sousedním vrcholů.
+		Pak Z jde do bezpečného souseda (grafová vzdálenost do P $\geq 2$).
+		Každý z P tvoří právě jeden nebezpečný vrchol, protože graf nemá $K_3, C_4$.
+	\end{proof}
 \end{example}

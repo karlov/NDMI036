@@ -762,16 +762,16 @@ Source ~\cite[p. 96]{beutelspacher1998projective}.
 	V průniku jeden bod.
 
     \begin{enumerate}
-	    \item Vezmeme $X \notin PC$.
-		    Přímka $PX \notin H \Rightarrow PX \cap H = F$ bod.
-		    \[ X \in FP \Rightarrow \alpha(X) \in \alpha(FP) = \alpha(F)\alpha(P) \stackrel{osa}{=} F\alpha(P) \]
+	\item Vezmeme $X \notin PC$.
+		Přímka $PX \notin H \Rightarrow PX \cap H = F$ bod.
+	    \[ X \in FP \Rightarrow \alpha(X) \in \alpha(FP) = \alpha(F)\alpha(P) \stackrel{osa}{=} F\alpha(P) \]
 		    Protože $\alpha$ kolineace: $X \in XC \Rightarrow \alpha(X) \in \alpha(XC) \stackrel{střed}{=} XC$.
 		    $XC, FP$ jsou různé přímky, proto $\alpha(X) = XC \cap F\alpha(P)$.
 		    Taky $X \ne \alpha(X)$ protože přímky $X \in FP, \alpha(X) \in F\alpha(P)$ jsou různé $X \notin F\alpha(P)$.
 
     	% predn 11 01:24:00
     	\includegraphics[scale=0.3]{g_17.eps}
-\item Vezmeme $X \in PC$, nutně neleží v $H$, protože jinak je fixovaný a je určen jednoznačně.
+	\item Vezmeme $X \in PC$, nutně neleží v $H$, protože jinak je fixovaný a je určen jednoznačně.
 	Analogicky $X \ne C$.
 	Vezmeme libovolný $R \notin PC, H$, přímka $RC$ jednoznačně určuje bod $\alpha(R)$.
 	$X \notin RC$, dle 1) $\alpha(X)$ je jednoznačně určen $\alpha(R)$.
@@ -885,7 +885,7 @@ Source ~\cite[p. 96]{beutelspacher1998projective}.
 			\[ \forall X \in P^*: C = X\alpha(X) \cap H \& D = X\beta(X) \cap H \]
 			Pak můžou nastat 2 možnosti:
 			\begin{enumerate}
-				\item $C \ne D$. Body $D, X, \beta(X)$ jsou kolineární, pak i $\alpha(D) = D, \alpha(X), \alpha(\beta(X))$.
+				\item $C \ne D$. Body $D, X, \beta(X)$ jsou kolineární, pak i $\beta(D) = D, \alpha(X), \beta(\alpha(X))$.
 					Analogicky, $C, \beta(X), \alpha(\beta(X))$. Přímky jsou různé, proto
 					\[ \alpha(\beta(X)) \in D\alpha(X) \cap C\beta(X) \]
 					Podobně $\beta(\alpha(X)) \in D\alpha(X) \cap C\beta(X)$.
@@ -973,8 +973,8 @@ Source ~\cite[p. 96]{beutelspacher1998projective}.
     Každá kolineace $\alpha\in \D_O$ je automorfismus grupy $(P^*,+)$, neboli
 	\begin{enumerate}
 		\item $\alpha(O)=O$
-		\item $\alpha(X+Y)=\alpha(Y)+\alpha(Y)$
-		\item $\forall X,Y \in P^*: \alpha(-X)=-\alpha(X)$.
+		\item $\forall X,Y \alpha(X+Y)=\alpha(X)+\alpha(Y)$
+		\item $\forall X \in P^*: \alpha(-X)=-\alpha(X)$.
 	\end{enumerate}
 \end{lemma}
 \begin{proof}~
